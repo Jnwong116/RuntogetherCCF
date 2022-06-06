@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://runtogether.utccf.com/?fbclid=IwAR38qeRSpNajNn-Q11iuWyMBAFH5xmsFF59h0e1gYqnGSMtUzafda8APMZs -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>UTCCF Elections: Let's Run Together</title>
+
+  <script src="./UTCCF Elections_ Let&#39;s Run Together_files/sdk.js.download" async="" crossorigin="anonymous"></script><script id="facebook-jssdk" src="./UTCCF Elections_ Let&#39;s Run Together_files/sdk.js(1).download"></script><script src="./UTCCF Elections_ Let&#39;s Run Together_files/jquery-2.1.3.min.js.download"></script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="./UTCCF Elections_ Let&#39;s Run Together_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./UTCCF Elections_ Let&#39;s Run Together_files/font-awesome.min.css">
+  <link rel="stylesheet" href="./UTCCF Elections_ Let&#39;s Run Together_files/flatly-bt.css">
+  <link rel="icon" href="https://runtogether.utccf.com/favicon.ico">
+  <script src="./UTCCF Elections_ Let&#39;s Run Together_files/bootstrap.min.js.download"></script>
+
+
+  <style type="text/css">
+    /* Primarily the "add your name to this list" control buttons */
+    
+    .btn-groups {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* Each "person" element inside the options */
+    
+    .person {
+      border: 1px dotted #666;
+      border-radius: 3px;
+      margin: 10px 0;
+      color: #000;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.0;
+    }
+    
+    .person div {
+      vertical-align: middle;
+    }
+    
+    .person .position {
+      font-size: 14px;
+      font-variant: small-caps;
+      font-weight: 400;
+    }
+    
+    .peopletext {
+      padding-left: 10px;
+      display: inline-block;
+      max-width: 75%;
+    }
+    /*.person a:link,a:visited {
+    color: #000;
+    }
+  
+    .person a:hover {
+      color: #1F3D99;
+      text-decoration: none;
+    } */
+    
+    .fbpic {
+      /*margin-right: 15px; */
+    }
+    
+    .container {
+      margin-top: 20px;
+    }
+    
+    .well {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    
+    #loadingscr {
+      z-index: 100;
+      background-color: rgba(0, 0, 0, 0.5);
+      vertical-align: middle;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color: #fff;
+    }
+    
+    .noshow {
+      visibility: hidden;
+    }
+    
+    #loadingc {
+      top: 50%;
+      display: inline-block;
+      position: fixed;
+      width: 45px;
+      ;
+      height: 45px;
+      margin: auto;
+    }
+    
+    #frmConsiderDetails label {
+      font-weight: 400;
+    }
+    
+    #frmConsiderDetails.hidden {
+      height: 0;
+    }
+    
+    .jumbotron .small {
+      font-size: 50%;
+      color: #90969B;
+    }
+  </style>
+
+  <script>
+    var userfbid = "";
+    var usertoken = "";
+    var blurbdata = null;
+
+    function showLoading() {
+      $('#loadingscr').removeClass('noshow');
+    }
+
+    function hideLoading() {
+      $('#loadingscr').addClass('noshow');
+    }
+
+    function toggleButtons(active_btn) {
+      var button_list = ['btnNR', 'btnCS', 'btnCF'];
+
+      for (var kk = 0; kk < button_list.length; kk++) {
+        $('#' + button_list[kk]).removeClass('active');
+      }
+      $('#' + active_btn).addClass('active');
+    }
+
+    function getCandidateInfo(currblurb) {
+      var dispstr = "<h3>" + currblurb.name + "</h3>";
+
+      dispstr += '<table class="table table-striped">' +
+        '<tr><td>Position:</td><td>' + currblurb.position + '</td></tr>' +
+        '<tr><td>Years at CCF:</td><td>' + currblurb.yrsccf + '</td></tr>' +
+        '<tr><td>Years as a Christian:</td><td>' + currblurb.yrschn + '</td></tr>' +
+        '<tr><td>Church:</td><td>' + currblurb.church + '</td></tr>'
+        '</table>';
+
+      return dispstr;
+    }
+
+    function showBlurb(blurbfbid) {
+      var currblurb = blurbdata[blurbfbid];
+
+      $('#blurbmodal_title').html('Nominations for ' + currblurb.name);
+
+      var blurb1 = currblurb.blurb1.replace(/\n/g, "</p><p>");
+      var blurb2 = currblurb.blurb2.replace(/\n/g, "</p><p>");
+      var blurb3 = currblurb.blurb3.replace(/\n/g, "</p><p>");
+      //var blurb4 = currblurb.blurb4.replace(/\n/g, "</p><p>");
+
+      var nom1 = '<h4>' + currblurb.nom1 + '</h4><p>' + blurb1 + '</p><hr>';
+      var nom2 = '<h4>' + currblurb.nom2 + '</h4><p>' + blurb2 + '</p><hr>';
+      var nom3 = '<h4>' + currblurb.nom3 + '</h4><p>' + blurb3 + '</p><hr>';
+      //var nom4 = '<h4>' + currblurb.nom4 + '</h4><p>' + blurb4 + '</p><hr>';      
+
+      // Not sure why I can't just append all into 1 string. Somehow that would put the table at the bottom
+      //$('#blurbmodal_body').html(dispstr);
+      $('#blurbmodal_body').empty();
+      $('#blurbmodal_body').append(getCandidateInfo(currblurb));
+      $('#blurbmodal_body').append('<hr>');
+      $('#blurbmodal_body').append(nom1);
+      $('#blurbmodal_body').append(nom2);
+      $('#blurbmodal_body').append(nom3);
+      //$('#blurbmodal_body').append(nom4);
+      
+      $('#blurbmodal').modal();
+    }
+    
+    function showVision(blurbfbid){
+      var currblurb = blurbdata[blurbfbid];
+      
+       $('#blurbmodal_title').html('Vision for ' + currblurb.name);
+       
+       var summary = '<h4> Vision Summary </h4>';
+       summary += '<ul>' +
+        '<li>' + currblurb.point1 + '</li>' +
+        '<li>' + currblurb.point2 + '</li>' +
+        '<li>' + currblurb.point3 + '</li>' + 
+        '</ul>';
+        
+      var visionLink = '<div class="btn-groups"><a target="_blank" href="visions/' + blurbfbid + '.pdf" class="btn btn-info">See Full Vision</a></div>';
+      
+      $('#blurbmodal_body').empty();
+      $('#blurbmodal_body').append(getCandidateInfo(currblurb));
+      $('#blurbmodal_body').append('<hr>');
+      $('#blurbmodal_body').append(summary);
+      $('#blurbmodal_body').append('<hr>');
+      $('#blurbmodal_body').append(visionLink);
+      
+      $('#blurbmodal').modal();
+    }
+
+    function refreshData() {
+      // hit the API
+      $.post('./api.php?getlist', 'token=' + usertoken).success(function(data) {
+        data = JSON.parse(data);
+
+        var user_considering = false;
+        var user_confirmed = false;
+        var user_smallgroup = false;
+        var user_ministry = false;
+
+        // Render people boxes
+        // Considering committee
+        var outputstr = "";
+        for (var kk = 0; kk < data.considering.length; kk++) {
+          outputstr += '<div class="fbprofile person">' +
+            '<img class="fbpic" src="https://graph.facebook.com/v2.2/' + data.considering[kk].fbid + '/picture?width=65&height=65"><div class="peopletext">' +
+            data.considering[kk].name + '<br><span class="position">' + data.considering[kk].position + '</span></div></div>';
+
+          // for figuring out which button to be selected
+          user_considering |= data.considering[kk].fbid == userfbid;
+        }
+        if (data.considering.length == 0) {
+          outputstr = "Looks like there's nobody yet..."
+        }
+        $('#considering').html(outputstr);
+
+        // Confirmed committee
+        var outputstr = "";
+        for (var kk = 0; kk < data.confirmed.length; kk++) {
+          var nomsstr = data.confirmed[kk].noms == 'Y' ? "Already have": "Still needs";
+          outputstr += '<div class="fbprofile person">' +
+            '<img class="fbpic" src="https://graph.facebook.com/v2.2/' + data.confirmed[kk].fbid + '/picture?width=65&height=65"><div class="peopletext">' +
+            data.confirmed[kk].name + '<br><span class="position">' + data.confirmed[kk].position + ' &middot; ' + nomsstr + ' nominations</span><br>';
+
+          // COMMENT OUT THE FOLLOWING LINE TO HIDE NOMINATIONS
+          // outputstr += '<span class="position"><a class="blurblink" fbid="' + data.confirmed[kk].fbid + '">[ See Nominations ]</a></span>';  
+          outputstr += '<span class="position"><a class="blurblink" fbid="' + data.confirmed[kk].fbid + '">[ See Nominations ]</a><a class="visionlink" fbid="' + data.confirmed[kk].fbid + '">[ See Vision ]</a></span>';  
+          
+          // ==================================================
+
+          outputstr += '</div></div>';
+
+          user_confirmed |= data.confirmed[kk].fbid == userfbid;
+        }
+        if (data.confirmed.length == 0) {
+          outputstr = "Looks like there's nobody yet..."
+        }
+        $('#confirmed').html(outputstr);
+
+        // bind blurb and vision link
+        $('.blurblink').click(function(ee) {
+          showBlurb($(ee.delegateTarget).attr('fbid'));
+        });
+        
+        $('.visionlink').click(function(ee) {
+          showVision($(ee.delegateTarget).attr('fbid'));
+        });
+
+
+
+        // highlight buttons if they exist
+        if ($('#btnNR').length > 0) {
+          if (user_considering) {
+            // in considering
+            toggleButtons('btnCS');
+          }
+          else if (user_confirmed) {
+            // in confirmed
+            toggleButtons('btnCF');
+          }
+          else {
+            // not running for any position
+            toggleButtons('btnNR');
+          }
+        }
+      });
+    }
+
+    function statusChangeCallback(response) {
+      if (response.status === 'connected') {
+        userfbid = response.authResponse.userID;
+        usertoken = response.authResponse.accessToken;
+
+        // show the control panel
+        $('#flex').load('loggedin.html', function(responseText, textStatus) {
+
+          // Bind controls
+
+          // STILL WAITING
+          $('#btnNR').click(function() {
+            showLoading();
+            $.post('api.php?remove', "token=" + usertoken).success(function(textResponse) {
+              refreshData();
+              hideLoading();
+            }).fail(function(stuff, textStatus) {
+              console.log('remove fail');
+              console.log(textStatus);
+            });
+          });
+
+
+          // CONSIDER MODAL FORM AND EVENTS
+          $('#btnCS').click(function() {
+            $('#considerModal').modal('show');
+          });
+
+          $('#btnSubmitConsider').click(function() {
+            $('#considerModal').modal('hide');
+            showLoading();
+            $.post('api.php?addconsider', "token=" + usertoken + "&" + $('#frmConsiderDetails').serialize()).success(function(textResponse) {
+              refreshData();
+              hideLoading();
+            }).fail(function(stuff, textStatus) {
+              console.log('cs fail');
+              console.log(textStatus);
+            });
+          });
+
+          // recalculate position string
+          $('.lpos').change(function() {
+            var posstr = "";
+            var elems = $('.lpos:checked');
+            for (var kk = 0; kk < elems.length; kk++) {
+              posstr += $(elems[kk]).val() + ', ';
+            }
+            posstr = posstr.substr(0, posstr.length - 2);
+
+            $('#txtConsider').val(posstr);
+          });
+
+          // Consider form, yes/no button
+          /*
+          $('#btnConsiderNo').click(function() {
+            $('#frmConsiderDetails').addClass('hidden');
+            $('#txtConsider').val('');
+
+            $('#btnConsiderNo').addClass('active');
+            $('#btnConsiderYes').removeClass('active');
+          });
+          $('#btnConsiderYes').click(function() {
+            $('#frmConsiderDetails').removeClass('hidden');
+
+            $('#btnConsiderNo').removeClass('active');
+            $('#btnConsiderYes').addClass('active');
+          }); */
+
+          // CONFIRM MODAL AND EVENTS
+          $('#btnCF').click(function() {
+            $('#confirmModal').modal('show');
+          });
+
+          $('#btnSubmitConfirm').click(function() {
+            $('#confirmModal').modal('hide');
+            showLoading();
+            $.post('api.php?addconfirm', "token=" + usertoken + "&" + $('#frmConfirmDetails').serialize()).success(function(textResponse) {
+              refreshData();
+              hideLoading();
+            }).fail(function(stuff, textStatus) {
+              console.log('cf fail');
+              console.log(textStatus);
+            });
+          });
+
+          $('#btnCMinistry').tooltip();
+          $('#btnCIG').tooltip();
+
+          // Get current logged in username
+          FB.api('/me', function(result) {
+            $('#fbprofileinfo').html('Hello ' + result.name + '!<br>Simply, click the buttons below to keep us updated on where you' + "'" + 're at right now.<br><br>');
+          });
+
+          // Handle the button toggle states
+          refreshData();
+        });
+
+
+      }
+      else {
+        // show login button
+        $('#flex').load('loggedout.html', function() {
+          $('#fbloginbtn').click(function() {
+            FB.login(function(response) {
+              statusChangeCallback(response);
+            }, {
+              scope: 'public_profile'
+            });
+          });
+        });
+      }
+    }
+  </script>
+<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}@keyframes fb_mpn_landing_page_slide_out{0%{margin:0 12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;margin:0 24px;width:60px}}@keyframes fb_mpn_landing_page_slide_out_from_left{0%{left:12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;left:12px;width:60px}}@keyframes fb_mpn_landing_page_slide_up{0%{bottom:0;opacity:0}100%{bottom:24px;opacity:1}}@keyframes fb_mpn_bounce_in{0%{opacity:.5;top:100%}100%{opacity:1;top:0}}@keyframes fb_mpn_fade_out{0%{bottom:30px;opacity:1}100%{bottom:0;opacity:0}}@keyframes fb_mpn_bounce_out{0%{opacity:1;top:0}100%{opacity:.5;top:100%}}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_from_left{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50%{transform:scale(1.03, 1.03);transform-origin:bottom left}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_from_left{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}@keyframes slideInFromBottom{0%{opacity:.1;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}@keyframes slideInFromBottomDelay{0%{opacity:0;transform:translateY(100%)}97%{opacity:0;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}</style></head>
+
+<body>
+  <script>
+    // Set isElectionsOver to toggle what to display on the index page
+    // TOGGLE HERE TO ENABLE RUNTOGETHER PAGE
+    var isElectionsOver = false;
+    // var isElectionsOver = true;
+    if (isElectionsOver){
+      $(window).on('load', function() {
+        $(".container").load("electionsover.html");
+      });
+    } else {
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: '319549271570536',
+          cookie: true,
+          xfbml: false,
+          version: 'v2.1'
+        });
+  
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+  
+        refreshData();
+  
+        // asynchronously load nomination blurbs
+        try {
+          $.getJSON('nominations.json', function(data) {
+            blurbdata = data;
+          });
+        }
+        catch (ex) {
+          // if it doesn't exist, then meh.
+          // console.log("nominations.json doesn't exist")
+        }
+  
+        window.setInterval(function() {
+          refreshData();
+        }, 60000);
+      };
+  
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    }
+  </script>
+
+  <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+
+  <div id="main" class="container">
+    <div class="jumbotron">
+      <h1>UTCCF 2022 <span class="small">ft. elections</span></h1>
+      <h2>Let's run together!</h2><br><br>
+      <p>For UTCCF elections this year, we're encouraging everyone to join in on the running process! It's an exciting time to support and find out what God has planned for brothers and sisters in this community. This means it's also time to get started
+        on thinking about ministry and IG leading too :). So <b>update</b> the community with your discernment process, <b>speak</b> to those who are considering, and <b>pray</b> for each other!</p>
+      <br>
+      <h4>Some useful links:</h4>
+      <span class="position">
+        <!--<a target="_blank" href="https://docs.google.com/spreadsheets/d/1VT252WiDWp3ghd3VhrodE8pe9G9EbJ9HYZ35TigGb0Y/edit?usp=sharing">[ Prayer Chain + Prayer Wall ]</a>-->
+        <a target="_blank" href="https://utccf.com/docs">[ Past Visions ]</a>
+        <a target="_blank" href="https://docs.google.com/document/d/14XU3tS5Emyw7u8oI-j2Fn2rKKxviMbhyo1NLKv7s9_k/edit">[ Election Logistics ]</a>
+        <a target="_blank" href="https://www.utccf.com/docs/2017-18/UTCCF-Constitution-2018-UTSU.pdf">[ Constitution ]</a>
+        <!--<a target="_blank" href="http://www.utccf.com/docs/2017-18/UTCCF-Constitution-2018-UTSU.pdf">[ UTCCF Constitution ]</a>-->
+        <!--<a target="_blank" href="http://utccf.com/docs/">[ Previous Years' Visions ]</a>-->
+        <!--Nothing so far!-->
+      </span>
+      <br>
+      <br>
+      <h4>If you're having trouble seeing the updated nominations or visions: press <b>CTRL + (the reload button) or CTRL + f5</b> to fix it!</h4>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Considering a leadership role</h3>
+          </div>
+
+          <div id="considering" class="panel-body"><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture"><div class="peopletext">Angelica Lee<br><span class="position">Womens Min, Worship Team</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(1)"><div class="peopletext">Carmel Tung<br><span class="position">IG Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(2)"><div class="peopletext">Chloe Ha<br><span class="position">Freezer Leader, IG Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(3)"><div class="peopletext">Christopher Fan<br><span class="position">Worship Team Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(4)"><div class="peopletext">Cicy Tan<br><span class="position">Worship Team Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(5)"><div class="peopletext">Deborah Lin<br><span class="position">Hospitality Min Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(6)"><div class="peopletext">Jen Zhang<br><span class="position">Womens Min Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(7)"><div class="peopletext">John Zhang<br><span class="position">IG Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(8)"><div class="peopletext">Jordan Wong<br><span class="position">Mens Min Leader, IG Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(9)"><div class="peopletext">Joshua Chang<br><span class="position">Ministry Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(10)"><div class="peopletext">Joshua Cheng<br><span class="position">Worship Team</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(11)"><div class="peopletext">Kelvin Lo<br><span class="position">IG Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(12)"><div class="peopletext">Liz So<br><span class="position">Freezer Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(13)"><div class="peopletext">Marian Wang<br><span class="position">Worship Team, IG Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(14)"><div class="peopletext">Nathan Mok<br><span class="position">Mens Min Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(15)"><div class="peopletext">Riley Li<br><span class="position">Freezer Leader</span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(16)"><div class="peopletext">Samantha Wu<br><span class="position">Hospitality Min Leader, Worship Team</span></div></div></div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Decided to run for a leadership role</h3>
+          </div>
+
+          <div id="confirmed" class="panel-body"><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(17)"><div class="peopletext">Chloe Cheng<br><span class="position">President · Already have nominations</span><br><span class="position"><a class="blurblink" fbid="5331971846858816">[ See Nominations ]</a><a class="visionlink" fbid="5331971846858816">[ See Vision ]</a></span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(18)"><div class="peopletext">Clayton Chan<br><span class="position">Vice-President · Already have nominations</span><br><span class="position"><a class="blurblink" fbid="3120792424812170">[ See Nominations ]</a><a class="visionlink" fbid="3120792424812170">[ See Vision ]</a></span></div></div><div class="fbprofile person"><img class="fbpic" src="./UTCCF Elections_ Let&#39;s Run Together_files/picture(19)"><div class="peopletext">Katryn Mei<br><span class="position">Outreach Coordinator · Already have nominations</span><br><span class="position"><a class="blurblink" fbid="3140752122867201">[ See Nominations ]</a><a class="visionlink" fbid="3140752122867201">[ See Vision ]</a></span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for nomination and other blurbs -->
+    <div class="modal fade" id="blurbmodal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="blurbmodal_title">Modal title</h4>
+          </div>
+          <div class="modal-body" id="blurbmodal_body">
+            ...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="flex"><div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3 well">
+    <h3>Add your name to this list</h3>
+
+    <div id="fbprofileinfo">Hello Jordan Wong!<br>Simply, click the buttons below to keep us updated on where you're at right now.<br><br></div>
+    <div id="listmanage" class="btn-groups">
+      <div class="btn-group" role="group">
+        <button id="btnNR" type="button" class="btn btn-info">Waiting</button>
+        <button id="btnCS" type="button" class="btn btn-info active">Considering</button>
+        <button id="btnCF" type="button" class="btn btn-info">Decided</button>
+      </div>
+    </div>
+    
+    <div style="text-align: right; font-size: 12px">
+      <a target="_blank" href="https://docs.google.com/document/d/1ncxTK7UiCVZ5of3zldzZ--ou0xA68LeL0IiQ2yvrhzo/edit?usp=sharing">Facebook Privacy Policy</a> 
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Please tell us a little more...</h4>
+      </div>
+      <div class="modal-body">
+        <label>Which leadership role have you decided to run for?</label><br>
+        <div class="btn-group" role="group">
+          <button id="btnCCommittee" type="button" class="btn btn-primary active">Committee</button>
+          <button id="btnCMinistry" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Ministry leaders will have the chance to confirm their roles later in the year!">Ministry Leader</button>
+          <button id="btnCIG" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="IG leaders will have the chance to confirm their roles later in the year!">IG Leader</button>
+        </div><br><br><br>
+        <form id="frmConfirmDetails" action="https://runtogether.utccf.com/?fbclid=IwAR38qeRSpNajNn-Q11iuWyMBAFH5xmsFF59h0e1gYqnGSMtUzafda8APMZs#" method="post">
+          <h4>Committee</h4>
+          <label class="control-label">Which position are you running for?</label>
+          <select name="position" class="form-control">
+            <option value="1">President</option>
+            <option value="2">Vice-President</option>
+            <option value="3">Devotional Leader</option>
+            <option value="5">Outreach Coordinator</option>
+            <option value="6">Social Coordinator</option>
+            <option value="7">Worship Coordinator</option>
+            <option value="8">Secretary and Treasurer</option>
+          </select>
+          <br>
+          <label class="control-label">Do you still need nominations?</label><br>
+          <div class="btn-group" role="group" data-toggle="buttons">
+            <label class="btn btn-primary"><input type="radio" name="noms" value="Y">Yes</label>
+            <label class="btn btn-primary active"><input type="radio" name="noms" value="N" checked="">No</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="btnSubmitConfirm" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="considerModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Please tell us a little more...</h4>
+      </div>
+      <div class="modal-body">
+        <!--
+        <h4>Do you have a specific role in mind?</h4>
+        <div class="btn-group" role="group">
+          <button id="btnConsiderNo" type="button" class="btn btn-primary active">Nope, still thinking...</button>
+          <button id="btnConsiderYes" type="button" class="btn btn-primary">Yeah! I do!</button>
+        </div>
+        <form id="frmConsiderDetails" class="hidden" action="#" method="post">
+          <div class="row">
+            <div class="col-xs-6">
+              <h4>Committee</h4>
+              <label><input class="lpos" value="President" type="checkbox"> President</label><br>
+              <label><input class="lpos" value="Vice-President" type="checkbox"> Vice-President</label><br>
+              <label><input class="lpos" value="Devotional Leader" type="checkbox"> Devotional Leader</label><br>
+              <label><input class="lpos" value="Outreach Coordinator" type="checkbox"> Outreach Coordinator</label><br>
+              <label><input class="lpos" value="Worship Coordinator" type="checkbox"> Worship Coordinator</label><br>
+              <label><input class="lpos" value="Social Coordinator" type="checkbox"> Social Coordinator</label><br>
+              <label><input class="lpos" value="Secretary &amp; Treasurer" type="checkbox"> Secretary &amp; Treasurer</label><br>
+
+
+              <h4>IG Leader</h4>
+              <label><input class="lpos" value="IG Leader" type="checkbox"> IG Leader</label><br>
+            </div>
+
+            <div class="col-xs-6">
+              <h4>Ministries</h4>
+              <label><input class="lpos" value="Freezer" type="checkbox"> Freezer</label><br>
+              <label><input class="lpos" value="Mens Group" type="checkbox"> Mens Group</label><br>
+              <label><input class="lpos" value="Womens Group" type="checkbox"> Womens Group</label><br>
+              <label><input class="lpos" value="Arts Ministry" type="checkbox"> Arts Ministry</label><br>
+              <label><input class="lpos" value="Musical Worship" type="checkbox"> Musical Worship</label><br>
+              <label><input class="lpos" value="Sports Ministry" type="checkbox"> Sports Ministry</label><br>
+              <label><input class="lpos" value="Outreach Ministry" type="checkbox"> Outreach Ministry</label><br>
+              <label><input class="lpos" value="Prayer Ministry" type="checkbox"> Prayer Ministry</label><br>
+              <label><input class="lpos" value="Christian Literature" type="checkbox"> Christian Literature</label><br>
+            </div>
+          </div>
+
+          <br><br>
+          <h4>Or feel free to type in your own...</h4>
+          <input class="form-control" id="txtConsider" name="position" type="text">
+        </form>
+        -->
+        <form id="frmConsiderDetails" action="https://runtogether.utccf.com/?fbclid=IwAR38qeRSpNajNn-Q11iuWyMBAFH5xmsFF59h0e1gYqnGSMtUzafda8APMZs#" method="post">
+          <h4>Which roles are you considering?</h4>
+          Being dead-set on a specific ministry or committee position limits the breadth and utility of input and discussion so we intentially left these options fairly non-specific, at least in the beginning stages of the discernment process.<br><br>
+          <label><input class="lpos" value="Committee" type="checkbox"> Committee</label><br>
+          <!--<label><input class="lpos" value="Ministry Leader" type="checkbox"> Ministry Leader</label><br>-->
+          <label><input class="lpos" value="Freezer Leader" type="checkbox"> Freezer Leader</label><br>
+          <label><input class="lpos" value="Mens Min Leader" type="checkbox"> Men's Min Leader</label><br>
+          <label><input class="lpos" value="Womens Min Leader" type="checkbox"> Women's Min Leader</label><br>
+          <label><input class="lpos" value="Worship Min Leader" type="checkbox"> Worship Min Leader</label><br>
+          <label><input class="lpos" value="Worship Team Leader" type="checkbox"> Worship Team Leader</label><br>
+          <label><input class="lpos" value="Hospitality Min Leader" type="checkbox"> Hospitality Min Leader</label><br>
+          <label><input class="lpos" value="Sports Min Leader" type="checkbox"> Sports Min Leader</label><br>
+          <label><input class="lpos" value="Worship Team" type="checkbox"> Worship Team</label><br>
+          <label><input class="lpos" value="IG Leader" type="checkbox"> IG Leader</label><br>
+
+          <input id="txtConsider" name="position" type="hidden">
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="btnSubmitConsider" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  </div>
+
+  <div id="loadingscr" class="noshow">
+    <div id="loadingc"><i class="fa fa-refresh fa-spin fa-3x"></i></div>
+  </div>
+  
+
+
+
+
+</body></html>
