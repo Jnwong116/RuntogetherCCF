@@ -6,3 +6,4 @@ A website for memebers of UTCCF to go and vote for committee each year.
 
 Jordan Wong
 Julie Tang
+Ginny Guo
