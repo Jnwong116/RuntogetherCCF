@@ -1,7 +1,7 @@
 {
   "name": "runtogetherccf",
   "version": "1.0.0",
-  "description": "",
+  "description": "A website for memebers of UTCCF to go and vote for committee each year.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -28,5 +28,6 @@
     "mongodb": "^4.7.0",
     "mongoose": "^6.3.6",
     "nodemon": "^2.0.16"
-  }
+  },
+  "devDependencies": {}
 }
