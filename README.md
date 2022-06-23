@@ -8,3 +8,4 @@ Jordan Wong <br />
 Julie Tang <br />
 Ginny Guo <br />
 Neo Lou <br />
+Daniel Chua <br />
