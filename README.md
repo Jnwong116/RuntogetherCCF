@@ -9,3 +9,4 @@ Julie Tang <br />
 Ginny Guo <br />
 Neo Lou <br />
 Chris Ouyang <br />
+Clayton Chan <br />
