@@ -1,3 +1,9 @@
+
+function NewTab(){
+	window.open("https://www.youtube.com/watch?v=LLFhKaqnWwk", "_blank");
+	document.getElementById("my_button").innerHTML = "lol";
+}
+
 const names = [
   // const because we only want to make it clear that
   // these are the names to be displayed
@@ -51,3 +57,4 @@ const toggle_names_on_list = () => {
     remove_names_from_list();
   }
 };
+
