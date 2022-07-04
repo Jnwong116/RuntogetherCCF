@@ -1,3 +1,41 @@
 body {
   font: 10px;
 }
+
+.dropdown {
+  position: relative;
+}
+
+/* dropdown button */
+.dd-button {
+  background-color: #046aaa;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* dropdown menu, hidden unless hovered */
+.dd-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+}
+
+/* dropdown links */
+.dd-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* when hovered, colour change on menu */
+.dd-content a:hover {
+  background-color: #ddd;
+}
+
+/* show menu when hovering */
+.dropdown:hover .dd-content {
+  display: block;
+}
