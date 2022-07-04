@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Button from "./component/button/button";
+import { NewTab, newFunction } from "./actions/logInfo";
+import React from "react";
+
+class App extends React.Component {
+  state = {
+    wizards: "hon hon hon",
+    text: "This is a not a div",
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Button text="Hello" onClick={() => NewTab()} />
+        <Button text="World" onClick={() => console.log("Hello!")} />
+        <p>{this.state.wizards}</p>
+        <input type="text" id="input_box"></input>
+        <Button
+          text={this.state.text}
+          onClick={() => {
+            const inputBox = document.getElementById("input_box");
+            const newValue = inputBox.value;
+            inputBox.value = "";
+            newFunction(newValue, this);
+          }}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
