@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import Button from "./component/button/button";
+import ProfilePicture from "./component/profilePicture/profilePicture";
 import { NewTab, newFunction } from "./actions/logInfo";
 import React from "react";
 
@@ -27,6 +28,7 @@ class App extends React.Component {
             newFunction(newValue, this);
           }}
         />
+        <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
       </div>
     );
   }
