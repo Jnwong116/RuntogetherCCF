@@ -2,8 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import Button from "./component/button/button";
-
-import DisplayName from "./component/displayname/displayname";
+import displayName from "./component/displayname/displayname";
 import { NewTab, newFunction } from "./actions/logInfo";
 import React from "react";
 
@@ -29,12 +28,10 @@ class App extends React.Component {
             newFunction(newValue, this);
           }}
         />
+        <displayName
+          text={"The candidates' full names will be displayed here."}
+        />
       </div>
-    );
-    return (
-      <DisplayName
-        text={"The candidates' full names will be displayed here."}
-      />
     );
   }
 }
