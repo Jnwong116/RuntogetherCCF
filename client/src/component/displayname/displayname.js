@@ -7,7 +7,7 @@ class displayName extends React.Component {
     const { text } = this.props;
     return (
       <body>
-        <h5>{text}</h5>
+        <h3>{text}</h3>
       </body>
     );
   }
