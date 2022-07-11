@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import Button from "./component/button/button";
+import DisplayName from "./component/displayname/displayname";
 import { NewTab, newFunction } from "./actions/logInfo";
 import React from "react";
 
@@ -27,6 +28,7 @@ class App extends React.Component {
             newFunction(newValue, this);
           }}
         />
+        <DisplayName text="The candidates' full names will be displayed here." />
       </div>
     );
   }
