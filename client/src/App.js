@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Button text="Hello" onClick={() => NewTab()} />
+        {/* <Button text="Hello" onClick={() => NewTab()} />
         <Button text="World" onClick={() => console.log("Hello!")} />
         <p>{this.state.wizards}</p>
         <input type="text" id="input_box"></input>
@@ -27,7 +27,7 @@ class App extends React.Component {
             inputBox.value = "";
             newFunction(newValue, this);
           }}
-        />
+        /> */}
         <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
       </div>
     );

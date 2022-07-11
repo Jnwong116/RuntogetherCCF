@@ -6,7 +6,7 @@ class ProfilePicture extends React.Component {
   render() {
     const { img_link } = this.props;
 
-    return <img class="profile-pic" src={img_link} />;
+    return <img className="profile-pic" src={img_link} alt="" />;
   }
 }
 
