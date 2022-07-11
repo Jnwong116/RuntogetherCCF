@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import Button from "./component/button/button";
+import HeaderDescription from "./component/header_description/header_description";
 import { NewTab, newFunction } from "./actions/logInfo";
 import React from "react";
 
@@ -14,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Button text="Hello" onClick={() => NewTab()} />
+        {/* <Button text="Hello" onClick={() => NewTab()} />
         <Button text="World" onClick={() => console.log("Hello!")} />
         <p>{this.state.wizards}</p>
         <input type="text" id="input_box"></input>
@@ -26,7 +27,9 @@ class App extends React.Component {
             inputBox.value = "";
             newFunction(newValue, this);
           }}
-        />
+        /> */}
+
+        <HeaderDescription text="Elections is over" />
       </div>
     );
   }
