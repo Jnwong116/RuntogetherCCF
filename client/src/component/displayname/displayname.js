@@ -2,7 +2,7 @@ import React from "react";
 
 import "./displayname.css";
 
-class displayName extends React.Component {
+class DisplayName extends React.Component {
   render() {
     const { text } = this.props;
     return (
@@ -13,4 +13,4 @@ class displayName extends React.Component {
   }
 }
 
-export default displayName;
+export default DisplayName;
