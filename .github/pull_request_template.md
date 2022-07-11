@@ -1,6 +1,6 @@
 ## Changes
 
-> Describe what is changing and why.
+> Describe what is changing and why. Maybe include some screenshots ;)
 
 ## Checklist
 
