@@ -33,9 +33,9 @@ class App extends React.Component {
         <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
         <DisplayName text="The candidates' full names will be displayed here." />
         <p> Nominations </p>
-        <InputBox type="text" />
+        <InputBox type="nomination" />
         <p> Visions </p>
-        <InputBox type="file" text="Visions" />
+        <InputBox type="vision" />
       </div>
     );
   }

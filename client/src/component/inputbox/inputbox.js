@@ -5,7 +5,7 @@ class InputBox extends React.Component {
   render() {
     const { type } = this.props;
 
-    return <input className="inputbox" type={type}></input>;
+    return <input className="inputbox" id={type}></input>;
   }
 }
 
