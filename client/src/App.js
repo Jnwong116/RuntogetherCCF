@@ -4,6 +4,7 @@ import "./App.css";
 import Button from "./component/button/button";
 import ProfilePicture from "./component/profilePicture/profilePicture";
 import { NewTab, newFunction } from "./actions/logInfo";
+import Link from "./component/link_component/link_component";
 import React from "react";
 
 class App extends React.Component {
@@ -29,6 +30,11 @@ class App extends React.Component {
           }}
         /> */}
         <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
+        <Link
+          text="Test"
+          newPageURL="https://www.facebook.com/groups/utccf/"
+          handleClick={() => console.log("Hello!")}
+        />
       </div>
     );
   }
