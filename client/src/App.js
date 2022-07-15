@@ -5,6 +5,7 @@ import Button from "./component/button/button";
 import ProfilePicture from "./component/profilePicture/profilePicture";
 import DisplayName from "./component/displayname/displayname";
 import { NewTab, newFunction } from "./actions/logInfo";
+import InputBox from "./component/inputbox/inputbox";
 import React from "react";
 
 class App extends React.Component {
@@ -31,6 +32,10 @@ class App extends React.Component {
         /> */}
         <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
         <DisplayName text="The candidates' full names will be displayed here." />
+        <p> Nominations </p>
+        <InputBox type="text" />
+        <p> Visions </p>
+        <InputBox type="file" text="Visions" />
       </div>
     );
   }
