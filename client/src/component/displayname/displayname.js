@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./displayname.css";
+import "./displayName.css";
 
 class DisplayName extends React.Component {
   render() {

@@ -3,7 +3,7 @@ import "./App.css";
 
 import Button from "./component/button/button";
 import ProfilePicture from "./component/profilePicture/profilePicture";
-import DisplayName from "./component/displayname/displayname";
+import DisplayName from "./component/displayName/displayName";
 import { NewTab, newFunction } from "./actions/logInfo";
 import React from "react";
 
