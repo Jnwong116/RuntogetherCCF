@@ -31,9 +31,12 @@ class App extends React.Component {
         /> */}
         <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
         <Link
-          text="Test"
+          text="Testing new link"
           newPageURL="https://www.facebook.com/groups/utccf/"
-          handleClick={() => console.log("Hello!")}
+        />
+        <Link
+          text="Testing function call"
+          handleClick={() => console.log("Hello")}
         />
       </div>
     );
