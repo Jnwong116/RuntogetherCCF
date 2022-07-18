@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./link_component.css";
+import "./link.css";
 
 class Link extends React.Component {
   render() {
@@ -8,7 +8,7 @@ class Link extends React.Component {
 
     return (
       <a href={newPageURL} target="_blank" rel="noreferrer">
-        <button class="linkStyle" onClick={handleClick}>
+        <button className="linkStyle" onClick={handleClick}>
           {text}
         </button>
       </a>

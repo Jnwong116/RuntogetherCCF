@@ -4,7 +4,7 @@ import "./App.css";
 import Button from "./component/button/button";
 import ProfilePicture from "./component/profilePicture/profilePicture";
 import { NewTab, newFunction } from "./actions/logInfo";
-import Link from "./component/link_component/link_component";
+import Link from "./component/link/link";
 import React from "react";
 
 class App extends React.Component {
