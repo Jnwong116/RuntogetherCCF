@@ -6,6 +6,7 @@ import ProfilePicture from "./component/profilePicture/profilePicture";
 import DisplayName from "./component/displayname/displayname";
 import { NewTab, newFunction } from "./actions/logInfo";
 import React from "react";
+import CandidateStatus from "./component/candidateStatus/candidateStatus";
 
 class App extends React.Component {
   state = {
@@ -29,8 +30,10 @@ class App extends React.Component {
             newFunction(newValue, this);
           }}
         /> */}
-        <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
-        <DisplayName text="The candidates' full names will be displayed here." />
+        {/* <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
+        <DisplayName text="The candidates' full names will be displayed here." /> */}
+
+        <CandidateStatus status="needsNominations" />
       </div>
     );
   }
