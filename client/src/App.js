@@ -1,12 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import Button from "./component/button/button";
+import HeaderDescription from "./component/headerDescription/headerDescription";
 import ProfilePicture from "./component/profilePicture/profilePicture";
-import DisplayName from "./component/displayname/displayname";
+import DisplayName from "./component/displayName/displayName";
+import PageHeader from "./component/pageHeader/pageHeader";
 import { NewTab, newFunction } from "./actions/logInfo";
 import InputBox from "./component/input/input";
+import Link from "./component/link/link";
 import React from "react";
+import CandidateStatus from "./component/candidateStatus/candidateStatus";
 
 class App extends React.Component {
   state = {
@@ -30,10 +33,19 @@ class App extends React.Component {
             newFunction(newValue, this);
           }}
         /> */}
+
+        <HeaderDescription />
+        <PageHeader text="Welcome to the Runtogether Website!" />
         <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
+        <Link text="Test" newPageURL="https://www.facebook.com/groups/utccf/" />
+        <Link
+          text="Testing function call"
+          handleClick={() => console.log("Hello!")}
+        />
         <DisplayName text="The candidates' full names will be displayed here." />
         <p> Nominations </p>
         <InputBox type="nomination" />
+        <CandidateStatus status="needsNominations" />
       </div>
     );
   }
