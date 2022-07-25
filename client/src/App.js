@@ -1,8 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import Button from "./component/button/button";
-import HeaderDescription from "./component/header_description/header_description";
+import HeaderDescription from "./component/headerDescription/headerDescription";
+import ProfilePicture from "./component/profilePicture/profilePicture";
+import DisplayName from "./component/displayName/displayName";
+import PageHeader from "./component/pageHeader/pageHeader";
 import { NewTab, newFunction } from "./actions/logInfo";
 import React from "react";
 
@@ -29,7 +31,10 @@ class App extends React.Component {
           }}
         /> */}
 
-        <HeaderDescription text="Elections is over" />
+        <HeaderDescription />
+        <PageHeader text="Welcome to the Runtogether Website!" />
+        <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
+        <DisplayName text="The candidates' full names will be displayed here." />
       </div>
     );
   }
