@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./pageHeader.css";
 
-class pageHeader extends Component {
+class PageHeader extends Component {
   render() {
     const { text } = this.props;
     return (
@@ -12,4 +12,4 @@ class pageHeader extends Component {
   }
 }
 
-export default pageHeader;
+export default PageHeader;
