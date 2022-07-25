@@ -6,6 +6,7 @@ import ProfilePicture from "./component/profilePicture/profilePicture";
 import DisplayName from "./component/displayName/displayName";
 import PageHeader from "./component/pageHeader/pageHeader";
 import { NewTab, newFunction } from "./actions/logInfo";
+import Link from "./component/link/link";
 import React from "react";
 
 class App extends React.Component {
@@ -34,6 +35,11 @@ class App extends React.Component {
         <HeaderDescription />
         <PageHeader text="Welcome to the Runtogether Website!" />
         <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
+        <Link text="Test" newPageURL="https://www.facebook.com/groups/utccf/" />
+        <Link
+          text="Testing function call"
+          handleClick={() => console.log("Hello!")}
+        />
         <DisplayName text="The candidates' full names will be displayed here." />
       </div>
     );
