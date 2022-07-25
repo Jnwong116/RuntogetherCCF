@@ -8,6 +8,7 @@ import PageHeader from "./component/pageHeader/pageHeader";
 import { NewTab, newFunction } from "./actions/logInfo";
 import Link from "./component/link/link";
 import React from "react";
+import CandidateStatus from "./component/candidateStatus/candidateStatus";
 
 class App extends React.Component {
   state = {
@@ -41,6 +42,7 @@ class App extends React.Component {
           handleClick={() => console.log("Hello!")}
         />
         <DisplayName text="The candidates' full names will be displayed here." />
+        <CandidateStatus status="needsNominations" />
       </div>
     );
   }
