@@ -1,6 +1,7 @@
 import "./App.css";
 
 import Button from "./component/button/button";
+import HeaderDescription from "./component/headerDescription/headerDescription";
 import ProfilePicture from "./component/profilePicture/profilePicture";
 import DisplayName from "./component/displayName/displayName";
 import PageHeader from "./component/pageHeader/pageHeader";
@@ -29,6 +30,8 @@ class App extends React.Component {
             newFunction(newValue, this);
           }}
         /> */}
+
+        <HeaderDescription />
         <PageHeader text="Welcome to the Runtogether Website!" />
         <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
         <DisplayName text="The candidates' full names will be displayed here." />
