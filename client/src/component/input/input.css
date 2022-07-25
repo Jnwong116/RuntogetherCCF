@@ -3,15 +3,6 @@
   margin: 0;
   padding: 0;
   background-color: lightblue;
-}
-
-#nomination {
-  width: 200px;
-  height: 28px;
-  font-size: 16px;
-}
-
-#vision {
   width: 1000px;
   height: 300px;
   font-size: 13px;

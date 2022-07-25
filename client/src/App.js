@@ -5,7 +5,7 @@ import Button from "./component/button/button";
 import ProfilePicture from "./component/profilePicture/profilePicture";
 import DisplayName from "./component/displayname/displayname";
 import { NewTab, newFunction } from "./actions/logInfo";
-import InputBox from "./component/inputbox/inputbox";
+import InputBox from "./component/input/input";
 import React from "react";
 
 class App extends React.Component {
@@ -34,8 +34,6 @@ class App extends React.Component {
         <DisplayName text="The candidates' full names will be displayed here." />
         <p> Nominations </p>
         <InputBox type="nomination" />
-        <p> Visions </p>
-        <InputBox type="vision" />
       </div>
     );
   }
