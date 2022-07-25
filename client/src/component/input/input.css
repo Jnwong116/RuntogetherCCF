@@ -1,0 +1,12 @@
+.inputbox {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: lightblue;
+  width: 1000px;
+  height: 300px;
+  font-size: 13px;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: top;
+}
