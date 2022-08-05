@@ -6,7 +6,7 @@ import ProfilePicture from "./component/profilePicture/profilePicture";
 import { NewTab, newFunction } from "./actions/logInfo";
 import Link from "./component/link/link";
 import React from "react";
-
+import ListHeader from "./component/listHeader/listHeader";
 class App extends React.Component {
   state = {
     wizards: "hon hon hon",
@@ -38,6 +38,8 @@ class App extends React.Component {
           text="Testing function call"
           handleClick={() => console.log("Hello")}
         />
+        <ListHeader text="Considering"></ListHeader>
+        <ListHeader text="Decided"></ListHeader>
       </div>
     );
   }
