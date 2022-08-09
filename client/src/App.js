@@ -7,6 +7,7 @@ import { NewTab, newFunction } from "./actions/logInfo";
 import Link from "./component/link/link";
 import React from "react";
 import ListHeader from "./component/listHeader/listHeader";
+import PositionText from "./component/positionText/positionText";
 class App extends React.Component {
   state = {
     wizards: "hon hon hon",
@@ -40,6 +41,7 @@ class App extends React.Component {
         />
         <ListHeader text="Considering"></ListHeader>
         <ListHeader text="Decided"></ListHeader>
+        <PositionText text="IG LEADER, WOMEN'S MIN"></PositionText>
       </div>
     );
   }
