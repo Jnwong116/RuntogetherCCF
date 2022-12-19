@@ -1,0 +1,9 @@
+.personList {
+  min-width: 90%;
+  max-width: 90%;
+}
+@media (min-width: 400px) {
+  .personList {
+    min-width: 350px;
+  }
+}

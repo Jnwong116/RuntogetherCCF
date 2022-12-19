@@ -1,54 +1,46 @@
-import "./App.css";
-
-import Button from "./component/button/button";
-import HeaderDescription from "./component/headerDescription/headerDescription";
-import ProfilePicture from "./component/profilePicture/profilePicture";
-import DisplayName from "./component/displayName/displayName";
-import PageHeader from "./component/pageHeader/pageHeader";
-import { NewTab, newFunction } from "./actions/logInfo";
-import InputBox from "./component/input/input";
-import Link from "./component/link/link";
 import React from "react";
-import CandidateStatus from "./component/candidateStatus/candidateStatus";
+import { Divider, ThemeProvider, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import { CCF_THEME } from "./theme";
 
-class App extends React.Component {
-  state = {
-    wizards: "hon hon hon",
-    text: "This is a not a div",
-  };
+import WelcomeCard from "./component/welcomeCard/welcomeCard";
+import PersonList from "./component/personList/personList";
+import { COMMITTEE_POSITIONS, MINISTRY_POSITIONS } from "./constants";
 
-  render() {
-    return (
-      <div className="App">
-        {/* <Button text="Hello" onClick={() => NewTab()} />
-        <Button text="World" onClick={() => console.log("Hello!")} />
-        <p>{this.state.wizards}</p>
-        <input type="text" id="input_box"></input>
-        <Button
-          text={this.state.text}
-          onClick={() => {
-            const inputBox = document.getElementById("input_box");
-            const newValue = inputBox.value;
-            inputBox.value = "";
-            newFunction(newValue, this);
-          }}
-        /> */}
-
-        <HeaderDescription />
-        <PageHeader text="Welcome to the Runtogether Website!" />
-        <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
-        <Link text="Test" newPageURL="https://www.facebook.com/groups/utccf/" />
-        <Link
-          text="Testing function call"
-          handleClick={() => console.log("Hello!")}
-        />
-        <DisplayName text="The candidates' full names will be displayed here." />
-        <p> Nominations </p>
-        <InputBox type="nomination" />
-        <CandidateStatus status="needsNominations" />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <ThemeProvider theme={CCF_THEME}>
+      <Box padding="1rem" margin="1rem">
+        <Typography variant="h1" color="textPrimary" textAlign="center">
+          RunTogether
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          color="textSecondary"
+          margin="0.5rem"
+          textAlign="center"
+        >
+          Join in on the elections process by praying, discerning, and
+          running&nbsp;
+          <em>together</em>.
+        </Typography>
+        <WelcomeCard />
+        <Divider sx={{ bgcolor: "secondary.light", margin: "2.5rem" }} />
+        <Typography variant="h2" color="textPrimary" textAlign="center">
+          2023 - 2024 Leadership Elections
+        </Typography>
+        <Box
+          display="flex"
+          justifyContent="center"
+          flexWrap="wrap"
+          marginTop="1rem"
+        >
+          <PersonList title="Committee" positions={COMMITTEE_POSITIONS} />
+          <PersonList title="IGs & Ministries" positions={MINISTRY_POSITIONS} />
+        </Box>
+      </Box>
+    </ThemeProvider>
+  );
+};
 
 export default App;
