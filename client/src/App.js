@@ -7,6 +7,8 @@ import WelcomeCard from "./component/welcomeCard/welcomeCard";
 import PersonList from "./component/personList/personList";
 import { COMMITTEE_POSITIONS, MINISTRY_POSITIONS } from "./constants";
 
+const electionsHeaderText = "2023 - 2024 Leadership Elections";
+
 const App = () => {
   return (
     <ThemeProvider theme={CCF_THEME}>
@@ -27,7 +29,7 @@ const App = () => {
         <WelcomeCard />
         <Divider sx={{ bgcolor: "secondary.light", margin: "2.5rem" }} />
         <Typography variant="h2" color="textPrimary" textAlign="center">
-          2023 - 2024 Leadership Elections
+          {electionsHeaderText}
         </Typography>
         <Box
           display="flex"
