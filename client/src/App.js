@@ -5,7 +5,7 @@ import { CCF_THEME } from "./theme";
 
 import WelcomeCard from "./component/welcomeCard/welcomeCard";
 import PersonList from "./component/personList/personList";
-import { COMMITTEE_POSITIONS, MINISTRY_POSITIONS } from "./actions/constants";
+import { COMMITTEE_POSITIONS, MINISTRY_POSITIONS } from "./actions/positions";
 import WelcomeHeader from "./component/welcomeHeader/welcomeHeader";
 
 const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";

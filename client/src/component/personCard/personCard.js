@@ -4,8 +4,7 @@ const IMAGE_DIMENSIONS = "50px";
 
 const PersonCard = ({ person }) => {
   const { name, visionName, nominations } = person;
-  const nominators =
-    nominations !== undefined ? nominations.map((nom) => nom.name) : null;
+  const hasNominators = nominations !== undefined;
 
   return (
     <Box
@@ -29,7 +28,7 @@ const PersonCard = ({ person }) => {
       >
         <img src="profile.jpeg" alt="profile pic" height="100%" width="100%" />
       </Box>
-      <Box marginLeft="0.5em">
+      <Box marginLeft="0.65em">
         <Typography variant="h5" color="textPrimary" marginBottom="0.5em">
           {name}
         </Typography>
@@ -37,7 +36,11 @@ const PersonCard = ({ person }) => {
           Vision: {visionName}
         </Typography>
         <Typography variant="body2" color="textPrimary">
-          Nominations: {nominators}
+          Nominations:{" "}
+          {hasNominators &&
+            nominations.map((nom, idx) =>
+              idx !== nominations.length - 1 ? `${nom.name}, ` : nom.name
+            )}
         </Typography>
       </Box>
     </Box>
