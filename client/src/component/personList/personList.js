@@ -90,7 +90,6 @@ const PersonList = ({ title, positions }) => {
               variant="subtitle2"
               color="textSecondary"
               textAlign="center"
-              marginBottom="0.25em"
             >
               {pos}
             </Typography>

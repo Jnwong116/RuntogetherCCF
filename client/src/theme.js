@@ -23,11 +23,11 @@ export const CCF_THEME = createTheme({
       fontSize: "1.25em",
     },
     h4: {
-      fontSize: "1.25em",
+      fontSize: "1.5em",
       fontWeight: 600,
     },
     h5: {
-      fontSize: "0.9em",
+      fontSize: "0.85em",
       fontWeight: 600,
     },
     subtitle1: {
@@ -43,7 +43,7 @@ export const CCF_THEME = createTheme({
       lineHeight: "1.65em",
     },
     body2: {
-      fontSize: "0.8em",
+      fontSize: "0.75em",
       lineHeight: "1em",
     },
   },

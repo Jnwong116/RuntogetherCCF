@@ -2,10 +2,10 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 const welcomeHeaderText = (
-  <text>
+  <>
     Join in on the elections process by praying, discerning, and running&nbsp;
     <em>together</em>.
-  </text>
+  </>
 );
 
 const WelcomeHeader = () => {
