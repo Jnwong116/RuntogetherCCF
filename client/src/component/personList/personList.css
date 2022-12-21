@@ -1,6 +1,5 @@
 .personList {
-  min-width: 90%;
-  max-width: 90%;
+  width: 400px;
 }
 @media (min-width: 400px) {
   .personList {

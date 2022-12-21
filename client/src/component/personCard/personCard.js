@@ -3,11 +3,9 @@ import { Box, Typography } from "@mui/material";
 const IMAGE_DIMENSIONS = "50px";
 
 const PersonCard = ({ person }) => {
-  const { name, vision, nominations } = person;
-  const visionStatus = vision ? "" : "Needs vision. ";
-  const nomsStatus = nominations ? "" : "Needs nominations.";
-  const status =
-    vision && nominations ? "Complete." : `${visionStatus}${nomsStatus}`;
+  const { name, visionName, nominations } = person;
+  const nominators =
+    nominations !== undefined ? nominations.map((nom) => nom.name) : null;
 
   return (
     <Box
@@ -27,15 +25,19 @@ const PersonCard = ({ person }) => {
         overflow="hidden"
         height={IMAGE_DIMENSIONS}
         width={IMAGE_DIMENSIONS}
+        margin="0.1em"
       >
-        <img src="blue.jpeg" alt="profile pic" height="100%" width="100%" />
+        <img src="profile.jpeg" alt="profile pic" height="100%" width="100%" />
       </Box>
       <Box marginLeft="0.5em">
-        <Typography variant="h5" color="textPrimary" marginBottom="0.2em">
+        <Typography variant="h5" color="textPrimary" marginBottom="0.5em">
           {name}
         </Typography>
+        <Typography variant="body2" color="textPrimary" marginBottom="0.4em">
+          Vision: {visionName}
+        </Typography>
         <Typography variant="body2" color="textPrimary">
-          Status: {status}
+          Nominations: {nominators}
         </Typography>
       </Box>
     </Box>

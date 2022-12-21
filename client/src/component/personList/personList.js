@@ -9,24 +9,58 @@ const mockPeople = [
   {
     name: "Marian Wang",
     position: "Chair",
-    vision: "Vision?",
-    nominations: ["only 1"],
+    visionName: "CCF Bears rule",
+    nominations: [
+      {
+        name: "Melody Wang",
+        nomination:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+    ],
   },
   {
     name: "Jordan Wong",
     position: "Vice Chair",
-    vision: "Vision?",
+    visionName: "CCF Bears rule",
   },
   {
     name: "Jordan N Wong",
     position: "Vice Chair",
-    vision: "Vision?",
-    nominations: ["1", "2"],
+    visionName: "CCF Bears rule",
+    nominations: [
+      {
+        name: "Lilian Wang",
+        nomination:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+      {
+        name: "Marian Wang",
+        nomination:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+    ],
+  },
+  {
+    name: "JdogDragon the Fourteenth",
+    position: "Secretary",
+    nominations: [
+      {
+        name: "Melody Wang",
+        nomination:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+    ],
   },
   {
     name: "JdogDragon",
     position: "Treasurer",
-    nominations: ["only 1"],
+    nominations: [
+      {
+        name: "Melody Wang",
+        nomination:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+    ],
   },
   {
     name: "JdogDragon2",
@@ -50,12 +84,13 @@ const PersonList = ({ title, positions }) => {
           {title}
         </Typography>
         {positions.map((pos) => (
-          <Box key={pos}>
+          <Box key={pos} marginBottom="0.8em">
             <Typography
               key={pos}
               variant="subtitle2"
               color="textSecondary"
               textAlign="center"
+              marginBottom="0.25em"
             >
               {pos}
             </Typography>
