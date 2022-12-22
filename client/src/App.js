@@ -1,54 +1,52 @@
-import "./App.css";
-
-import Button from "./component/button/button";
-import HeaderDescription from "./component/headerDescription/headerDescription";
-import ProfilePicture from "./component/profilePicture/profilePicture";
-import DisplayName from "./component/displayName/displayName";
-import PageHeader from "./component/pageHeader/pageHeader";
-import { NewTab, newFunction } from "./actions/logInfo";
-import InputBox from "./component/input/input";
-import Link from "./component/link/link";
 import React from "react";
-import CandidateStatus from "./component/candidateStatus/candidateStatus";
+import { Divider, ThemeProvider, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import { CCF_THEME } from "./theme";
 
-class App extends React.Component {
-  state = {
-    wizards: "hon hon hon",
-    text: "This is a not a div",
-  };
+import WelcomeCard from "./component/welcomeCard/welcomeCard";
+import PersonList from "./component/personList/personList";
+import { COMMITTEE_POSITIONS, MINISTRY_POSITIONS } from "./actions/positions";
+import WelcomeHeader from "./component/welcomeHeader/welcomeHeader";
 
-  render() {
-    return (
-      <div className="App">
-        {/* <Button text="Hello" onClick={() => NewTab()} />
-        <Button text="World" onClick={() => console.log("Hello!")} />
-        <p>{this.state.wizards}</p>
-        <input type="text" id="input_box"></input>
-        <Button
-          text={this.state.text}
-          onClick={() => {
-            const inputBox = document.getElementById("input_box");
-            const newValue = inputBox.value;
-            inputBox.value = "";
-            newFunction(newValue, this);
-          }}
-        /> */}
+const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
 
-        <HeaderDescription />
-        <PageHeader text="Welcome to the Runtogether Website!" />
-        <ProfilePicture img_link="https://cdn.worldvectorlogo.com/logos/react-1.svg" />
-        <Link text="Test" newPageURL="https://www.facebook.com/groups/utccf/" />
-        <Link
-          text="Testing function call"
-          handleClick={() => console.log("Hello!")}
-        />
-        <DisplayName text="The candidates' full names will be displayed here." />
-        <p> Nominations </p>
-        <InputBox type="nomination" />
-        <CandidateStatus status="needsNominations" />
-      </div>
-    );
-  }
-}
+const mockUser = {
+  name: "JdogDragon the First",
+  // position: "Chair",
+  position: null,
+  visionName: "CCF Bears",
+  visionFile: "CCFBears.pdf",
+  nominations: [
+    {
+      name: "Marian the Librarian",
+      nomination:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    },
+  ],
+};
+
+const App = () => {
+  return (
+    <ThemeProvider theme={CCF_THEME}>
+      <Box padding="1rem" margin="1rem">
+        <WelcomeHeader />
+        <WelcomeCard user={mockUser} />
+        <Divider sx={{ bgcolor: "secondary.light", margin: "2.5rem" }} />
+        <Typography variant="h2" color="textPrimary" textAlign="center">
+          {ELECTIONS_HEADER_TEXT}
+        </Typography>
+        <Box
+          display="flex"
+          justifyContent="center"
+          flexWrap="wrap"
+          marginTop="1rem"
+        >
+          <PersonList title="Committee" positions={COMMITTEE_POSITIONS} />
+          <PersonList title="IGs & Ministries" positions={MINISTRY_POSITIONS} />
+        </Box>
+      </Box>
+    </ThemeProvider>
+  );
+};
 
 export default App;

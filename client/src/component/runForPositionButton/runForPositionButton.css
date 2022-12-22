@@ -1,0 +1,7 @@
+.runForPositionBox:hover {
+  background-color: rgba(43, 117, 214, 10%);
+}
+
+.runForPositionBox {
+  transition: background-color 0.35s
+}

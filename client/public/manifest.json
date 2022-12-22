@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "UTCCF - RunTogether",
+  "name": "UTCCF RunTogether Web App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,9 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logolight.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "1250x1250"
     }
   ],
   "start_url": ".",

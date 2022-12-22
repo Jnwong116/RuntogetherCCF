@@ -1,0 +1,8 @@
+.personList {
+  width: 400px;
+}
+@media (min-width: 400px) {
+  .personList {
+    min-width: 350px;
+  }
+}
