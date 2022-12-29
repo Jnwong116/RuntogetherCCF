@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { YELLOW_DARK } from "../../theme";
+import { YELLOW_DARK } from "../../actions/theme";
 
 const WhiteContainer = ({ children, margin, maxWidth, textAlign }) => {
   return (

@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import WelcomeHeader from "../component/welcomeHeader/welcomeHeader";
 import WhiteContainer from "../component/whiteContainer/whiteContainer";
-import { CCF_THEME } from "../theme";
+import { CCF_THEME } from "../actions/theme";
 
 const NoRoute = () => {
   return (

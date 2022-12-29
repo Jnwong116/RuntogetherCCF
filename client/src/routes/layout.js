@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "@mui/material";
 import { Box } from "@mui/system";
 
-import { CCF_THEME } from "../theme";
+import { CCF_THEME } from "../actions/theme";
 import WelcomeHeader from "../component/welcomeHeader/welcomeHeader";
 import { Outlet } from "react-router-dom";
 
