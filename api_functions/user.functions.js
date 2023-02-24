@@ -10,6 +10,8 @@ const createUser = async (UserInfo) => {
 
   const user = new User(UserInfo);
 
+  user.save();
+
   return user;
 };
 
