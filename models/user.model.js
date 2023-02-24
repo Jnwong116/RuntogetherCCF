@@ -10,7 +10,7 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   position: { type: String, required: true },
   nominations: { type: [nominationSchema], required: true, default: [] },
-  vision: { type: String, required: true, default: " " },
+  vision: { type: String, default: "" },
   nominationLink: { type: String },
 });
 
