@@ -34,11 +34,11 @@ router.route("/").get((req, res) => {
     });
 });
 
-// Gets a user by username
-router.route("/user/:username").get((req, res) => {
-  const username = req.params.username;
+// Gets a user by facebook id
+router.route("/user/:id").get((req, res) => {
+  const id = req.params.id;
 
-  getUser(username)
+  getUser(id)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
@@ -52,11 +52,11 @@ router.route("/user/:username").get((req, res) => {
     });
 });
 
-// Deletes a user by username
-router.route("/user/:username").delete((req, res) => {
-  const username = req.params.username;
+// Deletes a user by facebook id
+router.route("/user/:id").delete((req, res) => {
+  const id = req.params.id;
 
-  deleteUser(username)
+  deleteUser(id)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
@@ -71,11 +71,11 @@ router.route("/user/:username").delete((req, res) => {
 });
 
 // Adds a vision to a user
-router.route("/vision/:username").post((req, res) => {
-  const username = req.params.username;
+router.route("/vision/:id").post((req, res) => {
+  const id = req.params.id;
   const vision = req.body.vision;
 
-  updateVision(username, vision)
+  updateVision(id, vision)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
@@ -90,11 +90,11 @@ router.route("/vision/:username").post((req, res) => {
 });
 
 // Adds a nomination link to a user
-router.route("/nominationLink/:username").post((req, res) => {
-  const username = req.params.username;
+router.route("/nominationLink/:id").post((req, res) => {
+  const id = req.params.id;
   const nominationLink = req.body.nominationLink;
 
-  uploadNominationLink(username, nominationLink)
+  uploadNominationLink(id, nominationLink)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
@@ -109,11 +109,11 @@ router.route("/nominationLink/:username").post((req, res) => {
 });
 
 // Adds a position to a user
-router.route("/position/:username").post((req, res) => {
-  const username = req.params.username;
+router.route("/position/:id").post((req, res) => {
+  const id = req.params.id;
   const position = req.body.position;
 
-  updatePosition(username, position)
+  updatePosition(id, position)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
@@ -128,12 +128,12 @@ router.route("/position/:username").post((req, res) => {
 });
 
 // Adds a nomination to a user
-router.route("/nomination/:username").post((req, res) => {
-  const username = req.params.username;
+router.route("/nomination/:id").post((req, res) => {
+  const id = req.params.id;
   const nomination = req.body.nomination;
   const nominator = req.body.nominator;
 
-  updateNominations(username, nominator, nomination)
+  updateNominations(id, nominator, nomination)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");

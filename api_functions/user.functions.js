@@ -2,7 +2,7 @@ const { User } = require("../models/user.model");
 
 const createUser = async (UserInfo) => {
   // Checks if a user exists already
-  const currUser = await User.findOne({ name: UserInfo.name });
+  const currUser = await User.findOne({ id: UserInfo.id });
 
   if (currUser !== null) {
     throw "User already exists";
@@ -19,16 +19,16 @@ const getAllUsers = () => {
   return User.find();
 };
 
-const getUser = (username) => {
-  return User.findOne({ name: username });
+const getUser = (id) => {
+  return User.findOne({ id: id });
 };
 
-const deleteUser = (username) => {
-  return User.findOneAndDelete({ name: username });
+const deleteUser = (id) => {
+  return User.findOneAndDelete({ id: id });
 };
 
-const updateVision = async (username, vision) => {
-  const user = await User.findOne({ name: username });
+const updateVision = async (id, vision) => {
+  const user = await User.findOne({ id: id });
 
   // Checks if a user exists
   if (user === null) {
@@ -41,8 +41,8 @@ const updateVision = async (username, vision) => {
   return user;
 };
 
-const uploadNominationLink = async (username, nominationLink) => {
-  const user = await User.findOne({ name: username });
+const uploadNominationLink = async (id, nominationLink) => {
+  const user = await User.findOne({ id: id });
 
   // Checks if a user exists
   if (user === null) {
@@ -54,8 +54,8 @@ const uploadNominationLink = async (username, nominationLink) => {
   return user;
 };
 
-const updatePosition = async (username, position) => {
-  const user = await User.findOne({ name: username });
+const updatePosition = async (id, position) => {
+  const user = await User.findOne({ id: id });
 
   // Checks if a user exists
   if (user === null) {
@@ -67,8 +67,8 @@ const updatePosition = async (username, position) => {
   return user;
 };
 
-const updateNominations = async (username, nominator, nomination) => {
-  const user = await User.findOne({ name: username });
+const updateNominations = async (id, nominator, nomination) => {
+  const user = await User.findOne({ id: id });
 
   // Checks if a user exists
   if (user === null) {
