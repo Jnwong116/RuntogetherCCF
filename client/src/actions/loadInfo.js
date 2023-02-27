@@ -37,3 +37,41 @@ export const getAllUsers = (page) => {
       console.log(err);
     });
 };
+
+export const login = (user, page) => {
+  const fbID = user.id;
+
+  const url = `${API_HOST}/users/user/${fbID}`;
+
+  const request = new Request(url, {
+    method: "get",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      } else {
+        return res.text();
+      }
+    })
+    .then((res) => {
+      if (typeof res === "object") {
+        page.setState({
+          user: res,
+        });
+        return;
+      } else {
+        page.setState({
+          user: user,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
