@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 const IMAGE_DIMENSIONS = "50px";
 
 const PersonCard = ({ person }) => {
-  const { name, visionName, nominations } = person;
+  const { name, visionName, nominations, picture } = person;
   const hasNominators = nominations !== undefined;
 
   return (
@@ -26,7 +26,7 @@ const PersonCard = ({ person }) => {
         width={IMAGE_DIMENSIONS}
         margin="0.1em"
       >
-        <img src="profile.jpeg" alt="profile pic" height="100%" width="100%" />
+        <img src={picture} alt="profile pic" height="100%" width="100%" />
       </Box>
       <Box marginLeft="0.65em">
         <Typography variant="h5" color="textPrimary" marginBottom="0.5em">
