@@ -15,4 +15,16 @@ const createUser = async (UserInfo) => {
   return user;
 };
 
-module.exports = { createUser };
+const getAllUsers = () => {
+  return User.find();
+};
+
+const getUser = (username) => {
+  return User.findOne({ name: username });
+};
+
+const deleteUser = (username) => {
+  return User.findOneAndDelete({ name: username });
+};
+
+module.exports = { createUser, getAllUsers, getUser, deleteUser };
