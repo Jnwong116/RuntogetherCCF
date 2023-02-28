@@ -1,6 +1,8 @@
 import React from "react";
 import FacebookLogin from "react-facebook-login";
 
+import "./facebookLoginButton.css";
+
 import { login } from "../../actions/loadInfo";
 
 class FacebookLoginButton extends React.Component {
@@ -15,6 +17,8 @@ class FacebookLoginButton extends React.Component {
         autoLoad={true}
         fields="name,email,picture"
         callback={responseFacebook}
+        // cssClass="fb-login-button"
+        icon="fa-facebook"
       />
     );
   }
