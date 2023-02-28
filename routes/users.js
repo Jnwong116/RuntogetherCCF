@@ -12,6 +12,7 @@ const {
 
 const router = express.Router();
 
+// Creates a new user
 router.route("/register").post(async (req, res) => {
   createUser(req.body)
     .then((result) => {
@@ -22,6 +23,7 @@ router.route("/register").post(async (req, res) => {
     });
 });
 
+// Gets all users
 router.route("/").get((req, res) => {
   getAllUsers()
     .then((users) => {
@@ -32,6 +34,7 @@ router.route("/").get((req, res) => {
     });
 });
 
+// Gets a user by username
 router.route("/user/:username").get((req, res) => {
   const username = req.params.username;
 
@@ -49,6 +52,7 @@ router.route("/user/:username").get((req, res) => {
     });
 });
 
+// Deletes a user by username
 router.route("/user/:username").delete((req, res) => {
   const username = req.params.username;
 
@@ -66,6 +70,7 @@ router.route("/user/:username").delete((req, res) => {
     });
 });
 
+// Adds a vision to a user
 router.route("/vision/:username").post((req, res) => {
   const username = req.params.username;
   const vision = req.body.vision;
@@ -84,6 +89,7 @@ router.route("/vision/:username").post((req, res) => {
     });
 });
 
+// Adds a nomination link to a user
 router.route("/nominationLink/:username").post((req, res) => {
   const username = req.params.username;
   const nominationLink = req.body.nominationLink;
@@ -102,6 +108,7 @@ router.route("/nominationLink/:username").post((req, res) => {
     });
 });
 
+// Adds a position to a user
 router.route("/position/:username").post((req, res) => {
   const username = req.params.username;
   const position = req.body.position;
@@ -120,6 +127,7 @@ router.route("/position/:username").post((req, res) => {
     });
 });
 
+// Adds a nomination to a user
 router.route("/nomination/:username").post((req, res) => {
   const username = req.params.username;
   const nomination = req.body.nomination;
