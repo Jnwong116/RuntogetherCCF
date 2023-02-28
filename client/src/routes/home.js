@@ -8,25 +8,10 @@ import { COMMITTEE_POSITIONS, MINISTRY_POSITIONS } from "../actions/positions";
 
 const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
 
-const mockUser = {
-  name: "JdogDragon the First",
-  // position: "Chair",
-  position: null,
-  visionName: "CCF Bears",
-  visionFile: "CCFBears.pdf",
-  nominations: [
-    {
-      name: "Marian the Librarian",
-      nomination:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
-  ],
-};
-
 const Home = () => {
   return (
     <>
-      <WelcomeCard user={mockUser} />
+      <WelcomeCard />
       <Divider sx={{ bgcolor: "secondary.light", margin: "2.5rem" }} />
       <Typography variant="h2" color="textPrimary" textAlign="center">
         {ELECTIONS_HEADER_TEXT}
