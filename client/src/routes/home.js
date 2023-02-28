@@ -11,7 +11,7 @@ const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
 const Home = () => {
   return (
     <>
-      <WelcomeCard user={{}} />
+      <WelcomeCard />
       <Divider sx={{ bgcolor: "secondary.light", margin: "2.5rem" }} />
       <Typography variant="h2" color="textPrimary" textAlign="center">
         {ELECTIONS_HEADER_TEXT}
