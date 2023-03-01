@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
+import { STATUS } from "../../constants";
 import CandidateFlyout from "../candidateFlyout/candidateFlyout";
 import "./personCard.css";
 
@@ -9,10 +10,9 @@ const DEFAULT_PROFILE_PIC = "profile.jpeg";
 const PersonCard = ({ person }) => {
   const [flyoutOpen, setFlyoutOpen] = useState(false);
 
-  const { name, visionName, nominations, picture } = person;
-  const hasVision =
-    visionName !== "" && visionName !== undefined && visionName !== null;
-  const hasNominators = nominations !== undefined;
+  const { name, visionName, nominations, picture, position, status } = person;
+  const hasVision = visionName !== "";
+  const hasNominators = nominations.length > 0;
 
   return (
     <Box
@@ -27,6 +27,7 @@ const PersonCard = ({ person }) => {
       <Button
         className="personCardButton"
         onClick={() => setFlyoutOpen(true)}
+        disabled={status === STATUS.CONSIDERING}
         sx={{
           textTransform: "none",
           textAlign: "inherit",
@@ -57,16 +58,32 @@ const PersonCard = ({ person }) => {
           <Typography variant="h5" color="textPrimary" marginBottom="0.5em">
             {name}
           </Typography>
-          <Typography variant="body2" color="textPrimary" marginBottom="0.4em">
-            Vision: {hasVision && visionName}
-          </Typography>
-          <Typography variant="body2" color="textPrimary">
-            Nominations:{" "}
-            {hasNominators &&
-              nominations.map((nom, idx) =>
-                idx !== nominations.length - 1 ? `${nom.name}, ` : nom.name
+          {status === STATUS.CONSIDERING ? (
+            <Typography variant="body2" color="textPrimary">
+              Position(s):{" "}
+              {position.map((positionName, idx) =>
+                idx !== position.length - 1 ? `${positionName}, ` : positionName
               )}
-          </Typography>
+            </Typography>
+          ) : (
+            <>
+              {" "}
+              <Typography
+                variant="body2"
+                color="textPrimary"
+                marginBottom="0.4em"
+              >
+                Vision: {hasVision && visionName}
+              </Typography>
+              <Typography variant="body2" color="textPrimary">
+                Nominations:{" "}
+                {hasNominators &&
+                  nominations.map((nom, idx) =>
+                    idx !== nominations.length - 1 ? `${nom.name}, ` : nom.name
+                  )}
+              </Typography>
+            </>
+          )}
         </Box>
       </Button>
       <CandidateFlyout

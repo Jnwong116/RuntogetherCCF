@@ -36,7 +36,9 @@ export const CONSIDERING_POSITIONS = ["All Roles"];
 export const mockCandidates = [
   {
     name: "Marian",
-    position: "Chair",
+    position: ["Chair"],
+    visionName: "",
+    visionLink: "",
     nominations: [
       {
         nomination: `
@@ -61,7 +63,7 @@ export const mockCandidates = [
   },
   {
     name: "Marian2",
-    position: "Chair",
+    position: ["Chair"],
     visionName: "my vision!",
     visionLink: "https://www.youtube.com",
     nominations: [
@@ -107,7 +109,7 @@ export const mockCandidates = [
   },
   {
     name: "Marian3",
-    // position: "Chair",
+    position: ["Chair", "Social Coordinator"],
     visionName: "my vision!",
     visionLink: "https://www.youtube.com",
     status: "CONSIDERING",
