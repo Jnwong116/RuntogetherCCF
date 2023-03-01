@@ -2,11 +2,7 @@ import { Typography } from "@mui/material";
 import WhiteContainer from "../whiteContainer/whiteContainer";
 import FacebookLoginButton from "../facebookLoginButton/facebookLoginButton";
 import React from "react";
-
-const NOT_REGISTERED_MESSAGE =
-  "You are not registered in the running for any positions yet. If you would like to do so, click the button below the position that you want to run for. If you need to upload nominations for someone, please ask them to send you a “request nominations” link.";
-
-const NOT_LOGGED_IN_MESSAGE = " please log into Facebook.";
+import { NOT_LOGGED_IN_MESSAGE, NOT_REGISTERED_MESSAGE } from "../../constants";
 
 class WelcomeCard extends React.Component {
   constructor(props) {
@@ -23,9 +19,9 @@ class WelcomeCard extends React.Component {
     return (
       <WhiteContainer maxWidth="600px" margin="1.5rem auto" textAlign="center">
         <Typography variant="h3" color="textPrimary" paddingBottom="0.5rem">
-          Welcome,
+          Welcome,{" "}
           {loggedIn ? (
-            <strong> {this.state.user.name}</strong>
+            <strong>{this.state.user.name}</strong>
           ) : (
             NOT_LOGGED_IN_MESSAGE
           )}

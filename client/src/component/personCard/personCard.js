@@ -4,7 +4,7 @@ import CandidateFlyout from "../candidateFlyout/candidateFlyout";
 import "./personCard.css";
 
 const IMAGE_DIMENSIONS = "50px";
-const DEFAULT_PROFILE_PIC = "profile.jpeg"
+const DEFAULT_PROFILE_PIC = "profile.jpeg";
 
 const PersonCard = ({ person }) => {
   const [flyoutOpen, setFlyoutOpen] = useState(false);
@@ -34,6 +34,7 @@ const PersonCard = ({ person }) => {
           fontSize: "inherit",
           margin: "0",
           justifyContent: "left",
+          width: "100%",
         }}
       >
         <Box
