@@ -24,6 +24,7 @@ const Home = () => {
       >
         <PersonList title="Committee" positions={COMMITTEE_POSITIONS} />
         <PersonList title="IGs & Ministries" positions={MINISTRY_POSITIONS} />
+        <PersonList title="Considering" positions={[]} />
       </Box>
     </>
   );
