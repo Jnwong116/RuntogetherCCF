@@ -1,0 +1,7 @@
+.personCardButton:hover {
+  background-color: rgba(228, 203, 163, 25%);
+}
+
+.personCardButton {
+  transition: background-color 0.35s
+}
