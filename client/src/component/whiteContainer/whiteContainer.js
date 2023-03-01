@@ -1,17 +1,24 @@
 import { Box } from "@mui/material";
 import { YELLOW_DARK } from "../../actions/theme";
 
-const WhiteContainer = ({ children, margin, maxWidth, textAlign }) => {
+const WhiteContainer = ({
+  children,
+  margin,
+  maxWidth,
+  textAlign = "",
+  padding = "1.5rem",
+  bgcolor = "primary.light",
+}) => {
   return (
     <Box
       margin={margin}
-      padding="1.5rem"
+      padding={padding}
       borderRadius="15px"
       border="1px solid"
-      textAlign={textAlign ?? ""}
+      textAlign={textAlign}
       maxWidth={maxWidth}
       borderColor={YELLOW_DARK}
-      bgcolor="primary.light"
+      bgcolor={bgcolor}
     >
       {children}
     </Box>

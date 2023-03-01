@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material";
 
 const YELLOW_LIGHT = "#fff7e8";
 export const YELLOW_DARK = "#E4CBA3";
-const BLUE_MAIN = "#2B75D6";
+export const BLUE_MAIN = "#2B75D6";
 const BLUE_DARK = "#374660";
 export const GRAY = "#6C778C";
 const GRAY_LIGHT = "rgba(108, 119, 140, 5%)";
