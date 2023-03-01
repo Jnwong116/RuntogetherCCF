@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
+import { formatWithCommas } from "../../actions/helpers";
 import { STATUS } from "../../constants";
 import CandidateFlyout from "../candidateFlyout/candidateFlyout";
 import "./personCard.css";
@@ -60,10 +61,7 @@ const PersonCard = ({ person }) => {
           </Typography>
           {status === STATUS.CONSIDERING ? (
             <Typography variant="body2" color="textPrimary">
-              Position(s):{" "}
-              {position.map((positionName, idx) =>
-                idx !== position.length - 1 ? `${positionName}, ` : positionName
-              )}
+              Position(s): {formatWithCommas(position)}
             </Typography>
           ) : (
             <>
@@ -78,9 +76,7 @@ const PersonCard = ({ person }) => {
               <Typography variant="body2" color="textPrimary">
                 Nominations:{" "}
                 {hasNominators &&
-                  nominations.map((nom, idx) =>
-                    idx !== nominations.length - 1 ? `${nom.name}, ` : nom.name
-                  )}
+                  formatWithCommas(nominations.map((n) => n.name))}
               </Typography>
             </>
           )}

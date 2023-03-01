@@ -1,7 +1,7 @@
 export const NOT_REGISTERED_MESSAGE = `
-You are not registered in the running for any positions yet. 
-If you would like to do so, click the button below the position 
-that you want to run for. If you need to upload nominations for 
+You are not yet registered in the running for any positions. 
+If you would like to do so, click the "update my profile" button
+below to declare your intent. If you need to upload nominations for 
 someone, please ask them to send you a “request nominations” link.
 `;
 export const NOT_LOGGED_IN_MESSAGE = "please log in to Facebook.";
@@ -33,6 +33,35 @@ export const MINISTRY_POSITIONS = [
 export const CONSIDERING_POSITIONS = ["All Roles"];
 
 // @@@ For testing, delete later
+export const mockUser = {
+  name: "Marian",
+  position: ["Chair", "Women's Devotional Leader", "Investment Groups"],
+  visionName: "",
+  visionLink: "",
+  status: STATUS.WAITING,
+  nominations: [
+    {
+      nomination: `
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+        sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+        sunt in culpa qui officia deserunt mollit anim id est laborum.
+        `,
+      name: "JdogDragon",
+    },
+  ],
+};
+
 export const mockCandidates = [
   {
     name: "Marian",

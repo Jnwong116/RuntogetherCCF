@@ -6,6 +6,7 @@ import "./personList.css";
 import PersonCard from "../personCard/personCard";
 import WhiteContainer from "../whiteContainer/whiteContainer";
 import { STATUS, mockCandidates } from "../../constants";
+import { capitalize } from "lodash"
 
 class PersonList extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class PersonList extends React.Component {
   }
 
   getColumnContents() {
-    if (this.props.title === "Considering") {
+    if (this.props.title === capitalize(STATUS.CONSIDERING)) {
       return this.props.positions.map((pos) => (
         <>
           <Typography
