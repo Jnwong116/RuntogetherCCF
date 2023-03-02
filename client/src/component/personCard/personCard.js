@@ -11,8 +11,8 @@ const DEFAULT_PROFILE_PIC = "profile.jpeg";
 const PersonCard = ({ person }) => {
   const [flyoutOpen, setFlyoutOpen] = useState(false);
 
-  const { name, visionName, nominations, picture, position, status } = person;
-  const hasVision = visionName !== "";
+  const { name, visionName, visionLink, nominations, picture, position, status } = person;
+  const hasVision = visionName.length > 0 && visionLink.length > 0;
   const hasNominators = nominations.length > 0;
 
   return (

@@ -1,11 +1,13 @@
 export const NOT_REGISTERED_MESSAGE = `
 You are not yet registered in the running for any positions. 
 If you would like to do so, click the "update my profile" button
-below to declare your intent. If you need to upload nominations for 
+above to declare your intent. If you need to upload nominations for 
 someone, please ask them to send you a “request nominations” link.
 `;
 export const NOT_LOGGED_IN_MESSAGE = "please log in to Facebook.";
 export const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
+export const NO_VISION = "No Vision Available";
+export const ELECTIONS_DEADLINE = "March 25th, 2023"
 
 export const STATUS = {
   WAITING: "WAITING",

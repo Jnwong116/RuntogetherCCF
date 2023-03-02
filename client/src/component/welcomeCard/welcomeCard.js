@@ -1,4 +1,6 @@
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import WhiteContainer from "../whiteContainer/whiteContainer";
 import FacebookLoginButton from "../facebookLoginButton/facebookLoginButton";
 import React from "react";
@@ -7,8 +9,10 @@ import {
   NOT_LOGGED_IN_MESSAGE,
   NOT_REGISTERED_MESSAGE,
   STATUS,
+  ELECTIONS_DEADLINE,
 } from "../../constants";
 import { formatWithCommas } from "../../actions/helpers";
+import OpenModalButton from "../openModalButton/openModalButton";
 
 class WelcomeCard extends React.Component {
   constructor(props) {
@@ -22,10 +26,11 @@ class WelcomeCard extends React.Component {
     const { status, position } = this.state.user;
     return (
       <>
-        Your current status is <strong>{status.toLocaleUpperCase()}</strong>,
-        and you have declared intent for the following position(s):{" "}
-        <strong>{formatWithCommas(position)}</strong>. Select the appropriate
-        button below to update your information or request nominations.
+        Your current status is {status.toLocaleUpperCase()}, and you have
+        declared intent for the following position(s):{" "}
+        {formatWithCommas(position)}. <br />
+        Please complete your profile by <strong>{ELECTIONS_DEADLINE}</strong> to
+        be eligible for this year's elections.
       </>
     );
   }
@@ -47,18 +52,32 @@ class WelcomeCard extends React.Component {
             NOT_LOGGED_IN_MESSAGE
           )}
         </Typography>
-        <Typography color="textPrimary" paddingBottom="0.5rem">
-          {isWaiting
-            ? { NOT_REGISTERED_MESSAGE }
-            : this.getCustomRunningMessage()}
-        </Typography>
         {loggedIn ? (
           <FacebookLoginButton parent={this} />
         ) : (
-          <Typography variant="h3" color="textPrimary">
-          I want to UPDATE MY PROFILE or REQUEST NOMINATIONS. // Replace w buttons
+          <Typography color="textPrimary" marginBottom="0.5rem">
+            I want to <OpenModalButton>update my profile</OpenModalButton> or{" "}
+            <OpenModalButton>request nominations.</OpenModalButton>
           </Typography>
         )}
+        <Box display="flex" alignItems="top">
+          {isWaiting ? (
+            <InfoOutlinedIcon fontSize="medium" color="secondary" />
+          ) : (
+            <ErrorOutlineOutlinedIcon fontSize="medium" color="warning" />
+          )}
+          <Typography
+            paddingLeft="0.5rem"
+            color="textSecondary"
+            variant="h5"
+            fontWeight="400"
+            textAlign="left"
+          >
+            {isWaiting
+              ? NOT_REGISTERED_MESSAGE
+              : this.getCustomRunningMessage()}
+          </Typography>
+        </Box>
       </WhiteContainer>
     );
   }

@@ -1,6 +1,5 @@
 import { Button, Typography } from "@mui/material";
-
-const NO_VISION = "No Vision Available";
+import { NO_VISION } from "../../constants";
 
 const VisionButton = ({ visionName, visionLink }) => {
   return (
@@ -8,7 +7,7 @@ const VisionButton = ({ visionName, visionLink }) => {
       color="secondary"
       variant="outlined"
       size="large"
-      disabled={visionName === undefined || visionName == null}
+      disabled={visionName.length === 0}
       href={visionLink}
       target="_blank"
       sx={{
@@ -18,7 +17,9 @@ const VisionButton = ({ visionName, visionLink }) => {
         padding: "0.3rem 0.6rem",
       }}
     >
-      <Typography variant="h4">{visionName ?? NO_VISION}</Typography>
+      <Typography variant="h4">
+        {visionName.length > 0 ? visionName : NO_VISION}
+      </Typography>
     </Button>
   );
 };
