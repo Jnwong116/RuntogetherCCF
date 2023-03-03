@@ -12,7 +12,7 @@ class PersonList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      candidates: mockCandidates,
+      candidates: [],
     };
   }
 

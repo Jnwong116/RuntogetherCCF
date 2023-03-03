@@ -22,7 +22,7 @@ class WelcomeCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: mockUser,
+      user: {},
       updateProfileOpen: false,
       requestNominationsOpen: false,
     };
@@ -77,6 +77,7 @@ class WelcomeCard extends React.Component {
       isDecided && getRequirementsStatus(user, position[0]);
 
     console.log(user);
+
     return (
       <>
         <WhiteContainer
@@ -105,31 +106,35 @@ class WelcomeCard extends React.Component {
           ) : (
             <FacebookLoginButton parent={this} />
           )}
-          <Box display="flex" alignItems="top">
-            {this.getIcon(isWaiting, isProfileComplete)}
-            <Typography
-              paddingLeft="0.5rem"
-              color="textSecondary"
-              variant="h5"
-              fontWeight="400"
-              textAlign="left"
-            >
-              {isWaiting
-                ? NOT_REGISTERED_MESSAGE
-                : this.getCustomRunningMessage(
-                    status,
-                    position,
-                    isProfileComplete
-                  )}
-            </Typography>
-          </Box>
+          {loggedIn ? (
+            <Box display="flex" alignItems="top">
+              {this.getIcon(isWaiting, isProfileComplete)}
+              <Typography
+                paddingLeft="0.5rem"
+                color="textSecondary"
+                variant="h5"
+                fontWeight="400"
+                textAlign="left"
+              >
+                {isWaiting
+                  ? NOT_REGISTERED_MESSAGE
+                  : this.getCustomRunningMessage(
+                      status,
+                      position,
+                      isProfileComplete
+                    )}
+              </Typography>
+            </Box>
+          ) : null}
         </WhiteContainer>
-        <UpdateProfileModal
-          person={user}
-          open={updateProfileOpen}
-          onClose={() => this.setUpdateProfileOpen(false)}
-          isProfileComplete={isProfileComplete}
-        />
+        {loggedIn ? (
+          <UpdateProfileModal
+            person={user}
+            open={updateProfileOpen}
+            onClose={() => this.setUpdateProfileOpen(false)}
+            isProfileComplete={isProfileComplete}
+          />
+        ) : null}
       </>
     );
   }
