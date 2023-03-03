@@ -1,5 +1,5 @@
 import { capitalize } from "lodash";
-import { POSITION_REQUIREMENTS } from "../constants";
+import { COMMITTEE_POSITIONS, POSITION_REQUIREMENTS } from "../constants";
 
 const formatWithCommas = (items) => {
   return items.map((item, idx) =>
@@ -16,4 +16,12 @@ const getRequirementsStatus = (user, position) => {
   return hasVision && hasNominations;
 };
 
-export { formatWithCommas, getRequirementsStatus };
+const groupByPosition = (position) => {
+  if (Object.values(COMMITTEE_POSITIONS).includes(position)) {
+    return "COMMITTEE";
+  } else {
+    return "IGs & MINISTRIES";
+  }
+};
+
+export { formatWithCommas, getRequirementsStatus, groupByPosition };

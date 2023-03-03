@@ -16,13 +16,24 @@ import {
 import { formatWithCommas, getRequirementsStatus } from "../../actions/helpers";
 import OpenModalButton from "../openModalButton/openModalButton";
 import { capitalize } from "lodash";
+import UpdateProfileModal from "../updateProfileModal/updateProfileModal";
 
 class WelcomeCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: mockUser,
+      updateProfileOpen: false,
+      requestNominationsOpen: false,
     };
+  }
+
+  setUpdateProfileOpen(open) {
+    this.setState({ updateProfileOpen: open });
+  }
+
+  setRequestNominations(open) {
+    this.setState({ requestNominationsOpen: open });
   }
 
   getCustomRunningMessage(status, position, isProfileComplete) {
@@ -57,53 +68,68 @@ class WelcomeCard extends React.Component {
   }
 
   render() {
-    const { status, position, name } = this.state.user;
+    const { updateProfileOpen, requestNominationsOpen, user } = this.state;
+    const { status, position, name } = user;
     const isWaiting = status === STATUS.WAITING;
     const isDecided = status === STATUS.DECIDED;
     const loggedIn = name !== undefined;
     const isProfileComplete =
-      isDecided && getRequirementsStatus(this.state.user, position[0]);
+      isDecided && getRequirementsStatus(user, position[0]);
 
-    console.log(this.state.user);
+    console.log(user);
     return (
-      <WhiteContainer maxWidth="600px" margin="1.5rem auto" textAlign="center">
-        <Typography variant="h3" color="textPrimary" paddingBottom="0.5rem">
-          Welcome,{" "}
+      <>
+        <WhiteContainer
+          maxWidth="600px"
+          margin="1.5rem auto"
+          textAlign="center"
+        >
+          <Typography variant="h3" color="textPrimary" paddingBottom="0.5rem">
+            Welcome,{" "}
+            {loggedIn ? <strong>{name}.</strong> : NOT_LOGGED_IN_MESSAGE}
+          </Typography>
           {loggedIn ? (
-            <strong>{this.state.user.name}.</strong>
+            <Typography color="textPrimary" marginBottom="0.5rem">
+              I want to{" "}
+              <OpenModalButton onClick={() => this.setUpdateProfileOpen(true)}>
+                update my profile
+              </OpenModalButton>{" "}
+              or{" "}
+              <OpenModalButton
+                onClick={() => this.requestNominationsOpen(true)}
+                disabled={isWaiting}
+              >
+                request nominations.
+              </OpenModalButton>
+            </Typography>
           ) : (
-            NOT_LOGGED_IN_MESSAGE
+            <FacebookLoginButton parent={this} />
           )}
-        </Typography>
-        {loggedIn ? (
-          <Typography color="textPrimary" marginBottom="0.5rem">
-            I want to <OpenModalButton>update my profile</OpenModalButton> or{" "}
-            <OpenModalButton disabled={isWaiting}>
-              request nominations.
-            </OpenModalButton>
-          </Typography>
-        ) : (
-          <FacebookLoginButton parent={this} />
-        )}
-        <Box display="flex" alignItems="top">
-          {this.getIcon(isWaiting, isProfileComplete)}
-          <Typography
-            paddingLeft="0.5rem"
-            color="textSecondary"
-            variant="h5"
-            fontWeight="400"
-            textAlign="left"
-          >
-            {isWaiting
-              ? NOT_REGISTERED_MESSAGE
-              : this.getCustomRunningMessage(
-                  status,
-                  position,
-                  isProfileComplete
-                )}
-          </Typography>
-        </Box>
-      </WhiteContainer>
+          <Box display="flex" alignItems="top">
+            {this.getIcon(isWaiting, isProfileComplete)}
+            <Typography
+              paddingLeft="0.5rem"
+              color="textSecondary"
+              variant="h5"
+              fontWeight="400"
+              textAlign="left"
+            >
+              {isWaiting
+                ? NOT_REGISTERED_MESSAGE
+                : this.getCustomRunningMessage(
+                    status,
+                    position,
+                    isProfileComplete
+                  )}
+            </Typography>
+          </Box>
+        </WhiteContainer>
+        <UpdateProfileModal
+          person={user}
+          open={updateProfileOpen}
+          onClose={() => this.setUpdateProfileOpen(false)}
+        />
+      </>
     );
   }
 }

@@ -8,7 +8,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import "./candidateFlyout.css";
 import { CCF_THEME } from "../../actions/theme";
 import WhiteContainer from "../whiteContainer/whiteContainer";
 import VisionButton from "../visionButton/visionButton";

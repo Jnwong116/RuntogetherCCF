@@ -1,13 +1,13 @@
 import { Button, Typography } from "@mui/material";
 
-const OpenModalButton = ({ children, setModalOpen, disabled }) => {
+const OpenModalButton = ({ children, onClick, disabled }) => {
   return (
     <Button
       color="secondary"
       variant="outlined"
       size="small"
       disabled={disabled}
-      onClick={() => setModalOpen(true)}
+      onClick={onClick}
       sx={{
         borderRadius: "8px",
         textTransform: "none",

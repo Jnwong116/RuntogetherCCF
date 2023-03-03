@@ -1,9 +1,0 @@
-.candidateFlyout {
-  min-width: 300px;
-}
-
-@media (min-width: 400px) {
-  .candidateFlyout {
-    min-width: 350px;
-  }
-}

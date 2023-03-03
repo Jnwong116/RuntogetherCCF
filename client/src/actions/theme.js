@@ -4,12 +4,13 @@ const YELLOW_LIGHT = "#fff7e8";
 export const YELLOW_DARK = "#E4CBA3";
 export const BLUE_MAIN = "#2B75D6";
 const BLUE_DARK = "#374660";
+const BLUE_LIGHT = "rgba(43,117,214,15%)";
 export const GRAY = "#6C778C";
 const GRAY_LIGHT = "rgba(108, 119, 140, 5%)";
+const GRAY_LIGHTISH = "rgba(108, 119, 140, 40%)";
 export const WHITE = "#FFFFFF";
-const RED = "#F56476"
-const GREEN = "#32DE8A"
-const GRAYISH = "#9F997F"
+const RED = "#F56476";
+const GREEN = "#32DE8A";
 
 export const CCF_THEME = createTheme({
   typography: {
@@ -31,6 +32,10 @@ export const CCF_THEME = createTheme({
     },
     h5: {
       fontSize: "0.85em",
+      fontWeight: 600,
+    },
+    h6: {
+      fontSize: "1em",
       fontWeight: 600,
     },
     subtitle1: {
@@ -57,6 +62,7 @@ export const CCF_THEME = createTheme({
       light: WHITE,
     },
     secondary: {
+      dark: BLUE_DARK,
       main: BLUE_MAIN,
       light: GRAY_LIGHT,
     },
@@ -65,13 +71,16 @@ export const CCF_THEME = createTheme({
       secondary: GRAY,
     },
     success: {
-      main: GREEN
+      main: GREEN,
     },
     warning: {
-      main: RED
+      main: RED,
     },
     info: {
-      main: GRAYISH
-    }
+      main: GRAY_LIGHTISH,
+    },
+    action: {
+      selected: BLUE_LIGHT,
+    },
   },
 });
