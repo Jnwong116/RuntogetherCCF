@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const statusSchema = newSchema({
+const statusSchema = new Schema({
   status: {
     type: String,
     enum: ["WAITING", "CONSIDERING", "DECIDED"],
