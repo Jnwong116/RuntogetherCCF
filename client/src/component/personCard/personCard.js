@@ -4,7 +4,7 @@ import CandidateFlyout from "../candidateFlyout/candidateFlyout";
 import "./personCard.css";
 
 const IMAGE_DIMENSIONS = "50px";
-const DEFAULT_PROFILE_PIC = "profile.jpeg"
+const DEFAULT_PROFILE_PIC = "profile.jpeg";
 
 const PersonCard = ({ person }) => {
   const [flyoutOpen, setFlyoutOpen] = useState(false);
@@ -63,7 +63,9 @@ const PersonCard = ({ person }) => {
             Nominations:{" "}
             {hasNominators &&
               nominations.map((nom, idx) =>
-                idx !== nominations.length - 1 ? `${nom.name}, ` : nom.name
+                idx !== nominations.length - 1
+                  ? `${nom.nominator}, `
+                  : nom.nominator
               )}
           </Typography>
         </Box>

@@ -14,7 +14,7 @@ import WhiteContainer from "../whiteContainer/whiteContainer";
 import VisionButton from "../visionButton/visionButton";
 
 const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
-  const { name, position, visionName, visionLink, nominations } = person;
+  const { name, position, vision, nominations } = person;
   const largeScreen = useMediaQuery(CCF_THEME.breakpoints.up("md"));
   const responsiveWidth = largeScreen ? "800px" : "100%";
   const hasNominators = nominations !== undefined;
@@ -41,7 +41,7 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
             <Typography variant="h2" width="fit" marginBottom="0.3rem">
               {name}
             </Typography>
-            <VisionButton visionName={visionName} visionLink={visionLink} />
+            <VisionButton visionName={vision} visionLink={vision} />
           </Box>
           <IconButton
             color="secondary"
@@ -66,7 +66,7 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
               margin="0 0 1rem 0"
             >
               <Typography>{nom.nomination}</Typography>
-              <Typography textAlign="right">{nom.name}</Typography>
+              <Typography textAlign="right">{nom.nominator}</Typography>
             </WhiteContainer>
           ))}
       </Box>
