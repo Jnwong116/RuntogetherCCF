@@ -6,7 +6,7 @@ import "./personList.css";
 import PersonCard from "../personCard/personCard";
 import WhiteContainer from "../whiteContainer/whiteContainer";
 import { STATUS, mockCandidates } from "../../constants";
-import { capitalize } from "lodash"
+import { capitalize } from "lodash";
 
 class PersonList extends React.Component {
   constructor(props) {
@@ -21,8 +21,10 @@ class PersonList extends React.Component {
   }
 
   getColumnContents() {
-    if (this.props.title === capitalize(STATUS.CONSIDERING)) {
-      return this.props.positions.map((pos) => (
+    const { title, positions } = this.props;
+    const { candidates } = this.state;
+    if (title === capitalize(STATUS.CONSIDERING)) {
+      return Object.values(positions).map((pos) => (
         <>
           <Typography
             key={pos}
@@ -32,7 +34,7 @@ class PersonList extends React.Component {
           >
             {pos}
           </Typography>
-          {this.state.candidates
+          {candidates
             .filter((p) => p.status === STATUS.CONSIDERING)
             .map((person) => (
               <PersonCard key={person.name} person={person} />
@@ -40,7 +42,7 @@ class PersonList extends React.Component {
         </>
       ));
     }
-    return this.props.positions.map((pos) => (
+    return Object.values(positions).map((pos) => (
       <>
         <Typography
           key={pos}
@@ -50,7 +52,7 @@ class PersonList extends React.Component {
         >
           {pos}
         </Typography>
-        {this.state.candidates
+        {candidates
           .filter(
             (p) => p.position.includes(pos) && p.status !== STATUS.CONSIDERING
           )
@@ -62,13 +64,14 @@ class PersonList extends React.Component {
   }
 
   render() {
+    const { title } = this.props;
     return (
       <Box margin="1rem" className="personList">
         <WhiteContainer maxWidth="400px">
           <Typography variant="h4" color="textPrimary">
-            {this.props.title}
+            {title}
           </Typography>
-          <Box key={this.props.title} marginBottom="0.8em">
+          <Box key={title} marginBottom="0.8em">
             {this.getColumnContents()}
           </Box>
         </WhiteContainer>

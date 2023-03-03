@@ -1,6 +1,7 @@
 import { Typography, Box } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
+import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import WhiteContainer from "../whiteContainer/whiteContainer";
 import FacebookLoginButton from "../facebookLoginButton/facebookLoginButton";
 import React from "react";
@@ -10,9 +11,11 @@ import {
   NOT_REGISTERED_MESSAGE,
   STATUS,
   ELECTIONS_DEADLINE,
+  PROFILE_COMPLETE_MESSAGE,
 } from "../../constants";
-import { formatWithCommas } from "../../actions/helpers";
+import { formatWithCommas, getRequirementsStatus } from "../../actions/helpers";
 import OpenModalButton from "../openModalButton/openModalButton";
+import { capitalize } from "lodash";
 
 class WelcomeCard extends React.Component {
   constructor(props) {
@@ -22,24 +25,44 @@ class WelcomeCard extends React.Component {
     };
   }
 
-  getCustomRunningMessage() {
-    const { status, position } = this.state.user;
+  getCustomRunningMessage(status, position, isProfileComplete) {
     return (
       <>
-        Your current status is {status.toLocaleUpperCase()}, and you have
-        declared intent for the following position(s):{" "}
-        {formatWithCommas(position)}. <br />
-        Please complete your profile by <strong>{ELECTIONS_DEADLINE}</strong> to
-        be eligible for this year's elections.
+        {isProfileComplete ? (
+          PROFILE_COMPLETE_MESSAGE
+        ) : (
+          <>
+            Your profile is incomplete. You must complete your profile by
+            <strong> {ELECTIONS_DEADLINE}</strong> to be eligible for this
+            year's elections.
+          </>
+        )}
+        <br />
+        Your current status is {capitalize(status)}, and you have declared
+        intent for the following position(s): {formatWithCommas(position)}.
       </>
     );
   }
 
+  getIcon(isWaiting, isProfileComplete) {
+    if (isWaiting) {
+      return <InfoOutlinedIcon fontSize="medium" color="info" />;
+    } else if (isProfileComplete) {
+      return (
+        <CheckCircleOutlineOutlinedIcon fontSize="medium" color="success" />
+      );
+    } else {
+      return <ErrorOutlineOutlinedIcon fontSize="medium" color="warning" />;
+    }
+  }
+
   render() {
-    // const isWaiting = this.state.user.status === STATUS.WAITING;
-    const isWaiting = false;
-    // const loggedIn = this.state.user.name !== undefined;
-    const loggedIn = false;
+    const { status, position, name } = this.state.user;
+    const isWaiting = status === STATUS.WAITING;
+    const isDecided = status === STATUS.DECIDED;
+    const loggedIn = name !== undefined;
+    const isProfileComplete =
+      isDecided && getRequirementsStatus(this.state.user, position[0]);
 
     console.log(this.state.user);
     return (
@@ -53,19 +76,17 @@ class WelcomeCard extends React.Component {
           )}
         </Typography>
         {loggedIn ? (
-          <FacebookLoginButton parent={this} />
-        ) : (
           <Typography color="textPrimary" marginBottom="0.5rem">
             I want to <OpenModalButton>update my profile</OpenModalButton> or{" "}
-            <OpenModalButton>request nominations.</OpenModalButton>
+            <OpenModalButton disabled={isWaiting}>
+              request nominations.
+            </OpenModalButton>
           </Typography>
+        ) : (
+          <FacebookLoginButton parent={this} />
         )}
         <Box display="flex" alignItems="top">
-          {isWaiting ? (
-            <InfoOutlinedIcon fontSize="medium" color="secondary" />
-          ) : (
-            <ErrorOutlineOutlinedIcon fontSize="medium" color="warning" />
-          )}
+          {this.getIcon(isWaiting, isProfileComplete)}
           <Typography
             paddingLeft="0.5rem"
             color="textSecondary"
@@ -75,7 +96,11 @@ class WelcomeCard extends React.Component {
           >
             {isWaiting
               ? NOT_REGISTERED_MESSAGE
-              : this.getCustomRunningMessage()}
+              : this.getCustomRunningMessage(
+                  status,
+                  position,
+                  isProfileComplete
+                )}
           </Typography>
         </Box>
       </WhiteContainer>

@@ -7,6 +7,9 @@ const BLUE_DARK = "#374660";
 export const GRAY = "#6C778C";
 const GRAY_LIGHT = "rgba(108, 119, 140, 5%)";
 export const WHITE = "#FFFFFF";
+const RED = "#F56476"
+const GREEN = "#32DE8A"
+const GRAYISH = "#9F997F"
 
 export const CCF_THEME = createTheme({
   typography: {
@@ -61,5 +64,14 @@ export const CCF_THEME = createTheme({
       primary: BLUE_DARK,
       secondary: GRAY,
     },
+    success: {
+      main: GREEN
+    },
+    warning: {
+      main: RED
+    },
+    info: {
+      main: GRAYISH
+    }
   },
 });
