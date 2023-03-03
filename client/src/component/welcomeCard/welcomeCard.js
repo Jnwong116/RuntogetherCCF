@@ -128,6 +128,7 @@ class WelcomeCard extends React.Component {
           person={user}
           open={updateProfileOpen}
           onClose={() => this.setUpdateProfileOpen(false)}
+          isProfileComplete={isProfileComplete}
         />
       </>
     );

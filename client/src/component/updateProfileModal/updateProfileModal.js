@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {
   Box,
-  Checkbox,
-  FormControlLabel,
   Modal,
   ToggleButton,
   Typography,
@@ -10,8 +8,8 @@ import {
   Autocomplete,
   TextField,
 } from "@mui/material";
-import { BLUE_MAIN, CCF_THEME, GRAY } from "../../actions/theme";
-import { formatWithCommas, groupByPosition } from "../../actions/helpers";
+import { CCF_THEME } from "../../actions/theme";
+import { groupByPosition } from "../../actions/helpers";
 import GenericButton from "../genericButton/genericButton";
 import {
   COMMITTEE_POSITIONS,
@@ -25,13 +23,21 @@ const BUTTON_WIDTH = "140px";
 const UpdateProfileModal = ({ person, open, onClose }) => {
   const [status, setStatus] = useState(person.status);
   const [position, setPosition] = useState(person.position);
-  const { name, visionName, visionLink, nominations } = person;
+  const [visionName, setVisionName] = useState(person.visionName);
+  const [visionLink, setVisionLink] = useState(person.visionLink);
+  const { name, nominations } = person;
   const largeScreen = useMediaQuery(CCF_THEME.breakpoints.up("sm"));
   const responsiveWidth = largeScreen ? "500px" : "80%";
   const responsiveHeight = largeScreen ? "500px" : "90%";
   const positionOptions = Object.values(COMMITTEE_POSITIONS).concat(
     Object.values(MINISTRY_POSITIONS)
   );
+
+  const handleClick = () => {
+    // status, position, visionName visionLink have all the info required
+    // Just need to make an API call, and then close the modal after
+    onClose();
+  };
 
   return (
     <Modal
@@ -75,28 +81,69 @@ const UpdateProfileModal = ({ person, open, onClose }) => {
               </ToggleButton>
             ))}
           </Box>
-          <Typography variant="h3" color="textPrimary" marginBottom="0.5rem">
+          <Typography variant="h3" color="textPrimary" marginBottom="0.8rem">
             <strong>Name</strong>: {name}
           </Typography>
           <Typography variant="h3" color="textPrimary" marginBottom="0.5rem">
-            <strong>Position(s)</strong>:{" "}
-            <Autocomplete
-              multiple
-              filterSelectedOptions
-              limitTags={2}
-              groupBy={(option) => groupByPosition(option)}
-              options={positionOptions}
-              getOptionLabel={(option) => option}
-              renderInput={(params) => (
-                <TextField {...params} color="secondary" />
-              )}
-              sx={{ margin: "0.5rem 0" }}
-              defaultValue={position}
-            />
+            <strong>Position(s)</strong>:
           </Typography>
-          <Typography variant="h3" color="textPrimary" marginBottom="0.5rem">
-            <strong>Vision</strong>: {visionName}
+          <Autocomplete
+            multiple
+            filterSelectedOptions
+            limitTags={2}
+            groupBy={(option) => groupByPosition(option)}
+            options={positionOptions}
+            getOptionLabel={(option) => option}
+            renderInput={(params) => (
+              <TextField {...params} color="secondary" />
+            )}
+            value={position}
+            onChange={(_, value) => {
+              setPosition(value);
+            }}
+            size="small"
+            sx={{ marginBottom: "0.8rem" }}
+          />
+          <Typography
+            variant="h3"
+            color="textPrimary"
+            fontWeight="600"
+            marginBottom="0.5rem"
+          >
+            Vision
           </Typography>
+          <TextField
+            variant="outlined"
+            color="secondary"
+            sx={{
+              marginBottom: "0.8rem",
+              "& .MuiInputBase-input": {
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              },
+            }}
+            size="small"
+            fullWidth
+            label="Vision name"
+            value={visionName}
+            onChange={(event) => setVisionName(event.target.value)}
+          />
+          <TextField
+            variant="outlined"
+            color="secondary"
+            sx={{
+              marginBottom: "0.8rem",
+              "& .MuiInputBase-input": {
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              },
+            }}
+            size="small"
+            fullWidth
+            label="Link to vision"
+            value={visionLink}
+            onChange={(event) => setVisionLink(event.target.value)}
+          />
           <Typography variant="h3" color="textPrimary" marginBottom="0.5rem">
             <strong>Nominations</strong>: {nominations.length}
           </Typography>
@@ -105,7 +152,9 @@ const UpdateProfileModal = ({ person, open, onClose }) => {
           <GenericButton onClick={onClose} color="info">
             Cancel
           </GenericButton>
-          <GenericButton color="secondary">Save</GenericButton>
+          <GenericButton color="secondary" onClick={handleClick}>
+            Save
+          </GenericButton>
         </Box>
       </Box>
     </Modal>

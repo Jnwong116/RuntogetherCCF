@@ -17,7 +17,7 @@ export const CCF_THEME = createTheme({
     fontFamily: "Montserrat",
     h1: {
       fontWeight: 600,
-      fontSize: "3em",
+      fontSize: "2.5em",
     },
     h2: {
       fontSize: "2em",
