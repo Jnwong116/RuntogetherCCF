@@ -73,9 +73,10 @@ router.route("/user/:id").delete((req, res) => {
 // Adds a vision to a user
 router.route("/vision/:id").post((req, res) => {
   const id = req.params.id;
-  const vision = req.body.vision;
+  const visionName = req.body.visionName;
+  const visionLink = req.body.visionLink;
 
-  updateVision(id, vision)
+  updateVision(id, visionName, visionLink)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");

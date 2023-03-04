@@ -27,7 +27,7 @@ const deleteUser = (id) => {
   return User.findOneAndDelete({ id: id });
 };
 
-const updateVision = async (id, vision) => {
+const updateVision = async (id, visionName, visionLink) => {
   const user = await User.findOne({ id: id });
 
   // Checks if a user exists
@@ -35,7 +35,8 @@ const updateVision = async (id, vision) => {
     throw "User not found";
   }
 
-  user.vision = vision;
+  user.visionName = visionName;
+  user.visionLink = visionLink;
 
   user.save();
   return user;
