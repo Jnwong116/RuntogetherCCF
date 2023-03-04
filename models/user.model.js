@@ -1,13 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const statusSchema = new Schema({
-  status: {
-    type: String,
-    enum: ["WAITING", "CONSIDERING", "DECIDED"],
-  },
-});
-
 const nominationSchema = new Schema({
   nominator: { type: String, required: true },
   nomination: { type: String, required: true },
@@ -18,7 +11,11 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   picture: { type: String, required: true },
   positions: { type: [String], required: true, default: [] },
-  status: { type: statusSchema, required: true, default: "WAITING" },
+  status: {
+    type: String,
+    enum: ["WAITING", "CONSIDERING", "DECIDED"],
+    default: "WAITING",
+  },
   nominations: { type: [nominationSchema], required: true, default: [] },
   visionName: { type: String, default: "" },
   visionLink: { type: String, default: "" },

@@ -54,7 +54,7 @@ const uploadNominationLink = async (id, nominationLink) => {
   return user;
 };
 
-const updatePosition = async (id, position) => {
+const updatePosition = async (id, positions, status) => {
   const user = await User.findOne({ id: id });
 
   // Checks if a user exists
@@ -62,7 +62,8 @@ const updatePosition = async (id, position) => {
     throw "User not found";
   }
 
-  user.position = position;
+  user.positions = positions;
+  user.status = status;
   user.save();
   return user;
 };
