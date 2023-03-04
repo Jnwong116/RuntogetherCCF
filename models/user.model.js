@@ -10,7 +10,7 @@ const userSchema = new Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
   picture: { type: String, required: true },
-  positions: { type: [String], required: true, default: [] },
+  positions: { type: [String], default: [] },
   status: {
     type: String,
     enum: ["WAITING", "CONSIDERING", "DECIDED"],
