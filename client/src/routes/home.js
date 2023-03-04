@@ -1,12 +1,17 @@
 import React from "react";
 import { Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { capitalize } from "lodash";
 
 import WelcomeCard from "../component/welcomeCard/welcomeCard";
 import PersonList from "../component/personList/personList";
-import { COMMITTEE_POSITIONS, MINISTRY_POSITIONS } from "../actions/positions";
-
-const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
+import {
+  COMMITTEE_POSITIONS,
+  MINISTRY_POSITIONS,
+  STATUS,
+  ELECTIONS_HEADER_TEXT,
+  CONSIDERING_POSITIONS,
+} from "../constants";
 
 const Home = () => {
   return (
@@ -24,6 +29,10 @@ const Home = () => {
       >
         <PersonList title="Committee" positions={COMMITTEE_POSITIONS} />
         <PersonList title="IGs & Ministries" positions={MINISTRY_POSITIONS} />
+        <PersonList
+          title={capitalize(STATUS.CONSIDERING)}
+          positions={CONSIDERING_POSITIONS}
+        />
       </Box>
     </>
   );

@@ -111,9 +111,10 @@ router.route("/nominationLink/:id").post((req, res) => {
 // Adds a position to a user
 router.route("/position/:id").post((req, res) => {
   const id = req.params.id;
-  const position = req.body.position;
+  const positions = req.body.positions;
+  const status = req.body.status;
 
-  updatePosition(id, position)
+  updatePosition(id, positions, status)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");

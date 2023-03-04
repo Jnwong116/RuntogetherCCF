@@ -10,9 +10,15 @@ const userSchema = new Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
   picture: { type: String, required: true },
-  position: { type: String, required: true },
+  positions: { type: [String], required: true, default: [] },
+  status: {
+    type: String,
+    enum: ["WAITING", "CONSIDERING", "DECIDED"],
+    default: "WAITING",
+  },
   nominations: { type: [nominationSchema], required: true, default: [] },
-  vision: { type: String, default: "" },
+  visionName: { type: String, default: "" },
+  visionLink: { type: String, default: "" },
   nominationLink: { type: String },
 });
 

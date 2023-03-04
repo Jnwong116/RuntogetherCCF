@@ -1,18 +1,27 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
+import { formatWithCommas } from "../../actions/helpers";
+import { STATUS } from "../../constants";
 import CandidateFlyout from "../candidateFlyout/candidateFlyout";
 import "./personCard.css";
 
 const IMAGE_DIMENSIONS = "50px";
-const DEFAULT_PROFILE_PIC = "profile.jpeg"
+const DEFAULT_PROFILE_PIC = "profile.jpeg";
 
 const PersonCard = ({ person }) => {
   const [flyoutOpen, setFlyoutOpen] = useState(false);
 
-  const { name, visionName, nominations, picture } = person;
-  const hasVision =
-    visionName !== "" && visionName !== undefined && visionName !== null;
-  const hasNominators = nominations !== undefined;
+  const {
+    name,
+    visionName,
+    visionLink,
+    nominations,
+    picture,
+    positions,
+    status,
+  } = person;
+  const hasVision = visionName.length > 0 && visionLink.length > 0;
+  const hasNominators = nominations.length > 0;
 
   return (
     <Box
@@ -27,6 +36,7 @@ const PersonCard = ({ person }) => {
       <Button
         className="personCardButton"
         onClick={() => setFlyoutOpen(true)}
+        disabled={status === STATUS.CONSIDERING}
         sx={{
           textTransform: "none",
           textAlign: "inherit",
@@ -34,6 +44,7 @@ const PersonCard = ({ person }) => {
           fontSize: "inherit",
           margin: "0",
           justifyContent: "left",
+          width: "100%",
         }}
       >
         <Box
@@ -56,16 +67,27 @@ const PersonCard = ({ person }) => {
           <Typography variant="h5" color="textPrimary" marginBottom="0.5em">
             {name}
           </Typography>
-          <Typography variant="body2" color="textPrimary" marginBottom="0.4em">
-            Vision: {hasVision && visionName}
-          </Typography>
-          <Typography variant="body2" color="textPrimary">
-            Nominations:{" "}
-            {hasNominators &&
-              nominations.map((nom, idx) =>
-                idx !== nominations.length - 1 ? `${nom.name}, ` : nom.name
-              )}
-          </Typography>
+          {status === STATUS.CONSIDERING ? (
+            <Typography variant="body2" color="textPrimary">
+              Position(s): {formatWithCommas(positions)}
+            </Typography>
+          ) : (
+            <>
+              {" "}
+              <Typography
+                variant="body2"
+                color="textPrimary"
+                marginBottom="0.4em"
+              >
+                Vision: {hasVision && visionName}
+              </Typography>
+              <Typography variant="body2" color="textPrimary">
+                Nominations:{" "}
+                {hasNominators &&
+                  formatWithCommas(nominations.map((n) => n.name))}
+              </Typography>
+            </>
+          )}
         </Box>
       </Button>
       <CandidateFlyout
