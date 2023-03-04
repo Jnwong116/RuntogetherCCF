@@ -68,12 +68,12 @@ class WelcomeCard extends React.Component {
 
   render() {
     const { updateProfileOpen, requestNominationsOpen, user } = this.state;
-    const { status, position, name } = user;
+    const { status, positions, name } = user;
     const isWaiting = status === STATUS.WAITING;
     const isDecided = status === STATUS.DECIDED;
     const loggedIn = name !== undefined;
     const isProfileComplete =
-      isDecided && getRequirementsStatus(user, position[0]);
+      isDecided && getRequirementsStatus(user, positions[0]);
 
     return (
       <>
@@ -117,7 +117,7 @@ class WelcomeCard extends React.Component {
                   ? NOT_REGISTERED_MESSAGE
                   : this.getCustomRunningMessage(
                       status,
-                      position,
+                      positions,
                       isProfileComplete
                     )}
               </Typography>
@@ -130,6 +130,7 @@ class WelcomeCard extends React.Component {
             open={updateProfileOpen}
             onClose={() => this.setUpdateProfileOpen(false)}
             isProfileComplete={isProfileComplete}
+            parent={this}
           />
         ) : null}
       </>
