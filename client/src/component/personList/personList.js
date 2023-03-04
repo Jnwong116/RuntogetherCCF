@@ -54,7 +54,7 @@ class PersonList extends React.Component {
         </Typography>
         {candidates
           .filter(
-            (p) => p.position.includes(pos) && p.status !== STATUS.CONSIDERING
+            (p) => p.positions.includes(pos) && p.status !== STATUS.CONSIDERING
           )
           .map((person) => (
             <PersonCard key={person.name} person={person} />
