@@ -11,7 +11,15 @@ const DEFAULT_PROFILE_PIC = "profile.jpeg";
 const PersonCard = ({ person }) => {
   const [flyoutOpen, setFlyoutOpen] = useState(false);
 
-  const { name, visionName, visionLink, nominations, picture, position, status } = person;
+  const {
+    name,
+    visionName,
+    visionLink,
+    nominations,
+    picture,
+    positions,
+    status,
+  } = person;
   const hasVision = visionName.length > 0 && visionLink.length > 0;
   const hasNominators = nominations.length > 0;
 
@@ -61,7 +69,7 @@ const PersonCard = ({ person }) => {
           </Typography>
           {status === STATUS.CONSIDERING ? (
             <Typography variant="body2" color="textPrimary">
-              Position(s): {formatWithCommas(position)}
+              Position(s): {formatWithCommas(positions)}
             </Typography>
           ) : (
             <>
