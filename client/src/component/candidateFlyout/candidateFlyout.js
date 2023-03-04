@@ -65,7 +65,7 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
               margin="0 0 1rem 0"
             >
               <Typography>{nom.nomination}</Typography>
-              <Typography textAlign="right">{nom.name}</Typography>
+              <Typography textAlign="right">{nom.nominator}</Typography>
             </WhiteContainer>
           ))}
       </Box>
