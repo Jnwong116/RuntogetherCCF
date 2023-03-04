@@ -5,7 +5,7 @@ import { getAllUsers } from "../../actions/loadInfo";
 import "./personList.css";
 import PersonCard from "../personCard/personCard";
 import WhiteContainer from "../whiteContainer/whiteContainer";
-import { STATUS, mockCandidates } from "../../constants";
+import { STATUS } from "../../constants";
 import { capitalize } from "lodash";
 
 class PersonList extends React.Component {

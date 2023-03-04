@@ -6,7 +6,6 @@ import WhiteContainer from "../whiteContainer/whiteContainer";
 import FacebookLoginButton from "../facebookLoginButton/facebookLoginButton";
 import React from "react";
 import {
-  mockUser,
   NOT_LOGGED_IN_MESSAGE,
   NOT_REGISTERED_MESSAGE,
   STATUS,
@@ -75,8 +74,6 @@ class WelcomeCard extends React.Component {
     const loggedIn = name !== undefined;
     const isProfileComplete =
       isDecided && getRequirementsStatus(user, position[0]);
-
-    console.log(user);
 
     return (
       <>
