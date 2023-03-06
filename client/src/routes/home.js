@@ -28,9 +28,10 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log(this.state.user);
     return (
       <>
-        <WelcomeCard parent={this} />
+        <WelcomeCard parent={this} user={this.state.user} />
         <Divider sx={{ bgcolor: "secondary.light", margin: "2.5rem" }} />
         <Typography variant="h2" color="textPrimary" textAlign="center">
           {ELECTIONS_HEADER_TEXT}
