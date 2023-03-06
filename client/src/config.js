@@ -6,7 +6,7 @@ const dev = {
 };
 
 const prod = {
-  api_host: "https://runtogetherccf.herokuapp.com/",
+  api_host: "https://runtogetherccf.herokuapp.com",
 };
 
 module.exports = prod;
