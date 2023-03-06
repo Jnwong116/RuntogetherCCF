@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import { getAllUsers } from "../../actions/loadInfo";
 
 import "./personList.css";
 import PersonCard from "../personCard/personCard";
@@ -8,21 +7,8 @@ import WhiteContainer from "../whiteContainer/whiteContainer";
 import { STATUS } from "../../constants";
 import { capitalize } from "lodash";
 
-class PersonList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      candidates: [],
-    };
-  }
-
-  componentDidMount() {
-    getAllUsers(this);
-  }
-
-  getColumnContents() {
-    const { title, positions } = this.props;
-    const { candidates } = this.state;
+const PersonList = ({ title, positions, candidates }) => {
+  const getColumnContents = () => {
     if (title === capitalize(STATUS.CONSIDERING)) {
       return Object.values(positions).map((pos) => (
         <>
@@ -61,23 +47,20 @@ class PersonList extends React.Component {
           ))}
       </>
     ));
-  }
+  };
 
-  render() {
-    const { title } = this.props;
-    return (
-      <Box margin="1rem" className="personList">
-        <WhiteContainer maxWidth="400px">
-          <Typography variant="h4" color="textPrimary">
-            {title}
-          </Typography>
-          <Box key={title} marginBottom="0.8em">
-            {this.getColumnContents()}
-          </Box>
-        </WhiteContainer>
-      </Box>
-    );
-  }
-}
+  return (
+    <Box margin="1rem" className="personList">
+      <WhiteContainer maxWidth="400px">
+        <Typography variant="h4" color="textPrimary">
+          {title}
+        </Typography>
+        <Box key={title} marginBottom="0.8em">
+          {getColumnContents()}
+        </Box>
+      </WhiteContainer>
+    </Box>
+  );
+};
 
 export default PersonList;
