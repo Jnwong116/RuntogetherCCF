@@ -11,17 +11,27 @@ import {
   STATUS,
   ELECTIONS_DEADLINE,
   PROFILE_COMPLETE_MESSAGE,
+  COMMITTEE_POSITIONS,
 } from "../../constants";
 import { formatWithCommas, getRequirementsStatus } from "../../actions/helpers";
 import OpenModalButton from "../openModalButton/openModalButton";
 import { capitalize } from "lodash";
 import UpdateProfileModal from "../updateProfileModal/updateProfileModal";
+import RequestNominationsModal from "../requestNominationsModal/requestNominationsModal";
 
 class WelcomeCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      user: {
+        name: "Marian",
+        position: [COMMITTEE_POSITIONS.CHAIR, COMMITTEE_POSITIONS.VICE_CHAIR],
+        status: STATUS.CONSIDERING,
+        visionName: "",
+        visionLink: "",
+        nominations: [],
+        nominationLink: "https://runtogether.ccf.com/example-nom-link-that-is-pretty-long",
+      },
       updateProfileOpen: false,
       requestNominationsOpen: false,
     };
@@ -71,7 +81,8 @@ class WelcomeCard extends React.Component {
     const { status, position, name } = user;
     const isWaiting = status === STATUS.WAITING;
     const isDecided = status === STATUS.DECIDED;
-    const loggedIn = name !== undefined;
+    // const loggedIn = name !== undefined;
+    const loggedIn = true;
     const isProfileComplete =
       isDecided && getRequirementsStatus(user, position[0]);
 
@@ -94,7 +105,7 @@ class WelcomeCard extends React.Component {
               </OpenModalButton>{" "}
               or{" "}
               <OpenModalButton
-                onClick={() => this.requestNominationsOpen(true)}
+                onClick={() => this.setRequestNominations(true)}
                 disabled={isWaiting}
               >
                 request nominations.
@@ -125,12 +136,18 @@ class WelcomeCard extends React.Component {
           ) : null}
         </WhiteContainer>
         {loggedIn ? (
-          <UpdateProfileModal
-            person={user}
-            open={updateProfileOpen}
-            onClose={() => this.setUpdateProfileOpen(false)}
-            isProfileComplete={isProfileComplete}
-          />
+          <>
+            <UpdateProfileModal
+              person={user}
+              open={updateProfileOpen}
+              onClose={() => this.setUpdateProfileOpen(false)}
+            />
+            <RequestNominationsModal
+              person={user}
+              open={requestNominationsOpen}
+              onClose={() => this.setRequestNominations(false)}
+            />
+          </>
         ) : null}
       </>
     );
