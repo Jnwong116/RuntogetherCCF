@@ -125,3 +125,14 @@ export const POSITION_REQUIREMENTS = {
     nominations: 0,
   },
 };
+
+export const LINKS = [
+  {
+    word: "Sample text (this is the word that will be displayed",
+    link: "This is where clicking on the word would bring you",
+  },
+  {
+    word: "Google",
+    link: "https://www.google.com",
+  },
+];
