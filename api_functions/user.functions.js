@@ -27,7 +27,13 @@ const deleteUser = (id) => {
   return User.findOneAndDelete({ id: id });
 };
 
-const updateVision = async (id, vision) => {
+const updateVisionOrPosition = async (
+  id,
+  visionName,
+  visionLink,
+  positions,
+  status
+) => {
   const user = await User.findOne({ id: id });
 
   // Checks if a user exists
@@ -35,7 +41,10 @@ const updateVision = async (id, vision) => {
     throw "User not found";
   }
 
-  user.vision = vision;
+  user.visionName = visionName;
+  user.visionLink = visionLink;
+  user.positions = positions;
+  user.status = status;
 
   user.save();
   return user;
@@ -50,20 +59,6 @@ const uploadNominationLink = async (id, nominationLink) => {
   }
 
   user.nominationLink = nominationLink;
-  user.save();
-  return user;
-};
-
-const updatePosition = async (id, positions, status) => {
-  const user = await User.findOne({ id: id });
-
-  // Checks if a user exists
-  if (user === null) {
-    throw "User not found";
-  }
-
-  user.positions = positions;
-  user.status = status;
   user.save();
   return user;
 };
@@ -101,8 +96,7 @@ module.exports = {
   getAllUsers,
   getUser,
   deleteUser,
-  updateVision,
+  updateVisionOrPosition,
   uploadNominationLink,
-  updatePosition,
   updateNominations,
 };

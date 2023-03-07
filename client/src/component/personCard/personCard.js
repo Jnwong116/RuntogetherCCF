@@ -84,7 +84,7 @@ const PersonCard = ({ person }) => {
               <Typography variant="body2" color="textPrimary">
                 Nominations:{" "}
                 {hasNominators &&
-                  formatWithCommas(nominations.map((n) => n.name))}
+                  formatWithCommas(nominations.map((n) => n.nominator))}
               </Typography>
             </>
           )}
