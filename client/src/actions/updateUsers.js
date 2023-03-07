@@ -63,7 +63,7 @@ export const createUser = (fbUser, page) => {
       name: fbUser.name,
       position: [],
       picture: fbUser.picture.data.url,
-      nominationLink: `${API_HOST}/nominations/${fbUser.id}`,
+      nominationLink: `${API_HOST}/nominations?id=${fbUser.id}`,
     }),
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -137,4 +137,41 @@ export const checkUserProfile = (
       page
     );
   }
+};
+
+export const uploadNomination = (nominee, user, nominationText) => {
+  const url = `${API_HOST}/users/nomination/${nominee.id}`;
+
+  const request = new Request(url, {
+    method: "post",
+    body: JSON.stringify({
+      nomination: nominationText,
+      nominator: user.name,
+      nominatorID: user.id,
+    }),
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      } else {
+        return res.text();
+      }
+    })
+    .then((res) => {
+      if (typeof res === "object") {
+        return;
+      } else {
+        errorToast(res);
+        return;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

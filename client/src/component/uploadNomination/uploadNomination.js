@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 
-const UploadNomination = ({ handleSubmit }) => {
+const UploadNomination = ({ handleSubmit, nominee }) => {
   const [nominationText, setNominationText] = useState("");
 
   const handleNominationTextChange = (event) => {
@@ -11,9 +11,9 @@ const UploadNomination = ({ handleSubmit }) => {
   return (
     <>
       <Typography color="textPrimary" paddingBottom="1em">
-        [Candidate] is running for [Position] and has requested your nomination.
-        Type or paste your nomination in the box below and click "Submit" to
-        upload your nomination.
+        {nominee.name} is running for {nominee.positions[0]} and has requested
+        your nomination. Type or paste your nomination in the box below and
+        click "Submit" to upload your nomination.
       </Typography>
       <TextField
         fullWidth
@@ -30,7 +30,9 @@ const UploadNomination = ({ handleSubmit }) => {
           color="secondary"
           variant="outlined"
           size="large"
-          onClick={handleSubmit}
+          onClick={() => {
+            handleSubmit(nominationText);
+          }}
           fullWidth
           sx={{
             borderRadius: "8px",

@@ -115,8 +115,9 @@ router.route("/nomination/:id").post((req, res) => {
   const id = req.params.id;
   const nomination = req.body.nomination;
   const nominator = req.body.nominator;
+  const nominatorID = req.body.nominatorID;
 
-  updateNominations(id, nominator, nomination)
+  updateNominations(id, nominator, nomination, nominatorID)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
