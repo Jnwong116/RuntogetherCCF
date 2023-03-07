@@ -5,19 +5,6 @@ import { getAllUsers } from "./loadInfo";
 
 const API_HOST = ENV.api_host;
 
-export const createTempUser = (fbUser) => {
-  return {
-    name: fbUser.name,
-    position: [],
-    vision: "",
-    visionName: "",
-    status: STATUS.WAITING,
-    nominations: [],
-    picture: fbUser.picture.data.url,
-    id: fbUser.id,
-  };
-};
-
 const updateVisionAndPositions = (
   user,
   visionName,
@@ -66,7 +53,7 @@ const updateVisionAndPositions = (
     });
 };
 
-const createUser = (fbUser) => {
+export const createUser = (fbUser, page) => {
   const url = `${API_HOST}/users/register`;
 
   const request = new Request(url, {
@@ -75,7 +62,8 @@ const createUser = (fbUser) => {
       id: fbUser.id,
       name: fbUser.name,
       position: [],
-      picture: fbUser.picture,
+      picture: fbUser.picture.data.url,
+      nominationLink: `${API_HOST}/nominations?id=${fbUser.id}`,
     }),
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -93,7 +81,9 @@ const createUser = (fbUser) => {
     })
     .then((res) => {
       if (typeof res === "object") {
-        return res;
+        page.setState({
+          user: res,
+        });
       } else {
         return;
       }
@@ -103,7 +93,7 @@ const createUser = (fbUser) => {
     });
 };
 
-export const checkUserProfile = async (
+export const checkUserProfile = (
   user,
   position,
   status,
@@ -138,16 +128,8 @@ export const checkUserProfile = async (
   }
 
   if (ready) {
-    // Checks if user is temp or not
-    let newUser = undefined;
-    if (status !== STATUS.WAITING) {
-      newUser = createUser(user);
-    }
-
-    const person = newUser !== undefined ? newUser : user;
-
     updateVisionAndPositions(
-      person,
+      user,
       visionName,
       visionLink,
       position,
@@ -155,4 +137,41 @@ export const checkUserProfile = async (
       page
     );
   }
+};
+
+export const uploadNomination = (nominee, user, nominationText) => {
+  const url = `${API_HOST}/users/nomination/${nominee.id}`;
+
+  const request = new Request(url, {
+    method: "post",
+    body: JSON.stringify({
+      nomination: nominationText,
+      nominator: user.name,
+      nominatorID: user.id,
+    }),
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      } else {
+        return res.text();
+      }
+    })
+    .then((res) => {
+      if (typeof res === "object") {
+        return;
+      } else {
+        errorToast(res);
+        return;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

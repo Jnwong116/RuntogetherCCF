@@ -8,8 +8,9 @@ export const NOT_LOGGED_IN_MESSAGE = "please log in to Facebook.";
 export const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
 export const NO_VISION = "No Vision Available";
 export const ELECTIONS_DEADLINE = "March 25th, 2023";
-export const PROFILE_COMPLETE_MESSAGE =
-  "Your profile is complete. No further actions are required at this time.";
+export const PROFILE_COMPLETE_MESSAGE = `Your profile is complete. No further actions are required at this time.`;
+export const NOMINATION_REQUEST_INSTRUCTIONS = `To request nominations, copy the link below and send it to your nominators.`;
+export const NOMINATION_LINK_ERROR = `No link found.`;
 
 export const STATUS = {
   WAITING: "WAITING",
@@ -53,31 +54,31 @@ export const POSITION_REQUIREMENTS = {
   },
   [COMMITTEE_POSITIONS.SECRETARY]: {
     vision: true,
-    nominations: 2,
+    nominations: 3,
   },
   [COMMITTEE_POSITIONS.TREASURER]: {
     vision: true,
-    nominations: 2,
+    nominations: 3,
   },
   [COMMITTEE_POSITIONS.MENS_DEVOTIONAL_LEADER]: {
     vision: true,
-    nominations: 2,
+    nominations: 3,
   },
   [COMMITTEE_POSITIONS.WOMENS_DEVOTIONAL_LEADER]: {
     vision: true,
-    nominations: 2,
+    nominations: 3,
   },
   [COMMITTEE_POSITIONS.WORSHIP_COORDINATOR]: {
     vision: true,
-    nominations: 2,
+    nominations: 3,
   },
   [COMMITTEE_POSITIONS.SOCIAL_COORDINATOR]: {
     vision: true,
-    nominations: 2,
+    nominations: 3,
   },
   [COMMITTEE_POSITIONS.OUTREACH_COORDINATOR]: {
     vision: true,
-    nominations: 2,
+    nominations: 3,
   },
   [MINISTRY_POSITIONS.INVESTMENT_GROUPS]: {
     vision: false,

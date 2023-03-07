@@ -1,13 +1,12 @@
 import React from "react";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 
-const GenericButton = ({ children, onClick, color }) => {
+const GenericButton = ({ children, ...buttonProps }) => {
   return (
     <Button
-      color={color}
+      {...buttonProps}
       variant="outlined"
-      size="large"
-      onClick={onClick}
+      size="medium"
       sx={{
         borderRadius: "8px",
         textTransform: "none",
@@ -15,7 +14,7 @@ const GenericButton = ({ children, onClick, color }) => {
         padding: "0.6rem",
       }}
     >
-      <Typography variant="h4">{children}</Typography>
+      {children}
     </Button>
   );
 };

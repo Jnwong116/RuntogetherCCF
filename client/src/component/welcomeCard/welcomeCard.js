@@ -16,6 +16,7 @@ import { formatWithCommas, getRequirementsStatus } from "../../actions/helpers";
 import OpenModalButton from "../openModalButton/openModalButton";
 import { capitalize } from "lodash";
 import UpdateProfileModal from "../updateProfileModal/updateProfileModal";
+import RequestNominationsModal from "../requestNominationsModal/requestNominationsModal";
 
 const WelcomeCard = ({ parent, user }) => {
   const [updateProfileOpen, setUpdateProfileOpen] = useState(false);
@@ -100,13 +101,20 @@ const WelcomeCard = ({ parent, user }) => {
         ) : null}
       </WhiteContainer>
       {loggedIn ? (
-        <UpdateProfileModal
-          person={user}
-          open={updateProfileOpen}
-          onClose={() => setUpdateProfileOpen(false)}
-          isProfileComplete={isProfileComplete}
-          parent={parent}
-        />
+        <>
+          <UpdateProfileModal
+            person={user}
+            open={updateProfileOpen}
+            onClose={() => setUpdateProfileOpen(false)}
+            isProfileComplete={isProfileComplete}
+            parent={parent}
+          />
+          <RequestNominationsModal
+            person={user}
+            open={requestNominationsOpen}
+            onClose={() => setRequestNominationsOpen(false)}
+          />
+        </>
       ) : null}
     </>
   );

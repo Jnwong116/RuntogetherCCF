@@ -154,10 +154,10 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
         </Box>
         <Box display="flex" justifyContent="flex-end" alignItems="end">
           <GenericButton onClick={onClose} color="info">
-            Cancel
+            <Typography variant="h4">Cancel</Typography>
           </GenericButton>
           <GenericButton color="secondary" onClick={handleClick}>
-            Save
+            <Typography variant="h4">Save</Typography>
           </GenericButton>
         </Box>
       </Box>
