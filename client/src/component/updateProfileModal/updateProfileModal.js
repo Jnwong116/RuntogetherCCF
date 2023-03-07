@@ -17,12 +17,13 @@ import {
   STATUS,
 } from "../../constants";
 import { capitalize } from "lodash";
+import { checkUserProfile } from "../../actions/updateUsers";
 
 const BUTTON_WIDTH = "140px";
 
-const UpdateProfileModal = ({ person, open, onClose }) => {
+const UpdateProfileModal = ({ person, open, onClose, parent }) => {
   const [status, setStatus] = useState(person.status);
-  const [position, setPosition] = useState(person.position);
+  const [position, setPosition] = useState(person.positions);
   const [visionName, setVisionName] = useState(person.visionName);
   const [visionLink, setVisionLink] = useState(person.visionLink);
   const { name, nominations } = person;
@@ -36,6 +37,8 @@ const UpdateProfileModal = ({ person, open, onClose }) => {
   const handleClick = () => {
     // status, position, visionName visionLink have all the info required
     // Just need to make an API call, and then close the modal after
+
+    checkUserProfile(person, position, status, visionName, visionLink, parent);
     onClose();
   };
 
@@ -91,6 +94,7 @@ const UpdateProfileModal = ({ person, open, onClose }) => {
             multiple
             filterSelectedOptions
             limitTags={2}
+            defaultValue={person.positions}
             groupBy={(option) => groupByPosition(option)}
             options={positionOptions}
             getOptionLabel={(option) => option}

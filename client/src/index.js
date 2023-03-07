@@ -12,6 +12,8 @@ import Layout from "./routes/layout";
 import Home from "./routes/home";
 import Nominations from "./routes/nominations";
 import NoRoute from "./routes/noRoute";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer limit={1} />
   </React.StrictMode>
 );
 
