@@ -23,7 +23,7 @@ const BUTTON_WIDTH = "140px";
 
 const UpdateProfileModal = ({ person, open, onClose, parent }) => {
   const [status, setStatus] = useState(person.status);
-  const [position, setPosition] = useState(person.position);
+  const [position, setPosition] = useState(person.positions);
   const [visionName, setVisionName] = useState(person.visionName);
   const [visionLink, setVisionLink] = useState(person.visionLink);
   const { name, nominations } = person;
@@ -38,7 +38,7 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
     // status, position, visionName visionLink have all the info required
     // Just need to make an API call, and then close the modal after
 
-    // checkUserProfile(person, position, status, visionName, visionLink, parent);
+    checkUserProfile(person, position, status, visionName, visionLink, parent);
     onClose();
   };
 

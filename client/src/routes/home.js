@@ -28,7 +28,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.state.user);
     return (
       <>
         <WelcomeCard parent={this} user={this.state.user} />

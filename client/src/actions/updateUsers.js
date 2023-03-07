@@ -1,7 +1,7 @@
 import { errorToast } from "./toastify";
 import ENV from "./../config";
 import { STATUS } from "../constants";
-import { login } from "./loadInfo";
+import { getAllUsers } from "./loadInfo";
 
 const API_HOST = ENV.api_host;
 
@@ -18,12 +18,21 @@ export const createTempUser = (fbUser) => {
   };
 };
 
-const udpatePositions = (user, positions, status) => {
-  const url = `${API_HOST}/users/position/${user.id}`;
+const updateVisionAndPositions = (
+  user,
+  visionName,
+  visionLink,
+  positions,
+  status,
+  page
+) => {
+  const url = `${API_HOST}/users/update/${user.id}`;
 
   const request = new Request(url, {
     method: "post",
     body: JSON.stringify({
+      visionName: visionName,
+      visionLink: visionLink,
       positions: positions,
       status: status,
     }),
@@ -43,43 +52,10 @@ const udpatePositions = (user, positions, status) => {
     })
     .then((res) => {
       if (typeof res === "object") {
-        return res;
-      } else {
-        // errorToast(res);
-        return;
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-const updateVision = (user, visionName, visionLink) => {
-  const url = `${API_HOST}/users/vision/${user.id}`;
-
-  const request = new Request(url, {
-    method: "post",
-    body: JSON.stringify({
-      visionName: visionName,
-      visionLink: visionLink,
-    }),
-    headers: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-    },
-  });
-
-  fetch(request)
-    .then((res) => {
-      if (res.status === 200) {
-        return res.json();
-      } else {
-        return res.text();
-      }
-    })
-    .then((res) => {
-      if (typeof res === "object") {
-        return res;
+        page.setState({
+          user: res,
+        });
+        getAllUsers(page);
       } else {
         // errorToast(res);
         return;
@@ -127,7 +103,7 @@ const createUser = (fbUser) => {
     });
 };
 
-export const checkUserProfile = (
+export const checkUserProfile = async (
   user,
   position,
   status,
@@ -163,9 +139,13 @@ export const checkUserProfile = (
 
     const person = newUser !== undefined ? newUser : user;
 
-    udpatePositions(person, position, status);
-    updateVision(person, visionName, visionLink);
-    login(person, page);
-    page.forceUpdate();
+    updateVisionAndPositions(
+      person,
+      visionName,
+      visionLink,
+      position,
+      status,
+      page
+    );
   }
 };
