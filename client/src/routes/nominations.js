@@ -37,6 +37,16 @@ class Nominations extends React.Component {
       }
     };
 
+    let previousNomination = undefined;
+    // Gets existing nominations
+    if (this.state.user.name !== undefined) {
+      this.state.nominee.nominations.forEach((nomination) => {
+        if (nomination.nominatorID === this.state.user.id) {
+          previousNomination = nomination.nomination;
+        }
+      });
+    }
+
     return (
       <WhiteContainer maxWidth="800px" margin="1.5rem auto" textAlign="center">
         <Typography
@@ -53,6 +63,7 @@ class Nominations extends React.Component {
           <UploadNomination
             handleSubmit={handleSubmit}
             nominee={this.state.nominee}
+            previousNomination={previousNomination}
           />
         )}
         {this.state.user.name === undefined ? (
