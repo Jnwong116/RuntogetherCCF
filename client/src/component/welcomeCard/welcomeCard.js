@@ -17,7 +17,6 @@ import OpenModalButton from "../openModalButton/openModalButton";
 import { capitalize } from "lodash";
 import UpdateProfileModal from "../updateProfileModal/updateProfileModal";
 import RequestNominationsModal from "../requestNominationsModal/requestNominationsModal";
-import { createNominationLink } from "../../actions/updateUsers";
 
 const WelcomeCard = ({ parent, user }) => {
   const [updateProfileOpen, setUpdateProfileOpen] = useState(false);
@@ -75,10 +74,7 @@ const WelcomeCard = ({ parent, user }) => {
             </OpenModalButton>{" "}
             or{" "}
             <OpenModalButton
-              onClick={() => {
-                createNominationLink(user, parent);
-                setRequestNominationsOpen(true);
-              }}
+              onClick={() => setRequestNominationsOpen(true)}
               disabled={isWaiting}
             >
               request nominations.

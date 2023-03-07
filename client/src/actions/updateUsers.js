@@ -63,6 +63,7 @@ export const createUser = (fbUser, page) => {
       name: fbUser.name,
       position: [],
       picture: fbUser.picture.data.url,
+      nominationLink: `${API_HOST}/nominations/${fbUser.id}`,
     }),
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -136,40 +137,4 @@ export const checkUserProfile = (
       page
     );
   }
-};
-
-export const createNominationLink = (user, page) => {
-  const url = `${API_HOST}/users/nominationLink/${user.id}`;
-
-  const request = new Request(url, {
-    method: "post",
-    body: JSON.stringify({
-      nominationLink: `${API_HOST}/nominations/${user.id}`,
-    }),
-    headers: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-    },
-  });
-
-  fetch(request)
-    .then((res) => {
-      if (res.status === 200) {
-        return res.json();
-      } else {
-        return res.text();
-      }
-    })
-    .then((res) => {
-      if (typeof res === "object") {
-        page.setState({
-          user: res,
-        });
-      } else {
-        return;
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 };
