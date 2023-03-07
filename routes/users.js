@@ -4,10 +4,9 @@ const {
   getAllUsers,
   getUser,
   deleteUser,
-  updateVision,
   uploadNominationLink,
-  updatePosition,
   updateNominations,
+  updateVisionOrPosition,
 } = require("../api_functions/user.functions");
 
 const router = express.Router();
@@ -70,13 +69,15 @@ router.route("/user/:id").delete((req, res) => {
     });
 });
 
-// Adds a vision to a user
-router.route("/vision/:id").post((req, res) => {
+// Adds a vision and position to a user
+router.route("/update/:id").post((req, res) => {
   const id = req.params.id;
   const visionName = req.body.visionName;
   const visionLink = req.body.visionLink;
+  const positions = req.body.positions;
+  const status = req.body.status;
 
-  updateVision(id, visionName, visionLink)
+  updateVisionOrPosition(id, visionName, visionLink, positions, status)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
@@ -96,26 +97,6 @@ router.route("/nominationLink/:id").post((req, res) => {
   const nominationLink = req.body.nominationLink;
 
   uploadNominationLink(id, nominationLink)
-    .then((result) => {
-      if (!result) {
-        res.status(404).json("User not found");
-        return;
-      }
-
-      res.send(result);
-    })
-    .catch((err) => {
-      res.status(400).json("Error: " + err);
-    });
-});
-
-// Adds a position to a user
-router.route("/position/:id").post((req, res) => {
-  const id = req.params.id;
-  const positions = req.body.positions;
-  const status = req.body.status;
-
-  updatePosition(id, positions, status)
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
