@@ -1,6 +1,6 @@
 import { errorToast } from "./toastify";
 import ENV from "./../config";
-import { createTempUser } from "./updateUsers";
+import { createUser } from "./updateUsers";
 
 const API_HOST = ENV.api_host;
 
@@ -67,9 +67,8 @@ export const login = (user, page) => {
         });
         return;
       } else {
-        page.setState({
-          user: createTempUser(user),
-        });
+        createUser(user, page);
+        return;
       }
     })
     .catch((err) => {
