@@ -15,7 +15,7 @@ class FacebookLoginButton extends React.Component {
       <FacebookLogin
         appId="1355204125212638"
         autoLoad={true}
-        fields="name,email,picture"
+        fields="name,picture"
         callback={responseFacebook}
         render={(renderProps) => (
           <button className="fb-login-button" onClick={renderProps.onClick}>
