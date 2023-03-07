@@ -119,6 +119,13 @@ export const checkUserProfile = async (
         ready = false;
         errorToast("Please select only one position");
       }
+      if (
+        (visionName.length === 0 && visionLink.length !== 0) ||
+        (visionName.length !== 0 && visionLink.length === 0)
+      ) {
+        ready = false;
+        errorToast("Please enter both a vision name and link");
+      }
       break;
     case STATUS.CONSIDERING:
       if (position === undefined || position.length === 0) {
