@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import LinkSection from "../linkSection/linkSection";
 
 const welcomeHeaderText = (
   <>
@@ -10,7 +11,7 @@ const welcomeHeaderText = (
 
 const WelcomeHeader = () => {
   return (
-    <Box>
+    <Box display="flex" flexDirection="column" alignItems="center">
       <Typography variant="h1" color="textPrimary" textAlign="center">
         RunTogether
       </Typography>

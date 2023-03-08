@@ -128,11 +128,19 @@ export const POSITION_REQUIREMENTS = {
 
 export const LINKS = [
   {
-    word: "Sample text (this is the word that will be displayed",
-    link: "This is where clicking on the word would bring you",
+    label: "Marian's website",
+    link: "https://marianmwang.github.io/marianmwang-site",
   },
   {
-    word: "Google",
+    label: "Google",
     link: "https://www.google.com",
+  },
+  {
+    label: "UTCCF I guess",
+    link: "https://www.utccf.com",
+  },
+  {
+    label: "Haha click me!",
+    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   },
 ];
