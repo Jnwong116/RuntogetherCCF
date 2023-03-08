@@ -40,7 +40,7 @@ const PersonList = ({ title, positions, candidates }) => {
         </Typography>
         {candidates
           .filter(
-            (p) => p.positions.includes(pos) && p.status !== STATUS.CONSIDERING
+            (p) => p.positions.includes(pos) && p.status === STATUS.DECIDED
           )
           .map((person) => (
             <PersonCard key={person.name} person={person} />
