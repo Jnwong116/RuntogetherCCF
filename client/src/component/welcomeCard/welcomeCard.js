@@ -75,7 +75,7 @@ const WelcomeCard = ({ parent, user }) => {
             or{" "}
             <OpenModalButton
               onClick={() => setRequestNominationsOpen(true)}
-              disabled={isWaiting}
+              disabled={!isDecided}
             >
               request nominations.
             </OpenModalButton>
