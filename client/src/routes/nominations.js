@@ -31,6 +31,8 @@ class Nominations extends React.Component {
     const handleSubmit = (nominationText) => {
       if (this.state.user.name === undefined) {
         errorToast("Please log in to submit a nomination");
+      } else if (this.state.user.id === this.state.nominee.id) {
+        errorToast("You cannot nominate yourself");
       } else {
         uploadNomination(this.state.nominee, this.state.user, nominationText);
         this.setState({ submitted: true });
