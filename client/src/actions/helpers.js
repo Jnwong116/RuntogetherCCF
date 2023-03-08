@@ -1,9 +1,9 @@
-import { capitalize } from "lodash";
+import { startCase } from "lodash";
 import { COMMITTEE_POSITIONS, POSITION_REQUIREMENTS } from "../constants";
 
 const formatWithCommas = (items) => {
   return items.map((item, idx) =>
-    idx !== items.length - 1 ? `${capitalize(item)}, ` : capitalize(item)
+    idx !== items.length - 1 ? `${startCase(item)}, ` : startCase(item)
   );
 };
 
