@@ -42,6 +42,11 @@ class Home extends React.Component {
           marginTop="1rem"
         >
           <PersonList
+            title={capitalize(STATUS.CONSIDERING)}
+            positions={CONSIDERING_POSITIONS}
+            candidates={this.state.candidates}
+          />
+          <PersonList
             title="Committee"
             positions={COMMITTEE_POSITIONS}
             candidates={this.state.candidates}
@@ -49,11 +54,6 @@ class Home extends React.Component {
           <PersonList
             title="IGs & Ministries"
             positions={MINISTRY_POSITIONS}
-            candidates={this.state.candidates}
-          />
-          <PersonList
-            title={capitalize(STATUS.CONSIDERING)}
-            positions={CONSIDERING_POSITIONS}
             candidates={this.state.candidates}
           />
         </Box>
