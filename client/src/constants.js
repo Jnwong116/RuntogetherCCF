@@ -128,19 +128,15 @@ export const POSITION_REQUIREMENTS = {
 
 export const LINKS = [
   {
-    label: "Marian's website",
-    link: "https://marianmwang.github.io/marianmwang-site",
+    label: "Constitution",
+    link: "https://docs.google.com/document/d/1RYMSCOyMciT2TKG8CP0RZ9sSlWIhi8uZ4JVjH9LHI2E/edit?usp=sharing",
   },
   {
-    label: "Google",
-    link: "https://www.google.com",
+    label: "Election's Handbook",
+    link: "https://docs.google.com/document/d/1I_1JZS__cLdcWu67uJa8CCqmIzwn7O_jOTjlw7DE9GI/edit?usp=sharing",
   },
   {
-    label: "UTCCF I guess",
+    label: "UTCCF",
     link: "https://www.utccf.com",
-  },
-  {
-    label: "Haha click me!",
-    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   },
 ];
