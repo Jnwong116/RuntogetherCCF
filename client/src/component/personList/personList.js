@@ -11,7 +11,7 @@ const PersonList = ({ title, positions, candidates }) => {
   const getColumnContents = () => {
     if (title === capitalize(STATUS.CONSIDERING)) {
       return Object.values(positions).map((pos) => (
-        <>
+        <React.Fragment key={pos}>
           <Typography
             key={pos}
             variant="subtitle2"
@@ -25,11 +25,11 @@ const PersonList = ({ title, positions, candidates }) => {
             .map((person) => (
               <PersonCard key={person.name} person={person} />
             ))}
-        </>
+        </React.Fragment>
       ));
     }
     return Object.values(positions).map((pos) => (
-      <>
+      <React.Fragment key={pos}>
         <Typography
           key={pos}
           variant="subtitle2"
@@ -45,7 +45,7 @@ const PersonList = ({ title, positions, candidates }) => {
           .map((person) => (
             <PersonCard key={person.name} person={person} />
           ))}
-      </>
+      </React.Fragment>
     ));
   };
 

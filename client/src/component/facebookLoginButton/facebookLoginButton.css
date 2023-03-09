@@ -1,8 +1,6 @@
 .fb-login-button {
-  box-sizing: border-box;
-  position: relative;
-  margin: 0.2em;
-  padding: 0 15px 0 46px;
+  margin-top: 0.5rem;
+  padding: 0 1rem;
   border: none;
   text-align: left;
   line-height: 34px;
@@ -10,15 +8,7 @@
   border-radius: 0.2em;
   font-size: 16px;
   color: #fff;
-}
-.fb-login-button:before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 100%;
+  text-transform: none;
 }
 .fb-login-button:focus {
   outline: none;

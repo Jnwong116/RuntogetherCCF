@@ -125,3 +125,22 @@ export const POSITION_REQUIREMENTS = {
     nominations: 0,
   },
 };
+
+export const LINKS = [
+  {
+    label: "Marian's website",
+    link: "https://marianmwang.github.io/marianmwang-site",
+  },
+  {
+    label: "Google",
+    link: "https://www.google.com",
+  },
+  {
+    label: "UTCCF I guess",
+    link: "https://www.utccf.com",
+  },
+  {
+    label: "Haha click me!",
+    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+];

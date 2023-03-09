@@ -60,6 +60,7 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
         {hasNominators &&
           nominations.map((nom) => (
             <WhiteContainer
+              key={nom.nominator}
               padding="0.8rem"
               bgcolor="primary.main"
               margin="0 0 1rem 0"
