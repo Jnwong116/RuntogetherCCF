@@ -136,6 +136,10 @@ export const LINKS = [
     link: "https://docs.google.com/document/d/1I_1JZS__cLdcWu67uJa8CCqmIzwn7O_jOTjlw7DE9GI/edit?usp=sharing",
   },
   {
+    label: "Past Visions",
+    link: "",
+  },
+  {
     label: "UTCCF",
     link: "https://www.utccf.com",
   },
