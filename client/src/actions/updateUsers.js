@@ -175,3 +175,57 @@ export const uploadNomination = (nominee, user, nominationText) => {
       console.log(err);
     });
 };
+
+export const updateGeneralInfo = (
+  user,
+  program,
+  year,
+  church,
+  yearsInChurch,
+  yearsFollowingChrist,
+  yearsInCCF,
+  page
+) => {
+  const url = `${API_HOST}/users/generalInfo/${user.id}`;
+
+  console.log(yearsInChurch);
+
+  const request = new Request(url, {
+    method: "post",
+    body: JSON.stringify({
+      program: program,
+      year: year,
+      church: church,
+      yearsInChurch: yearsInChurch,
+      yearsFollowingChrist: yearsFollowingChrist,
+      yearsInCCF: yearsInCCF,
+    }),
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+  });
+
+  fetch(request)
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      } else {
+        return res.text();
+      }
+    })
+    .then((res) => {
+      if (typeof res === "object") {
+        page.setState({
+          user: res,
+        });
+        return;
+      } else {
+        // errorToast(res);
+        return;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
