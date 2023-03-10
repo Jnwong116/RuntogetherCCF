@@ -140,6 +140,10 @@ export const LINKS = [
     link: "",
   },
   {
+    label: "Leadership Workshop Zoom Link",
+    link: "https://utoronto.zoom.us/j/88611165260",
+  },
+  {
     label: "UTCCF",
     link: "https://www.utccf.com",
   },
