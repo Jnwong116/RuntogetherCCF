@@ -50,6 +50,33 @@ const updateVisionOrPosition = async (
   return user;
 };
 
+const updateGeneralInfo = async (
+  id,
+  program,
+  year,
+  church,
+  yearInChurch,
+  yearsFollowingChrist,
+  yearsInCCF
+) => {
+  const user = await User.findOne({ id: id });
+
+  // Checks if a user exists
+  if (user === null) {
+    throw "User not found";
+  }
+
+  user.year = year;
+  user.program = program;
+  user.church = church;
+  user.yearInChurch = yearInChurch;
+  user.yearsFollowingChrist = yearsFollowingChrist;
+  user.yearsInCCF = yearsInCCF;
+
+  user.save();
+  return user;
+};
+
 const uploadNominationLink = async (id, nominationLink) => {
   const user = await User.findOne({ id: id });
 
@@ -100,4 +127,5 @@ module.exports = {
   updateVisionOrPosition,
   uploadNominationLink,
   updateNominations,
+  updateGeneralInfo,
 };

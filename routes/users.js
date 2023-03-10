@@ -7,6 +7,7 @@ const {
   uploadNominationLink,
   updateNominations,
   updateVisionOrPosition,
+  updateGeneralInfo,
 } = require("../api_functions/user.functions");
 
 const router = express.Router();
@@ -118,6 +119,38 @@ router.route("/nomination/:id").post((req, res) => {
   const nominatorID = req.body.nominatorID;
 
   updateNominations(id, nominator, nomination, nominatorID)
+    .then((result) => {
+      if (!result) {
+        res.status(404).json("User not found");
+        return;
+      }
+
+      res.send(result);
+    })
+    .catch((err) => {
+      res.status(400).json("Error: " + err);
+    });
+});
+
+// Updates user general info
+router.route("/generalInfo/:id").post((req, res) => {
+  const id = req.params.id;
+  const program = req.body.program;
+  const year = req.body.year;
+  const church = req.body.church;
+  const yearsInChurch = req.body.yearsInChurch;
+  const yearsFollowingChrist = req.body.yearsFollowingChrist;
+  const yearsInCCF = req.body.yearsInCCF;
+
+  updateGeneralInfo(
+    id,
+    program,
+    year,
+    church,
+    yearsInChurch,
+    yearsFollowingChrist,
+    yearsInCCF
+  )
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");

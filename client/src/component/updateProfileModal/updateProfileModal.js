@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Divider, Modal, Typography, useMediaQuery } from "@mui/material";
 import { CCF_THEME } from "../../actions/theme";
-import { checkUserProfile } from "../../actions/updateUsers";
+import { checkUserProfile, updateGeneralInfo } from "../../actions/updateUsers";
 import ElectionInfoModal from "../electionInfoModal/electionInfoModal";
 import PersonalInfoModal from "../personalInfoModal/personalInfoModal.js";
 
@@ -10,12 +10,14 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
   const [position, setPosition] = useState(person.positions);
   const [visionName, setVisionName] = useState(person.visionName);
   const [visionLink, setVisionLink] = useState(person.visionLink);
-  const [yearOfStudy, setYearOfStudy] = useState("First");
-  const [programName, setProgramName] = useState("");
-  const [churchName, setChurchName] = useState("");
-  const [churchYear, setChurchYear] = useState("1");
-  const [followingChristYear, setFollowingChristYear] = useState("1");
-  const [ccfYear, setCcfYear] = useState("1");
+  const [yearOfStudy, setYearOfStudy] = useState(person.year);
+  const [programName, setProgramName] = useState(person.program);
+  const [churchName, setChurchName] = useState(person.church);
+  const [churchYear, setChurchYear] = useState(person.yearInChurch);
+  const [followingChristYear, setFollowingChristYear] = useState(
+    person.yearsFollowingChrist
+  );
+  const [ccfYear, setCcfYear] = useState(person.yearsInCCF);
   const [page, setPage] = useState(0);
   const { name } = person;
   const largeScreen = useMediaQuery(CCF_THEME.breakpoints.up("sm"));
@@ -23,14 +25,21 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
   const responsiveHeight = largeScreen ? "500px" : "90%";
 
   const handleSubmit = () => {
-    // status, position, visionName visionLink have all the info required
-    // Just need to make an API call, and then close the modal after
-
     checkUserProfile(person, position, status, visionName, visionLink, parent);
     onClose();
   };
 
   const handleNextClick = () => {
+    updateGeneralInfo(
+      person,
+      programName,
+      yearOfStudy,
+      churchName,
+      churchYear,
+      followingChristYear,
+      ccfYear,
+      parent
+    );
     setPage(page + 1);
   };
 
