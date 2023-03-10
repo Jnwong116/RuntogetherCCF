@@ -52,8 +52,8 @@ const updateVisionOrPosition = async (
 
 const updateGeneralInfo = async (
   id,
-  year,
   program,
+  year,
   church,
   yearInChurch,
   yearsFollowingChrist,

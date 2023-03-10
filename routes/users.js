@@ -138,7 +138,7 @@ router.route("/generalInfo/:id").post((req, res) => {
   const program = req.body.program;
   const year = req.body.year;
   const church = req.body.church;
-  const yearInChurch = req.body.yearInChurch;
+  const yearsInChurch = req.body.yearsInChurch;
   const yearsFollowingChrist = req.body.yearsFollowingChrist;
   const yearsInCCF = req.body.yearsInCCF;
 
@@ -147,7 +147,7 @@ router.route("/generalInfo/:id").post((req, res) => {
     program,
     year,
     church,
-    yearInChurch,
+    yearsInChurch,
     yearsFollowingChrist,
     yearsInCCF
   )
