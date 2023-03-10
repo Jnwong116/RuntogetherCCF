@@ -178,7 +178,7 @@ export const LINKS = [
   },
   {
     label: "Past Visions",
-    link: "",
+    link: "https://drive.google.com/drive/folders/18R0YYYe0TBIreOym_vPb28vHyp1zBQdQ?usp=share_link",
   },
   {
     label: "Leadership Workshop Zoom Link",
