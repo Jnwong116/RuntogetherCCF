@@ -14,7 +14,7 @@ someone, please ask them to send you a “request nominations” link.
 export const NOT_LOGGED_IN_MESSAGE = "please log in to Facebook.";
 export const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
 export const NO_VISION = "No Vision Available";
-export const ELECTIONS_DEADLINE = "March 25th, 2023";
+export const ELECTIONS_DEADLINE = "March 27th, 2023";
 export const PROFILE_COMPLETE_MESSAGE = `Your profile is complete. No further actions are required at this time.`;
 export const NOMINATION_REQUEST_INSTRUCTIONS = `To request nominations, copy the link below and send it to your nominators.`;
 export const NOMINATION_LINK_ERROR = `No link found.`;
