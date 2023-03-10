@@ -1,13 +1,6 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import LinkSection from "../linkSection/linkSection";
-
-const welcomeHeaderText = (
-  <>
-    Join in on the elections process by praying, discerning, and running&nbsp;
-    <em>together</em>.
-  </>
-);
+import { HEADER_TEXT } from "../../constants";
 
 const WelcomeHeader = () => {
   return (
@@ -21,7 +14,7 @@ const WelcomeHeader = () => {
         margin="0.5rem"
         textAlign="center"
       >
-        {welcomeHeaderText}
+        {HEADER_TEXT}
       </Typography>
     </Box>
   );

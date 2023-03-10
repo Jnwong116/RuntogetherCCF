@@ -1,3 +1,10 @@
+export const HEADER_TEXT = (
+  <>
+    Join in on the elections process by praying, discerning, and running&nbsp;
+    <em>together</em>.
+  </>
+);
+
 export const NOT_REGISTERED_MESSAGE = `
 You are not yet registered in the running for any positions. 
 If you would like to do so, click the "update my profile" button
@@ -7,7 +14,7 @@ someone, please ask them to send you a “request nominations” link.
 export const NOT_LOGGED_IN_MESSAGE = "please log in to Facebook.";
 export const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
 export const NO_VISION = "No Vision Available";
-export const ELECTIONS_DEADLINE = "March 25th, 2023";
+export const ELECTIONS_DEADLINE = "March 27th, 2023";
 export const PROFILE_COMPLETE_MESSAGE = `Your profile is complete. No further actions are required at this time.`;
 export const NOMINATION_REQUEST_INSTRUCTIONS = `To request nominations, copy the link below and send it to your nominators.`;
 export const NOMINATION_LINK_ERROR = `No link found.`;
@@ -162,19 +169,23 @@ export const POSITION_REQUIREMENTS = {
 
 export const LINKS = [
   {
-    label: "Marian's website",
-    link: "https://marianmwang.github.io/marianmwang-site",
+    label: "Constitution",
+    link: "https://docs.google.com/document/d/1RYMSCOyMciT2TKG8CP0RZ9sSlWIhi8uZ4JVjH9LHI2E/edit?usp=sharing",
   },
   {
-    label: "Google",
-    link: "https://www.google.com",
+    label: "Election's Handbook",
+    link: "https://docs.google.com/document/d/1I_1JZS__cLdcWu67uJa8CCqmIzwn7O_jOTjlw7DE9GI/edit?usp=sharing",
   },
   {
-    label: "UTCCF I guess",
+    label: "Past Visions",
+    link: "https://drive.google.com/drive/folders/18R0YYYe0TBIreOym_vPb28vHyp1zBQdQ?usp=share_link",
+  },
+  {
+    label: "Leadership Workshop Zoom Link",
+    link: "https://utoronto.zoom.us/j/88611165260",
+  },
+  {
+    label: "UTCCF",
     link: "https://www.utccf.com",
-  },
-  {
-    label: "Haha click me!",
-    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   },
 ];
