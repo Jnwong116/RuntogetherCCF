@@ -11,12 +11,46 @@ import CloseIcon from "@mui/icons-material/Close";
 import { CCF_THEME } from "../../actions/theme";
 import WhiteContainer from "../whiteContainer/whiteContainer";
 import VisionButton from "../visionButton/visionButton";
+import { capitalize } from "lodash";
 
 const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
-  const { name, positions, visionName, visionLink, nominations } = person;
+  const {
+    name,
+    positions,
+    visionName,
+    visionLink,
+    nominations,
+    program,
+    year,
+    church,
+    yearInChurch,
+    yearsFollowingChrist,
+    yearsInCCF,
+  } = person;
   const largeScreen = useMediaQuery(CCF_THEME.breakpoints.up("md"));
   const responsiveWidth = largeScreen ? "800px" : "100%";
   const hasNominators = nominations !== undefined;
+  const schoolInfo =
+    year && program ? (
+      <>
+        <strong>{year}</strong> Year, studying <strong>{program}</strong>
+        <br />
+      </>
+    ) : null;
+  const christianInfo =
+    church && yearInChurch && yearsFollowingChrist ? (
+      <>
+        Christian for <strong>{yearsFollowingChrist}</strong> years & attending
+        <strong> {church}</strong> for <strong>{yearInChurch}</strong> years
+        <br />
+      </>
+    ) : null;
+  const ccfInfo = yearsInCCF ? (
+    <>
+      CCF Member for <strong>{yearsInCCF}</strong> years
+      <br />
+    </>
+  ) : null;
 
   return (
     <Drawer
@@ -51,7 +85,10 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
           </IconButton>
         </Box>
         <Typography variant="h3">
-          Running for <strong>{positions[0]}</strong>
+          {schoolInfo}
+          {christianInfo}
+          {ccfInfo}
+          Running for <strong>{capitalize(positions[0])}</strong>
         </Typography>
         <Divider sx={{ bgcolor: "secondary.light", margin: "1em 0" }} />
         <Typography variant="h3" fontWeight="600" marginBottom="0.5em">
