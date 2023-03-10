@@ -1,3 +1,10 @@
+export const HEADER_TEXT = (
+  <>
+    Join in on the elections process by praying, discerning, and running&nbsp;
+    <em>together</em>.
+  </>
+);
+
 export const NOT_REGISTERED_MESSAGE = `
 You are not yet registered in the running for any positions. 
 If you would like to do so, click the "update my profile" button
