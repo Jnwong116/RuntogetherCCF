@@ -6,6 +6,7 @@ import "./facebookLoginButton.css";
 import { login } from "../../actions/loadInfo";
 import { Button } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import ENV from "./../../config";
 
 class FacebookLoginButton extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class FacebookLoginButton extends React.Component {
 
     return (
       <FacebookLogin
-        appId="1355204125212638"
+        appId={ENV.facebokAppID}
         autoLoad={true}
         isMobile={false}
         fields="name,picture"
