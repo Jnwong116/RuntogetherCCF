@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import LinkSection from "../linkSection/linkSection";
 
 const welcomeHeaderText = (
   <>
