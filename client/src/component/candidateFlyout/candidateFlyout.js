@@ -20,34 +20,34 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
     visionName,
     visionLink,
     nominations,
-    yearOfStudy,
-    programName,
-    churchName,
-    churchYear,
-    ccfYear,
-    followingChristYear,
+    program,
+    year,
+    church,
+    yearInChurch,
+    yearsFollowingChrist,
+    yearsInCCF,
   } = person;
   const largeScreen = useMediaQuery(CCF_THEME.breakpoints.up("md"));
   const responsiveWidth = largeScreen ? "800px" : "100%";
   const hasNominators = nominations !== undefined;
   const schoolInfo =
-    yearOfStudy && programName ? (
+    year && program ? (
       <>
-        {programName}, {yearOfStudy} Year
+        <strong>{year}</strong> Year, studying <strong>{program}</strong>
         <br />
       </>
     ) : null;
   const christianInfo =
-    churchName && churchYear && followingChristYear ? (
+    church && yearInChurch && yearsFollowingChrist ? (
       <>
-        Christian for <strong>{followingChristYear}</strong> years & attending
-        <strong>{churchName}</strong> for <strong>{churchYear}</strong> years
+        Christian for <strong>{yearsFollowingChrist}</strong> years & attending
+        <strong> {church}</strong> for <strong>{yearInChurch}</strong> years
         <br />
       </>
     ) : null;
-  const ccfInfo = ccfYear ? (
+  const ccfInfo = yearsInCCF ? (
     <>
-      CCF Member for <strong>{ccfYear}</strong> years
+      CCF Member for <strong>{yearsInCCF}</strong> years
       <br />
     </>
   ) : null;
