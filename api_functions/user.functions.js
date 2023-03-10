@@ -32,12 +32,7 @@ const updateVisionOrPosition = async (
   visionName,
   visionLink,
   positions,
-  status,
-  year,
-  program,
-  church,
-  yearsFollowingChrist,
-  yearsInCCF
+  status
 ) => {
   const user = await User.findOne({ id: id });
 
@@ -50,9 +45,31 @@ const updateVisionOrPosition = async (
   user.visionLink = visionLink;
   user.positions = positions;
   user.status = status;
+
+  user.save();
+  return user;
+};
+
+const updateGeneralInfo = async (
+  id,
+  year,
+  program,
+  church,
+  yearInChurch,
+  yearsFollowingChrist,
+  yearsInCCF
+) => {
+  const user = await User.findOne({ id: id });
+
+  // Checks if a user exists
+  if (user === null) {
+    throw "User not found";
+  }
+
   user.year = year;
   user.program = program;
   user.church = church;
+  user.yearInChurch = yearInChurch;
   user.yearsFollowingChrist = yearsFollowingChrist;
   user.yearsInCCF = yearsInCCF;
 
@@ -110,4 +127,5 @@ module.exports = {
   updateVisionOrPosition,
   uploadNominationLink,
   updateNominations,
+  updateGeneralInfo,
 };

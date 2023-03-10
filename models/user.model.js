@@ -24,6 +24,7 @@ const userSchema = new Schema({
   program: { type: String, default: "" },
   year: { type: String, default: "" },
   church: { type: String, default: "" },
+  yearInChurch: { type: String, default: "" },
   yearsFollowingChrist: { type: String, default: "" },
   yearsInCCF: { type: String, default: "" },
 });
