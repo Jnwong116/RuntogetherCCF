@@ -32,7 +32,12 @@ const updateVisionOrPosition = async (
   visionName,
   visionLink,
   positions,
-  status
+  status,
+  year,
+  program,
+  church,
+  yearsFollowingChrist,
+  yearsInCCF
 ) => {
   const user = await User.findOne({ id: id });
 
@@ -45,6 +50,11 @@ const updateVisionOrPosition = async (
   user.visionLink = visionLink;
   user.positions = positions;
   user.status = status;
+  user.year = year;
+  user.program = program;
+  user.church = church;
+  user.yearsFollowingChrist = yearsFollowingChrist;
+  user.yearsInCCF = yearsInCCF;
 
   user.save();
   return user;

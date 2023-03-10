@@ -21,6 +21,11 @@ const userSchema = new Schema({
   visionName: { type: String, default: "" },
   visionLink: { type: String, default: "" },
   nominationLink: { type: String },
+  program: { type: String, default: "" },
+  year: { type: String, default: "" },
+  church: { type: String, default: "" },
+  yearsFollowingChrist: { type: String, default: "" },
+  yearsInCCF: { type: String, default: "" },
 });
 
 const User = mongoose.model("User", userSchema);
