@@ -181,8 +181,8 @@ export const LINKS = [
     link: "https://drive.google.com/drive/folders/18R0YYYe0TBIreOym_vPb28vHyp1zBQdQ?usp=share_link",
   },
   {
-    label: "Leadership Workshop Zoom Link",
-    link: "https://utoronto.zoom.us/j/88611165260",
+    label: "Leadership Workshop Slides",
+    link: "https://docs.google.com/presentation/d/1KTKnY1yxlP-24ND77o5KfOcC6RS85KC-IbWsTA383XI/edit?usp=sharing",
   },
   {
     label: "UTCCF",
