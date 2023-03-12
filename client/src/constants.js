@@ -185,6 +185,10 @@ export const LINKS = [
     link: "https://docs.google.com/presentation/d/1KTKnY1yxlP-24ND77o5KfOcC6RS85KC-IbWsTA383XI/edit?usp=sharing",
   },
   {
+    label: "Leadership Workshop Video",
+    link: "https://drive.google.com/file/d/1But0_n4m-T1b4xSNYsRLqX9fHgAdV0yr/view?usp=share_link",
+  },
+  {
     label: "UTCCF",
     link: "https://www.utccf.com",
   },
