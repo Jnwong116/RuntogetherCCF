@@ -13,6 +13,7 @@ class UploadNomination extends React.Component {
   handleNominationTextChange = (event) => {
     this.setState({
       nominationText: event.target.value,
+      nominationMatches: true,
     });
   };
 
