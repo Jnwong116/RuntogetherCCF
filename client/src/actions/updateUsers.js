@@ -53,17 +53,17 @@ const updateVisionAndPositions = (
     });
 };
 
-export const createUser = (fbUser, page) => {
+export const createUser = (googleUser, page) => {
   const url = `${API_HOST}/users/register`;
 
   const request = new Request(url, {
     method: "post",
     body: JSON.stringify({
-      id: fbUser.id,
-      name: fbUser.name,
+      id: googleUser.sub,
+      name: googleUser.name,
       position: [],
-      picture: fbUser.picture.data.url,
-      nominationLink: `${API_HOST}/nominations?id=${fbUser.id}`,
+      picture: googleUser.picture,
+      nominationLink: `${API_HOST}/nominations?id=${googleUser.sub}`,
     }),
     headers: {
       Accept: "application/json, text/plain, */*",

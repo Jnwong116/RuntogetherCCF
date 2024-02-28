@@ -11,8 +11,8 @@ If you would like to do so, click the "update my profile" button
 above to declare your intent. If you need to upload nominations for 
 someone, please ask them to send you a “request nominations” link.
 `;
-export const NOT_LOGGED_IN_MESSAGE = "please log in to Facebook.";
-export const ELECTIONS_HEADER_TEXT = "2023 - 2024 Leadership Elections";
+export const NOT_LOGGED_IN_MESSAGE = "please log in to Google.";
+export const ELECTIONS_HEADER_TEXT = "2024 - 2025 Leadership Elections";
 export const NO_VISION = "No Vision Available";
 export const ELECTIONS_DEADLINE = "March 27th, 2023";
 export const PROFILE_COMPLETE_MESSAGE = `Your profile is complete. No further actions are required at this time.`;

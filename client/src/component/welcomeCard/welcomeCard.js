@@ -3,7 +3,6 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import WhiteContainer from "../whiteContainer/whiteContainer";
-import FacebookLoginButton from "../facebookLoginButton/facebookLoginButton";
 import React, { useState } from "react";
 import {
   NOT_LOGGED_IN_MESSAGE,
@@ -17,6 +16,7 @@ import OpenModalButton from "../openModalButton/openModalButton";
 import { capitalize } from "lodash";
 import UpdateProfileModal from "../updateProfileModal/updateProfileModal";
 import RequestNominationsModal from "../requestNominationsModal/requestNominationsModal";
+import GoogleLoginButton from "../googleLogin/googleLogin";
 
 const WelcomeCard = ({ parent, user }) => {
   const [updateProfileOpen, setUpdateProfileOpen] = useState(false);
@@ -81,7 +81,7 @@ const WelcomeCard = ({ parent, user }) => {
             </OpenModalButton>
           </Typography>
         ) : (
-          <FacebookLoginButton parent={parent} />
+          <GoogleLoginButton parent={parent} />
         )}
         {loggedIn ? (
           <Box display="flex" alignItems="top">

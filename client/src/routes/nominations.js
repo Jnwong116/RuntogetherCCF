@@ -3,10 +3,10 @@ import { Typography } from "@mui/material";
 import WhiteContainer from "../component/whiteContainer/whiteContainer";
 import UploadNomination from "../component/uploadNomination/uploadNomination";
 import SubmittedNomination from "../component/submittedNomination/submittedNomination";
-import FacebookLoginButton from "../component/facebookLoginButton/facebookLoginButton";
 import { getUser } from "../actions/loadInfo";
 import { errorToast } from "../actions/toastify";
 import { uploadNomination } from "../actions/updateUsers";
+import GoogleLoginButton from "../component/googleLogin/googleLogin";
 
 class Nominations extends React.Component {
   constructor(props) {
@@ -69,7 +69,7 @@ class Nominations extends React.Component {
           />
         )}
         {this.state.user.name === undefined ? (
-          <FacebookLoginButton parent={this} />
+          <GoogleLoginButton parent={this} />
         ) : (
           <></>
         )}
