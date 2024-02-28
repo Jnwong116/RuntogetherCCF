@@ -4,5 +4,8 @@
 @media (min-width: 400px) {
   .personList {
     min-width: 350px;
+    max-height: 500px;
+    padding: 1rem;
+    overflow-y: auto;
   }
 }
