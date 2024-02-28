@@ -34,7 +34,7 @@ router.route("/").get((req, res) => {
     });
 });
 
-// Gets a user by facebook id
+// Gets a user by google id
 router.route("/user/:id").get((req, res) => {
   const id = req.params.id;
 
@@ -52,7 +52,7 @@ router.route("/user/:id").get((req, res) => {
     });
 });
 
-// Deletes a user by facebook id
+// Deletes a user by google id
 router.route("/user/:id").delete((req, res) => {
   const id = req.params.id;
 

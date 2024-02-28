@@ -1,4 +1,4 @@
-const port = 5001;
+const port = 3000;
 
 const dev = {
   port,
@@ -11,4 +11,4 @@ const prod = {
   facebokAppID: 1355204125212638,
 };
 
-module.exports = prod;
+module.exports = dev;
