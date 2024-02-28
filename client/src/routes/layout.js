@@ -6,13 +6,15 @@ import { CCF_THEME } from "../actions/theme";
 import WelcomeHeader from "../component/welcomeHeader/welcomeHeader";
 import { Outlet } from "react-router-dom";
 import LinkSection from "../component/linkSection/linkSection";
+import SplashPage from "../component/splashPage/splashPage";
 
 const Layout = () => {
   return (
     <ThemeProvider theme={CCF_THEME}>
-      <LinkSection />
-      <Box padding="1rem" margin="4rem 0.5rem 1rem 0.5rem">
-        <WelcomeHeader />
+      {/* <LinkSection /> */}
+      <Box >
+        <SplashPage />
+        {/* <WelcomeHeader /> */}
         <Outlet />
       </Box>
     </ThemeProvider>

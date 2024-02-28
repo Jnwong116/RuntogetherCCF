@@ -2,7 +2,6 @@ import { Typography, Box } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
-import WhiteContainer from "../whiteContainer/whiteContainer";
 import FacebookLoginButton from "../facebookLoginButton/facebookLoginButton";
 import React, { useState } from "react";
 import {
@@ -62,10 +61,28 @@ const WelcomeCard = ({ parent, user }) => {
 
   return (
     <>
-      <WhiteContainer maxWidth="600px" margin="1.5rem auto" textAlign="center">
-        <Typography variant="h3" color="textPrimary" paddingBottom="0.5rem">
-          Welcome, {loggedIn ? <strong>{name}.</strong> : NOT_LOGGED_IN_MESSAGE}
-        </Typography>
+        <Box 
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            flex-wrap="wrap"
+            justifyContent="space-between"
+            backgroundColor="primary.main"
+            padding="2rem 4rem"
+        >
+            <Box 
+                display="flex"
+                flexDirection="column"
+                alignItems="flex-start"
+                justifyContent="flex-start"
+            >
+                <Typography variant="h2" color="textPrimary" paddingBottom="0.5rem">
+                Welcome
+                </Typography>
+                <Typography variant="h2" color="textPrimary" marginBottom="0.5rem">
+                    {loggedIn ? <strong>{name}.</strong> : NOT_LOGGED_IN_MESSAGE}
+                </Typography>
+            </Box>
         {loggedIn ? (
           <Typography color="textPrimary" marginBottom="0.5rem">
             I want to{" "}
@@ -81,7 +98,11 @@ const WelcomeCard = ({ parent, user }) => {
             </OpenModalButton>
           </Typography>
         ) : (
-          <FacebookLoginButton parent={parent} />
+            <Box
+                minWidth="220px"
+            >
+                <FacebookLoginButton parent={parent} />
+            </Box>
         )}
         {loggedIn ? (
           <Box display="flex" alignItems="top">
@@ -99,7 +120,7 @@ const WelcomeCard = ({ parent, user }) => {
             </Typography>
           </Box>
         ) : null}
-      </WhiteContainer>
+        </Box>
       {loggedIn ? (
         <>
           <UpdateProfileModal

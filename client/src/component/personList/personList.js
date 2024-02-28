@@ -3,7 +3,6 @@ import React from "react";
 
 import "./personList.css";
 import PersonCard from "../personCard/personCard";
-import WhiteContainer from "../whiteContainer/whiteContainer";
 import { STATUS } from "../../constants";
 import { capitalize } from "lodash";
 
@@ -51,14 +50,12 @@ const PersonList = ({ title, positions, candidates }) => {
 
   return (
     <Box margin="1rem" className="personList">
-      <WhiteContainer maxWidth="400px">
-        <Typography variant="h4" color="textPrimary">
+        <Typography variant="h4" color="textPrimary" textAlign="center">
           {title}
         </Typography>
         <Box key={title} marginBottom="0.8em">
           {getColumnContents()}
         </Box>
-      </WhiteContainer>
     </Box>
   );
 };

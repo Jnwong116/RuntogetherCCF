@@ -13,6 +13,7 @@ import {
   CONSIDERING_POSITIONS,
 } from "../constants";
 import { getAllUsers } from "../actions/loadInfo";
+import LinkSection from "../component/linkSection/linkSection";
 
 class Home extends React.Component {
   constructor(props) {
@@ -31,32 +32,37 @@ class Home extends React.Component {
     return (
       <>
         <WelcomeCard parent={this} user={this.state.user} />
-        <Divider sx={{ bgcolor: "secondary.light", margin: "2.5rem" }} />
-        <Typography variant="h2" color="textPrimary" textAlign="center">
-          {ELECTIONS_HEADER_TEXT}
-        </Typography>
         <Box
-          display="flex"
-          justifyContent="center"
-          flexWrap="wrap"
-          marginTop="1rem"
+            backgroundColor="secondary.main"
+            padding="2rem 4rem"
         >
-          <PersonList
-            title={capitalize(STATUS.CONSIDERING)}
-            positions={CONSIDERING_POSITIONS}
-            candidates={this.state.candidates}
-          />
-          <PersonList
-            title="Committee"
-            positions={COMMITTEE_POSITIONS}
-            candidates={this.state.candidates}
-          />
-          <PersonList
-            title="IGs & Ministries"
-            positions={MINISTRY_POSITIONS}
-            candidates={this.state.candidates}
-          />
+            <Typography variant="h2" color="textPrimary" textAlign="left">
+                {ELECTIONS_HEADER_TEXT}
+            </Typography>
+            <Box
+                display="flex"
+                justifyContent="center"
+                flexWrap="wrap"
+                marginTop="1rem"
+            >
+                <PersonList
+                title={capitalize(STATUS.CONSIDERING)}
+                positions={CONSIDERING_POSITIONS}
+                candidates={this.state.candidates}
+                />
+                <PersonList
+                title="Committee"
+                positions={COMMITTEE_POSITIONS}
+                candidates={this.state.candidates}
+                />
+                <PersonList
+                title="IGs & Ministries"
+                positions={MINISTRY_POSITIONS}
+                candidates={this.state.candidates}
+                />
+            </Box>
         </Box>
+        <LinkSection />
       </>
     );
   }
