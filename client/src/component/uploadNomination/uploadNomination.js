@@ -1,6 +1,8 @@
 import { Box, TextField, Typography } from "@mui/material";
 import React from "react";
 import GenericButton from "../genericButton/genericButton";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 class UploadNomination extends React.Component {
   constructor(props) {
@@ -36,7 +38,18 @@ class UploadNomination extends React.Component {
           Type or paste your nomination in the box below and click "Submit" to
           upload your nomination.
         </Typography>
-        <TextField
+        <ReactQuill 
+            theme="snow" 
+            value={this.state.nominationText} 
+            onChange={this.handleNominationTextChange} 
+            style={{
+                height: "300px", 
+                marginBottom: "1em",
+                backgroundColor: "white",
+                width: "100%",
+            }}
+        />
+        {/* <TextField
           fullWidth
           multiline
           required
@@ -45,14 +58,13 @@ class UploadNomination extends React.Component {
           color="secondary"
           value={this.state.nominationText}
           onChange={this.handleNominationTextChange}
-        />
+        /> */}
         <Box width="150px" marginLeft="auto" marginRight="0" marginTop="0.8em">
         <GenericButton 
             color="action"
             onClick={() => {
               this.props.handleSubmit(this.state.nominationText);
             }}
-
         >
         Submit
         </GenericButton>
