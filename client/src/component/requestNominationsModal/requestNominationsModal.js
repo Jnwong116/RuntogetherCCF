@@ -59,7 +59,7 @@ const RequestNominationsModal = ({ person, open, onClose }) => {
             onMouseEnter={() => setTooltipTitle("Copy")}
           >
             <GenericButton
-              color="secondary"
+              color="action"
               disabled={!nominationLink}
               onClick={() => copyToClipboard()}
             >

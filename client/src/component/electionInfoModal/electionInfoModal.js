@@ -135,7 +135,7 @@ const ElectionInfoModal = ({
         <GenericButton onClick={handleBack} color="info">
           <Typography variant="h4">Back</Typography>
         </GenericButton>
-        <GenericButton color="secondary" onClick={handleSubmit}>
+        <GenericButton color="action" onClick={handleSubmit}>
           <Typography variant="h4">Save</Typography>
         </GenericButton>
       </Box>

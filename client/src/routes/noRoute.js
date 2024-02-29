@@ -1,47 +1,31 @@
-import { Box, Button, ThemeProvider, Typography } from "@mui/material";
+import { ThemeProvider, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import WelcomeHeader from "../component/welcomeHeader/welcomeHeader";
-import WhiteContainer from "../component/whiteContainer/whiteContainer";
 import { CCF_THEME } from "../actions/theme";
+import SplashPage from "../component/splashPage/splashPage";
+import ModuleWrapper from "../component/moduleWrapper/moduleWrapper";
+import GenericButton from "../component/genericButton/genericButton";
 
 const NoRoute = () => {
   return (
     <ThemeProvider theme={CCF_THEME}>
-      <Box padding="1rem" margin="1rem">
-        <WelcomeHeader />
-        <WhiteContainer
-          maxWidth="600px"
-          margin="1.5rem auto"
-          textAlign="center"
-        >
-          <Typography
+        <SplashPage />
+        <ModuleWrapper backgroundColor="primary.main">
+            <Typography
             variant="h3"
             color="textPrimary"
             paddingBottom="0.5rem"
             fontWeight="600"
-          >
-            404 Not Found.
-          </Typography>
-          <Typography color="textPrimary">
-            The page you are looking for does not exist.
-          </Typography>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Button
-              color="secondary"
-              variant="outlined"
-              size="large"
-              sx={{
-                marginTop: "1em",
-                borderRadius: "8px",
-                textTransform: "none",
-              }}
             >
-              Back to Home
-            </Button>
-          </Link>
-        </WhiteContainer>
-      </Box>
+            404 Not Found.
+            </Typography>
+            <Typography color="textPrimary">
+            The page you are looking for does not exist.
+            </Typography>
+            <Link to="/" style={{ textDecoration: "none" }}>
+            <GenericButton color="action">Return to Home</GenericButton>
+            </Link>
+        </ModuleWrapper>
     </ThemeProvider>
   );
 };

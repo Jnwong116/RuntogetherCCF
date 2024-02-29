@@ -13,6 +13,8 @@ const RED = "#F56476";
 const GREEN = "#32DE8A";
 const BLUE_BACKGROUND = "rgba(22, 38, 93, 0.65)";
 const LIGHT_GRAY = "#C0C0C0";
+const DARK_GRAY = "#A9A9A9";
+const MID_GRAY = "#E1E1E1";
 const BLACK = "#000000";
 
 export const CCF_THEME = createTheme({
@@ -38,8 +40,7 @@ export const CCF_THEME = createTheme({
       fontWeight: 600,
     },
     h6: {
-      fontSize: "1em",
-      fontWeight: 600,
+      fontSize: "0.85em",
     },
     subtitle1: {
       fontSize: "1.5em",
@@ -67,12 +68,11 @@ export const CCF_THEME = createTheme({
     secondary: {
       dark: BLUE_DARK,
       main: BLUE_MAIN,
-      light: GRAY_LIGHT,
-      contrastText: BLACK,
+      light: MID_GRAY,
     },
     text: {
       primary: BLACK,
-      secondary: GRAY,
+      secondary: LIGHT_GRAY,
     },
     success: {
       main: GREEN,
@@ -81,14 +81,29 @@ export const CCF_THEME = createTheme({
       main: RED,
     },
     info: {
-      main: GRAY_LIGHTISH,
+      main: MID_GRAY,
     },
     action: {
-      selected: BLUE_LIGHT,
+      main: BLUE_DARK,
     },
     splash: {
         main: BLUE_BACKGROUND,
-        contrastText: LIGHT_GRAY,
     },
+    button: {
+        main: BLUE_DARK,
+        light: LIGHT_GRAY,
+    }
   },
+    // components: {
+    //     MuiButton: {
+    //     styleOverrides: {
+    //         root: {
+    //         "&.Mui-disabled": {
+    //             color: DARK_GRAY,
+    //             border: `2px solid ${DARK_GRAY}`,
+    //         },
+    //         },
+    //     },
+    //     },
+    // },
 });

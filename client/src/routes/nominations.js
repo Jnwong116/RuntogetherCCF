@@ -1,12 +1,12 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import WhiteContainer from "../component/whiteContainer/whiteContainer";
 import UploadNomination from "../component/uploadNomination/uploadNomination";
 import SubmittedNomination from "../component/submittedNomination/submittedNomination";
 import { getUser } from "../actions/loadInfo";
 import { errorToast } from "../actions/toastify";
 import { uploadNomination } from "../actions/updateUsers";
 import GoogleLoginButton from "../component/googleLogin/googleLogin";
+import ModuleWrapper from "../component/moduleWrapper/moduleWrapper";
 
 class Nominations extends React.Component {
   constructor(props) {
@@ -50,9 +50,9 @@ class Nominations extends React.Component {
     }
 
     return (
-      <WhiteContainer maxWidth="800px" margin="1.5rem auto" textAlign="center">
+      <ModuleWrapper backgroundColor="primary.main">
         <Typography
-          variant="h3"
+          variant="h2"
           color="textPrimary"
           paddingBottom="0.5em"
           fontWeight="600"
@@ -73,7 +73,7 @@ class Nominations extends React.Component {
         ) : (
           <></>
         )}
-      </WhiteContainer>
+        </ModuleWrapper>
     );
   }
 }

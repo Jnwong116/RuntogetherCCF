@@ -190,7 +190,7 @@ const PersonalInfoModal = ({
         <GenericButton onClick={onClose} color="info">
           <Typography variant="h4">Cancel</Typography>
         </GenericButton>
-        <GenericButton color="secondary" onClick={handleNext}>
+        <GenericButton color="action" onClick={handleNext}>
           <Typography variant="h4">Next</Typography>
         </GenericButton>
       </Box>

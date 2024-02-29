@@ -45,7 +45,7 @@ const PersonList = ({ title, positions, candidates }) => {
         <Typography variant="h4" color="textPrimary" textAlign="center">
           {title}
         </Typography>
-        <Box key={title} marginBottom="0.8em">
+        <Box key={title} marginBottom="0.8em" className="personListContent">
           {getColumnContents()}
         </Box>
     </Box>
