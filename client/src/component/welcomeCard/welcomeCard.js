@@ -16,6 +16,8 @@ import { capitalize } from "lodash";
 import UpdateProfileModal from "../updateProfileModal/updateProfileModal";
 import RequestNominationsModal from "../requestNominationsModal/requestNominationsModal";
 import GoogleLoginButton from "../googleLogin/googleLogin";
+import "./welcomeCard.css";
+import ModuleWrapper from "../moduleWrapper/moduleWrapper";
 
 const WelcomeCard = ({ parent, user }) => {
   const [updateProfileOpen, setUpdateProfileOpen] = useState(false);
@@ -42,7 +44,7 @@ const WelcomeCard = ({ parent, user }) => {
 
   const getIcon = (isWaiting, isProfileComplete) => {
     if (isWaiting) {
-      return <InfoOutlinedIcon fontSize="medium" color="info" />;
+      return <InfoOutlinedIcon fontSize="medium" color="warning" />;
     } else if (isProfileComplete) {
       return (
         <CheckCircleOutlineOutlinedIcon fontSize="medium" color="success" />
@@ -61,15 +63,8 @@ const WelcomeCard = ({ parent, user }) => {
 
   return (
     <>
-        <Box 
-            display="flex"
-            flexDirection="row"
-            alignItems="center"
-            flex-wrap="wrap"
-            justifyContent="space-between"
-            backgroundColor="primary.main"
-            padding="2rem 4rem"
-        >
+        <ModuleWrapper backgroundColor="primary.main">
+        <Box className={loggedIn ? "welcomeCardContainer welcomeCardContainerBar" : "welcomeCardContainer"}>
             <Box 
                 display="flex"
                 flexDirection="column"
@@ -80,32 +75,31 @@ const WelcomeCard = ({ parent, user }) => {
                 Welcome
                 </Typography>
                 <Typography variant="h2" color="textPrimary" marginBottom="0.5rem">
-                    {loggedIn ? <strong>{name}.</strong> : NOT_LOGGED_IN_MESSAGE}
+                    {loggedIn ? <strong>{name}</strong> : NOT_LOGGED_IN_MESSAGE}
                 </Typography>
             </Box>
-        {loggedIn ? (
-          <Typography color="textPrimary" marginBottom="0.5rem">
-            I want to{" "}
-            <OpenModalButton onClick={() => setUpdateProfileOpen(true)}>
-              update my profile
-            </OpenModalButton>{" "}
-            or{" "}
-            <OpenModalButton
-              onClick={() => setRequestNominationsOpen(true)}
-              disabled={!isDecided}
-            >
-              request nominations.
-            </OpenModalButton>
-          </Typography>
-        ) : (
-          <GoogleLoginButton parent={parent} />
-        )}
+            {loggedIn ? (
+                <Box className="welcomeCardButtons">
+                <OpenModalButton onClick={() => setUpdateProfileOpen(true)}>
+                    Update Profile
+                </OpenModalButton>
+                <OpenModalButton
+                    onClick={() => setRequestNominationsOpen(true)}
+                    disabled={!isDecided}
+                >
+                    Request Nominations
+                </OpenModalButton>
+            </Box>
+            ) : (
+            <GoogleLoginButton parent={parent} />
+            )}
+        </Box>
         {loggedIn ? (
           <Box display="flex" alignItems="top">
             {getIcon(isWaiting, isProfileComplete)}
             <Typography
               paddingLeft="0.5rem"
-              color="textSecondary"
+              color="textPrimary"
               variant="h5"
               fontWeight="400"
               textAlign="left"
@@ -116,7 +110,7 @@ const WelcomeCard = ({ parent, user }) => {
             </Typography>
           </Box>
         ) : null}
-        </Box>
+        </ModuleWrapper>
       {loggedIn ? (
         <>
           <UpdateProfileModal

@@ -11,14 +11,6 @@ const PersonList = ({ title, positions, candidates }) => {
     if (title === capitalize(STATUS.CONSIDERING)) {
       return Object.values(positions).map((pos) => (
         <React.Fragment key={pos}>
-          <Typography
-            key={pos}
-            variant="subtitle2"
-            color="textSecondary"
-            textAlign="center"
-          >
-            {pos}
-          </Typography>
           {candidates
             .filter((p) => p.status === STATUS.CONSIDERING)
             .map((person) => (
@@ -32,8 +24,8 @@ const PersonList = ({ title, positions, candidates }) => {
         <Typography
           key={pos}
           variant="subtitle2"
-          color="textSecondary"
-          textAlign="center"
+          color="textPrimary"
+          margin="0.5em 0 0.5em 0"
         >
           {pos}
         </Typography>
@@ -49,11 +41,11 @@ const PersonList = ({ title, positions, candidates }) => {
   };
 
   return (
-    <Box margin="1rem" className="personList">
+    <Box className="personList">
         <Typography variant="h4" color="textPrimary" textAlign="center">
           {title}
         </Typography>
-        <Box key={title} marginBottom="0.8em">
+        <Box key={title} marginBottom="0.8em" className="personListContent">
           {getColumnContents()}
         </Box>
     </Box>

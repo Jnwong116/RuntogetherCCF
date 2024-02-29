@@ -1,5 +1,8 @@
+import React from "react";
+
 import { Box, Typography } from "@mui/material";
-import { Divider } from "@mui/material";
+import { HEADER_TEXT, TITLE } from "../../constants";
+import "./splashPage.css";
 
 const SplashPage = () => {
     
@@ -16,7 +19,8 @@ const SplashPage = () => {
                     height: "80vh", 
                     zIndex: "-1",
                     objectFit: "cover",
-                    objectPosition: "center"
+                    objectPosition: "center",
+                    minHeight: "500px",
                     }} 
             />
             <Box
@@ -28,22 +32,19 @@ const SplashPage = () => {
                     height: "80vh", 
                     zIndex: "-1",
                     backgroundColor: "splash.main",
+                    minHeight: "500px",
                 }}
             />
-            <Box 
-                height='70vh'
-                minHeight='200px'
-                display='flex'
-                flexDirection='column'
-                justifyContent='flex-end'
-                alignItems='flex-start'
-            >
-                <Typography variant="h1" color="splash.contrastText" textAlign="center">
-                    RunTogether
+            <Box className="splashPage">
+                <Typography 
+                    variant="h1" 
+                    color="textSecondary"
+                    className="title"
+                >
+                    {TITLE}
                 </Typography>
-                <Divider />
-                <Typography variant="h3" color="splash.contrastText" textAlign="center">
-                    Join in on the elections process by praying, discerning, and running together.
+                <Typography variant="h2" color="textSecondary">
+                    {HEADER_TEXT}
                 </Typography>
             </Box>
         </>

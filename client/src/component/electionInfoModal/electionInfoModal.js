@@ -49,7 +49,7 @@ const ElectionInfoModal = ({
             key={val}
             value={val}
             selected={status === val}
-            color="secondary"
+            color="action"
             onClick={() => setStatus(val)}
             sx={{
               borderRadius: "0",
@@ -135,7 +135,7 @@ const ElectionInfoModal = ({
         <GenericButton onClick={handleBack} color="info">
           <Typography variant="h4">Back</Typography>
         </GenericButton>
-        <GenericButton color="secondary" onClick={handleSubmit}>
+        <GenericButton color="action" onClick={handleSubmit}>
           <Typography variant="h4">Save</Typography>
         </GenericButton>
       </Box>

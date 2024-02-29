@@ -1,5 +1,6 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import React from "react";
+import GenericButton from "../genericButton/genericButton";
 
 class UploadNomination extends React.Component {
   constructor(props) {
@@ -46,21 +47,15 @@ class UploadNomination extends React.Component {
           onChange={this.handleNominationTextChange}
         />
         <Box width="150px" marginLeft="auto" marginRight="0" marginTop="0.8em">
-          <Button
-            color="secondary"
-            variant="outlined"
-            size="large"
+        <GenericButton 
+            color="action"
             onClick={() => {
               this.props.handleSubmit(this.state.nominationText);
             }}
-            fullWidth
-            sx={{
-              borderRadius: "8px",
-              textTransform: "none",
-            }}
-          >
-            Submit
-          </Button>
+
+        >
+        Submit
+        </GenericButton>
         </Box>
       </>
     );
