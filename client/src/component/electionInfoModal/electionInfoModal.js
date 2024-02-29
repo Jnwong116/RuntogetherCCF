@@ -49,7 +49,7 @@ const ElectionInfoModal = ({
             key={val}
             value={val}
             selected={status === val}
-            color="secondary"
+            color="action"
             onClick={() => setStatus(val)}
             sx={{
               borderRadius: "0",

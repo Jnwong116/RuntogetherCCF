@@ -89,21 +89,5 @@ export const CCF_THEME = createTheme({
     splash: {
         main: BLUE_BACKGROUND,
     },
-    button: {
-        main: BLUE_DARK,
-        light: LIGHT_GRAY,
-    }
   },
-    // components: {
-    //     MuiButton: {
-    //     styleOverrides: {
-    //         root: {
-    //         "&.Mui-disabled": {
-    //             color: DARK_GRAY,
-    //             border: `2px solid ${DARK_GRAY}`,
-    //         },
-    //         },
-    //     },
-    //     },
-    // },
 });
