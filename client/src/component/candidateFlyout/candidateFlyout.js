@@ -11,6 +11,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { CCF_THEME } from "../../actions/theme";
 import { capitalize } from "lodash";
 import { GeneralLink } from "../linkSection/linkSection";
+import "./candidateFlyout.css";
 
 const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
   const {
@@ -109,7 +110,12 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
               margin="0 0 1rem 0"
             >
                 <Typography variant="h3" paddingBottom="0.3rem"><strong>{nom.nominator}</strong></Typography>
-                <Typography>{nom.nomination}</Typography>
+                <Box className="nominationBody">
+                <Typography 
+                    component="div" 
+                    dangerouslySetInnerHTML={{__html: nom.nomination}}>
+                </Typography>
+                </Box>
             </Box>
           ))}
       </Box>
