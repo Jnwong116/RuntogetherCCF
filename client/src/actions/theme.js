@@ -87,7 +87,7 @@ export const CCF_THEME = createTheme({
       main: BLUE_DARK,
     },
     splash: {
-        main: BLUE_BACKGROUND,
+        main: BLUE_BACKGROUND,  
     },
   },
 });

@@ -20,7 +20,7 @@ class Nominations extends React.Component {
       user: {},
     };
   }
-
+  
   componentDidMount() {
     const param = window.location.href.split("?")[1];
     const userID = param.split("=")[1];
@@ -31,9 +31,11 @@ class Nominations extends React.Component {
     const handleSubmit = (nominationText) => {
       if (this.state.user.name === undefined) {
         errorToast("Please log in to submit a nomination");
-      } else if (this.state.user.id === this.state.nominee.id) {
+      } 
+      else if (this.state.user.id === this.state.nominee.id) {
         errorToast("You cannot nominate yourself");
-      } else {
+      } 
+      else {
         uploadNomination(this.state.nominee, this.state.user, nominationText);
         this.setState({ submitted: true });
       }
