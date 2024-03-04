@@ -1,14 +1,17 @@
 const port = 3000;
 
+require("dotenv").config();
+const google_client_id = process.env.GOOGLE_CLIENT_ID;
+
 const dev = {
   port,
   api_host: `http://localhost:${port}`,
-  google_client_id: "858566898033-jau549hlkcrroj0fhgg0upj53anhbcde.apps.googleusercontent.com",
+  google_client_id: google_client_id,
 };
 
 const prod = {
-  api_host: "https://runtogetherccf.herokuapp.com",
-  google_client_id: "858566898033-jau549hlkcrroj0fhgg0upj53anhbcde.apps.googleusercontent.com",
+  api_host: "https://runtogetherccf-8qe6.onrender.com",
+  google_client_id: google_client_id,
 };
 
-module.exports = dev;
+module.exports = prod;
