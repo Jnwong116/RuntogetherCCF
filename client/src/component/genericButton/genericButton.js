@@ -8,10 +8,17 @@ const GenericButton = ({ children, ...buttonProps }) => {
       variant="outlined"
       size="medium"
       sx={{
-        borderRadius: "8px",
+        borderRadius: "15px",
+        borderWidth: "3px",
         textTransform: "none",
-        margin: "0 0 0 0.5rem",
-        padding: "0.6rem",
+        margin: "0 0.5rem",
+        padding: "0.6rem 0.8rem",
+        ':hover': {
+            borderWidth: "3px",
+        },
+        ':disabled': {
+            borderWidth: "3px",
+        },
       }}
     >
       {children}

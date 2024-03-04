@@ -10,6 +10,11 @@ const DEFAULT_PROFILE_PIC = "profile.jpeg";
 
 const PersonCard = ({ person }) => {
   const [flyoutOpen, setFlyoutOpen] = useState(false);
+  const [validPicture, setValidPicture] = useState(true);
+
+  const handleImageError = () => {
+    setValidPicture(false);
+  }
 
   const {
     name,
@@ -26,10 +31,6 @@ const PersonCard = ({ person }) => {
   return (
     <Box
       marginBottom="0.5rem"
-      borderRadius="12px"
-      border="1px solid"
-      bgcolor="primary.main"
-      borderColor="primary.dark"
       display="flex"
       alignItems="center"
     >
@@ -49,19 +50,23 @@ const PersonCard = ({ person }) => {
       >
         <Box
           borderRadius="50%"
-          border="1px solid"
-          borderColor="primary.dark"
           overflow="hidden"
           height={IMAGE_DIMENSIONS}
           minWidth={IMAGE_DIMENSIONS}
           margin="0.1em"
         >
-          <img
-            src={picture ?? DEFAULT_PROFILE_PIC}
+          { validPicture ? <img
+            src={picture}
             alt="profile pic"
             height="100%"
             width="100%"
-          />
+            onError={handleImageError}
+          /> : <img
+            src={DEFAULT_PROFILE_PIC}
+            alt="profile pic"
+            height="100%"
+            width="100%"
+          />}
         </Box>
         <Box marginLeft="0.65em">
           <Typography variant="h5" color="textPrimary" marginBottom="0.5em">

@@ -1,6 +1,7 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import GenericButton from "../genericButton/genericButton";
 
 const SubmittedNomination = ({ nominee }) => {
   return (
@@ -12,18 +13,7 @@ const SubmittedNomination = ({ nominee }) => {
       </Typography>
       <Link to="/" style={{ textDecoration: "none" }}>
         <Box width="150px" marginLeft="auto" marginRight="0" marginTop="1em">
-          <Button
-            color="secondary"
-            variant="outlined"
-            size="large"
-            fullWidth
-            sx={{
-              borderRadius: "8px",
-              textTransform: "none",
-            }}
-          >
-            Back
-          </Button>
+          <GenericButton color="action">Back</GenericButton>
         </Box>
       </Link>
     </>

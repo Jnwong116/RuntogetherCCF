@@ -1,8 +1,15 @@
 .personList {
   width: 400px;
 }
-@media (min-width: 400px) {
+
+.personListContent {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+@media (min-width: 450px) {
   .personList {
-    min-width: 350px;
+    min-width: 300px;
+    padding: 1rem;
   }
 }

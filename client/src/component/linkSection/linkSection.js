@@ -1,35 +1,44 @@
 import React from "react";
-import { Box, Link } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
+import LinkIcon from '@mui/icons-material/Link';
 import { LINKS } from "../../constants";
+import ModuleWrapper from "../moduleWrapper/moduleWrapper";
 
-const GeneralLink = ({ label, link }) => {
+export const GeneralLink = ({ label, link, size }) => {
   return (
-    <Link href={link} color="secondary" margin="0 0.25rem" textAlign="center">
-      {label}
+    <Link 
+        href={link} 
+        color="textPrimary" 
+        underline="hover"
+        target="_blank"
+    >
+        <Box display="flex" alignItems="center" gap="0.2rem">
+            <LinkIcon />
+            <Typography variant={size}>
+                {label}
+            </Typography>
+        </Box>
     </Link>
   );
 };
 
 const LinkSection = () => {
   return (
-    <Box
-      position="fixed"
-      borderBottom="1px solid #E4CBA3"
-      bgcolor="white"
-      top="0"
-      left="0"
-      width="100%"
-      overflow="auto"
-      whiteSpace="nowrap"
-      padding="1rem 2rem"
-      zIndex="1"
-      display="flex"
-      justifyContent="center"
-    >
+    <ModuleWrapper backgroundColor="primary.main">
+        <Typography variant="h2" color="textPrimary" textAlign="center">
+            Resources
+        </Typography>
+        <Box 
+            display="flex" 
+            justifyContent="center" 
+            flexWrap="wrap"
+            gap="1rem"
+        >
       {LINKS.map((entry) => (
-        <GeneralLink label={entry.label} link={entry.link} key={entry.label} />
+        <GeneralLink label={entry.label} link={entry.link} key={entry.label} size="h6" />
       ))}
-    </Box>
+        </Box>
+    </ModuleWrapper>
   );
 };
 

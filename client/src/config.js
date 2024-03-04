@@ -1,14 +1,14 @@
-const port = 5001;
+const port = 3000;
 
 const dev = {
   port,
   api_host: `http://localhost:${port}`,
-  facebokAppID: 732393428529326,
+  google_client_id: "858566898033-jau549hlkcrroj0fhgg0upj53anhbcde.apps.googleusercontent.com",
 };
 
 const prod = {
   api_host: "https://runtogetherccf.herokuapp.com",
-  facebokAppID: 1355204125212638,
+  google_client_id: "858566898033-jau549hlkcrroj0fhgg0upj53anhbcde.apps.googleusercontent.com",
 };
 
-module.exports = prod;
+module.exports = dev;

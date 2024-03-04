@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { CCF_THEME } from "../../actions/theme";
-import WhiteContainer from "../whiteContainer/whiteContainer";
-import VisionButton from "../visionButton/visionButton";
 import { capitalize } from "lodash";
+import { GeneralLink } from "../linkSection/linkSection";
+import "./candidateFlyout.css";
 
 const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
   const {
@@ -59,7 +59,8 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
       anchor="right"
       PaperProps={{
         sx: {
-          width: responsiveWidth,
+            width: responsiveWidth,
+            backgroundColor: "secondary.light",
         },
       }}
     >
@@ -71,40 +72,51 @@ const CandidateFlyout = ({ person, flyoutOpen, setFlyoutOpen }) => {
             width="95%"
             flexWrap="wrap"
           >
-            <Typography variant="h2" width="fit" marginBottom="0.3rem">
+            <Typography variant="h2" width="fit" marginBottom="0.5rem">
               {name}
             </Typography>
-            <VisionButton visionName={visionName} visionLink={visionLink} />
           </Box>
           <IconButton
-            color="secondary"
+            color="textPrimary"
             onClick={() => setFlyoutOpen(false)}
             sx={{ padding: "0.2rem", marginLeft: "0.5rem", maxHeight: "30px" }}
           >
             <CloseIcon />
           </IconButton>
         </Box>
-        <Typography variant="h3">
+        <Typography variant="h3" paddingBottom="1em">
           {schoolInfo}
           {christianInfo}
           {ccfInfo}
           Running for <strong>{capitalize(positions[0])}</strong>
         </Typography>
+        {visionName && 
+            <>
+            <Typography variant="h3">
+                <strong>Vision:</strong>
+            </Typography>
+            <GeneralLink label={visionName} link={visionLink} size="h3" />
+            </>
+        }
         <Divider sx={{ bgcolor: "secondary.light", margin: "1em 0" }} />
-        <Typography variant="h3" fontWeight="600" marginBottom="0.5em">
+        <Typography variant="h2" fontWeight="600" marginBottom="0.5em">
           Nominations
         </Typography>
         {hasNominators &&
           nominations.map((nom) => (
-            <WhiteContainer
+            <Box
               key={nom.nominator}
-              padding="0.8rem"
-              bgcolor="primary.main"
+              padding="0.8rem 0rem"
               margin="0 0 1rem 0"
             >
-              <Typography>{nom.nomination}</Typography>
-              <Typography textAlign="right">{nom.nominator}</Typography>
-            </WhiteContainer>
+                <Typography variant="h3" paddingBottom="0.3rem"><strong>{nom.nominator}</strong></Typography>
+                <Box className="nominationBody">
+                <Typography 
+                    component="div" 
+                    dangerouslySetInnerHTML={{__html: nom.nomination}}>
+                </Typography>
+                </Box>
+            </Box>
           ))}
       </Box>
     </Drawer>

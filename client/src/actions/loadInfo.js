@@ -75,9 +75,9 @@ export const getUser = (user, page) => {
 };
 
 export const login = (user, page) => {
-  const fbID = user.id;
+  const googleID = user.sub;
 
-  const url = `${API_HOST}/users/user/${fbID}`;
+  const url = `${API_HOST}/users/user/${googleID}`;
 
   const request = new Request(url, {
     method: "get",

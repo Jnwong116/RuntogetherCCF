@@ -1,8 +1,8 @@
 import { createTheme } from "@mui/material";
 
-const YELLOW_LIGHT = "#fff7e8";
+const YELLOW_LIGHT = "#D8D0C1";
 export const YELLOW_DARK = "#E4CBA3";
-export const BLUE_MAIN = "#2B75D6";
+export const BLUE_MAIN = "#ADC7E6";
 const BLUE_DARK = "#374660";
 const BLUE_LIGHT = "rgba(43,117,214,15%)";
 export const GRAY = "#6C778C";
@@ -11,13 +11,18 @@ const GRAY_LIGHTISH = "rgba(108, 119, 140, 40%)";
 export const WHITE = "#FFFFFF";
 const RED = "#F56476";
 const GREEN = "#32DE8A";
+const BLUE_BACKGROUND = "rgba(22, 38, 93, 0.65)";
+const LIGHT_GRAY = "#C0C0C0";
+const DARK_GRAY = "#A9A9A9";
+const MID_GRAY = "#E1E1E1";
+const BLACK = "#000000";
 
 export const CCF_THEME = createTheme({
   typography: {
     fontFamily: "Montserrat",
     h1: {
       fontWeight: 600,
-      fontSize: "2.5em",
+      fontSize: "6em",
     },
     h2: {
       fontSize: "2em",
@@ -35,8 +40,7 @@ export const CCF_THEME = createTheme({
       fontWeight: 600,
     },
     h6: {
-      fontSize: "1em",
-      fontWeight: 600,
+      fontSize: "0.85em",
     },
     subtitle1: {
       fontSize: "1.5em",
@@ -64,11 +68,11 @@ export const CCF_THEME = createTheme({
     secondary: {
       dark: BLUE_DARK,
       main: BLUE_MAIN,
-      light: GRAY_LIGHT,
+      light: MID_GRAY,
     },
     text: {
-      primary: BLUE_DARK,
-      secondary: GRAY,
+      primary: BLACK,
+      secondary: LIGHT_GRAY,
     },
     success: {
       main: GREEN,
@@ -77,10 +81,13 @@ export const CCF_THEME = createTheme({
       main: RED,
     },
     info: {
-      main: GRAY_LIGHTISH,
+      main: MID_GRAY,
     },
     action: {
-      selected: BLUE_LIGHT,
+      main: BLUE_DARK,
+    },
+    splash: {
+        main: BLUE_BACKGROUND,  
     },
   },
 });

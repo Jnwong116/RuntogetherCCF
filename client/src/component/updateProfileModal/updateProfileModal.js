@@ -54,7 +54,7 @@ const UpdateProfileModal = ({ person, open, onClose, parent }) => {
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
       <Box
-        bgcolor="background.paper"
+        bgcolor="secondary.light"
         position="absolute"
         width={responsiveWidth}
         height={responsiveHeight}
