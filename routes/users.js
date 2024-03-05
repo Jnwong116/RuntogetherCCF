@@ -4,6 +4,7 @@ const {
   getAllUsers,
   getUser,
   deleteUser,
+  deleteUsers,
   uploadNominationLink,
   updateNominations,
   updateVisionOrPosition,
@@ -60,6 +61,22 @@ router.route("/user/:id").delete((req, res) => {
     .then((result) => {
       if (!result) {
         res.status(404).json("User not found");
+        return;
+      }
+
+      res.send(result);
+    })
+    .catch((err) => {
+      res.status(400).json("Error: " + err);
+    });
+});
+
+// Deletes all users
+router.route("/user").delete((req, res) => {
+  deleteUsers({})
+    .then((result) => {
+      if (!result) {
+        res.status(404).json("Failed to delete all users");
         return;
       }
 
