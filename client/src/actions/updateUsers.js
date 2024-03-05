@@ -63,7 +63,7 @@ export const createUser = (googleUser, page) => {
       name: googleUser.name,
       position: [],
       picture: googleUser.picture,
-      nominationLink: `${API_HOST}/nominations?id=${googleUser.sub}`,
+      nominationLink: `${ENV.client_host}/nominations?id=${googleUser.sub}`,
     }),
     headers: {
       Accept: "application/json, text/plain, */*",
