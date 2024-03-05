@@ -1,6 +1,5 @@
 const port = 3000;
 
-require("dotenv").config();
 const google_client_id = process.env.GOOGLE_CLIENT_ID;
 
 const dev = {
