@@ -77,9 +77,9 @@ export const MINISTRY_POSITIONS = {
   WORSHIP_TEAM_MEMBER: "WORSHIP TEAM MEMBER",
   OUTREACH_MINISTRY: "OUTREACH MINISTRY",
   HOSPITALITY_MINISTRY: "HOSPITALITY MINISTRY",
-  VITAMIN_MINISTRY: "VITAMIN MINISTRY",
-  SPORTS_MINISTRY: "SPORTS MINISTRY",
-  WORSHIP_MINISTRY: "WORSHIP MINISTRY",
+  // VITAMIN_MINISTRY: "VITAMIN MINISTRY",
+  // SPORTS_MINISTRY: "SPORTS MINISTRY",
+  // WORSHIP_MINISTRY: "WORSHIP MINISTRY", 
 };
 export const CONSIDERING_POSITIONS = {
   ALL_ROLES: "ALL ROLES",
@@ -172,22 +172,22 @@ export const LINKS = [
     label: "Constitution",
     link: "https://docs.google.com/document/d/1RYMSCOyMciT2TKG8CP0RZ9sSlWIhi8uZ4JVjH9LHI2E/edit?usp=sharing",
   },
-  {
-    label: "Election's Handbook",
-    link: "https://docs.google.com/document/d/1I_1JZS__cLdcWu67uJa8CCqmIzwn7O_jOTjlw7DE9GI/edit?usp=sharing",
-  },
+  // {
+  //   label: "Election's Handbook",
+  //   link: "https://docs.google.com/document/d/1I_1JZS__cLdcWu67uJa8CCqmIzwn7O_jOTjlw7DE9GI/edit?usp=sharing",
+  // },
   {
     label: "Past Visions",
     link: "https://drive.google.com/drive/folders/18R0YYYe0TBIreOym_vPb28vHyp1zBQdQ?usp=share_link",
   },
-  {
-    label: "Leadership Workshop Slides",
-    link: "https://docs.google.com/presentation/d/1KTKnY1yxlP-24ND77o5KfOcC6RS85KC-IbWsTA383XI/edit?usp=sharing",
-  },
-  {
-    label: "Leadership Workshop Video",
-    link: "https://drive.google.com/file/d/1But0_n4m-T1b4xSNYsRLqX9fHgAdV0yr/view?usp=share_link",
-  },
+  // {
+  //   label: "Leadership Workshop Slides",
+  //   link: "https://docs.google.com/presentation/d/1KTKnY1yxlP-24ND77o5KfOcC6RS85KC-IbWsTA383XI/edit?usp=sharing",
+  // },
+  // {
+  //   label: "Leadership Workshop Video",
+  //   link: "https://drive.google.com/file/d/1But0_n4m-T1b4xSNYsRLqX9fHgAdV0yr/view?usp=share_link",
+  // },
   {
     label: "UTCCF",
     link: "https://www.utccf.com",
