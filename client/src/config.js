@@ -1,6 +1,7 @@
 const port = 3000;
 
 const google_client_id = process.env.GOOGLE_CLIENT_ID;
+console.log(google_client_id)
 
 const dev = {
   port,
