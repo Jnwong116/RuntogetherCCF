@@ -17,17 +17,16 @@ import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <Layout />,
     errorElement: <NoRoute />,
     children: [
       {
-        index: true,
-        element: <Home />,
-      },
-      {
         path: "nominations",
         element: <Nominations />,
+      },
+      {
+        index: true,
+        element: <Home />,
       },
     ],
   },
