@@ -81,7 +81,7 @@ export const CCF_THEME = createTheme({
       main: RED,
     },
     info: {
-      main: MID_GRAY,
+      main: DARK_GRAY,
     },
     action: {
       main: BLUE_DARK,

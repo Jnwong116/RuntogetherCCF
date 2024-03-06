@@ -1,11 +1,6 @@
 import React from "react";
-import { Box, Typography, TextField, Autocomplete } from "@mui/material";
+import { Box, Typography, TextField } from "@mui/material";
 import GenericButton from "../genericButton/genericButton";
-import {
-  CCF_YEAR_OPTIONS,
-  YEAR_NUMBER_OPTIONS,
-  YEAR_OF_STUDY_OPTIONS,
-} from "../../constants";
 
 const PersonalInfoModal = ({
   onClose,
@@ -62,18 +57,25 @@ const PersonalInfoModal = ({
           >
             Year
           </Typography>
-          <Autocomplete
-            size="small"
+          <TextField
+            variant="outlined"
+            color="secondary"
             sx={{ width: "140px", marginBottom: "1rem" }}
-            options={YEAR_OF_STUDY_OPTIONS}
+            size="small"
+            label="Year"
+            type="number"
+            inputProps={{min: 0, max: 50, inputMode: 'numeric', pattern: '[0-9]'}}
             value={yearOfStudy}
-            onChange={(_, value) => {
-              setYearOfStudy(value);
+            onChange={(event) => {
+                var val = event.target.value;
+                if (val > 50) {
+                    val = 50;
+                } else if (val < 0) {
+                    val = 0;
+                }
+                setYearOfStudy(val);
             }}
-            renderInput={(params) => (
-              <TextField {...params} label="Years" color="secondary" />
-            )}
-          />
+        />
         </Box>
       </Box>
       <Box display="flex" flexWrap="wrap" justifyContent="space-between">
@@ -113,18 +115,25 @@ const PersonalInfoModal = ({
           >
             Years
           </Typography>
-          <Autocomplete
-            size="small"
+          <TextField
+            variant="outlined"
+            color="secondary"
             sx={{ width: "140px", marginBottom: "1rem" }}
-            options={YEAR_NUMBER_OPTIONS}
+            size="small"
+            label="Years"
+            type="number"
+            inputProps={{min: 0, max: 100, inputMode: 'numeric', pattern: '[0-9]'}}
             value={churchYear}
-            onChange={(_, value) => {
-              setChurchYear(value);
+            onChange={(event) => {
+                var val = event.target.value;
+                if (val > 100) {
+                    val = 100;
+                } else if (val < 0) {
+                    val = 0;
+                }
+                setChurchYear(val);
             }}
-            renderInput={(params) => (
-              <TextField {...params} label="Years" color="secondary" />
-            )}
-          />
+        />
         </Box>
       </Box>
       <Box
@@ -141,17 +150,24 @@ const PersonalInfoModal = ({
         >
           Years following Christ
         </Typography>
-        <Autocomplete
-          size="small"
-          sx={{ width: "240px" }}
-          options={YEAR_NUMBER_OPTIONS}
-          value={followingChristYear}
-          onChange={(_, value) => {
-            setFollowingChristYear(value);
-          }}
-          renderInput={(params) => (
-            <TextField {...params} label="Years" color="secondary" />
-          )}
+        <TextField
+            variant="outlined"
+            color="secondary"
+            sx={{ width: "240px"  }}
+            size="small"
+            label="Years"
+            type="number"
+            inputProps={{min: 0, max: 100, inputMode: 'numeric', pattern: '[0-9]'}}
+            value={followingChristYear}
+            onChange={(event) => {
+                var val = event.target.value;
+                if (val > 100) {
+                    val = 100;
+                } else if (val < 0) {
+                    val = 0;
+                }
+                setFollowingChristYear(val);
+            }}
         />
       </Box>
       <Box
@@ -168,17 +184,24 @@ const PersonalInfoModal = ({
         >
           Years attending CCF
         </Typography>
-        <Autocomplete
-          size="small"
-          sx={{ width: "240px" }}
-          options={CCF_YEAR_OPTIONS}
-          value={ccfYear}
-          onChange={(_, value) => {
-            setCcfYear(value);
-          }}
-          renderInput={(params) => (
-            <TextField {...params} label="Years" color="secondary" />
-          )}
+        <TextField
+            variant="outlined"
+            color="secondary"
+            sx={{ width: "240px"  }}
+            size="small"
+            label="Years"
+            type="number"
+            inputProps={{min: 0, max: 100, inputMode: 'numeric', pattern: '[0-9]'}}
+            value={ccfYear}
+            onChange={(event) => {
+                var val = event.target.value;
+                if (val > 100) {
+                    val = 100;
+                } else if (val < 0) {
+                    val = 0;
+                }
+                setCcfYear(val);
+            }}
         />
       </Box>
       <Box
