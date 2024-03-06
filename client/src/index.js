@@ -15,8 +15,9 @@ import NoRoute from "./routes/noRoute";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
-const router = createBrowserRouter([
+let router = createBrowserRouter([
   {
+    path: "/",
     element: <Layout />,
     errorElement: <NoRoute />,
     children: [
