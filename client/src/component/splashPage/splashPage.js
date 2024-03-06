@@ -1,11 +1,10 @@
 import React from "react";
-
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import { HEADER_TEXT, TITLE } from "../../constants";
 import "./splashPage.css";
 
 const SplashPage = () => {
-    
+    const isSmallScreen = useMediaQuery("(max-width: 350px)");
     return (
         <>
             <img 
@@ -36,14 +35,15 @@ const SplashPage = () => {
                 }}
             />
             <Box className="splashPage">
+                
                 <Typography 
-                    variant="h1" 
+                    variant={isSmallScreen ? "h2" : "h1"}
                     color="textSecondary"
                     className="title"
                 >
                     {TITLE}
-                </Typography>
-                <Typography variant="h2" color="textSecondary">
+                </Typography>                
+                <Typography variant={isSmallScreen ? "h3" : "h2"} color="textSecondary">
                     {HEADER_TEXT}
                 </Typography>
             </Box>
