@@ -85,7 +85,7 @@ const WelcomeCard = ({ parent, user }) => {
                 </OpenModalButton>
                 <OpenModalButton
                     onClick={() => setRequestNominationsOpen(true)}
-                    disabled={!isDecided}
+                    disabled={!isDecided} // TODO: Change this once link is fixed
                 >
                     Request Nominations
                 </OpenModalButton>

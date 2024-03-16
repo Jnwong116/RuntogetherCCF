@@ -27,6 +27,10 @@ const deleteUser = (id) => {
   return User.findOneAndDelete({ id: id });
 };
 
+const deleteUsers = (ids) => {
+  return User.deleteMany(ids ? { ids: ids } : {});
+};
+
 const updateVisionOrPosition = async (
   id,
   visionName,
@@ -124,6 +128,7 @@ module.exports = {
   getAllUsers,
   getUser,
   deleteUser,
+  deleteUsers,
   updateVisionOrPosition,
   uploadNominationLink,
   updateNominations,

@@ -15,19 +15,19 @@ import NoRoute from "./routes/noRoute";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
-const router = createBrowserRouter([
+let router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     errorElement: <NoRoute />,
     children: [
       {
-        index: true,
-        element: <Home />,
-      },
-      {
         path: "nominations",
         element: <Nominations />,
+      },
+      {
+        index: true,
+        element: <Home />,
       },
     ],
   },
@@ -35,10 +35,12 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <RouterProvider router={router} />
     <ToastContainer limit={1} />
-  </React.StrictMode>
+  </>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
